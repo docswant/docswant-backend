@@ -2,8 +2,8 @@ REPOSITORY=/home/ubuntu/app/deploy
 cd $REPOSITORY
 
 APP_NAME=docswant
-JAR_NAME=$(ls $REPOSITORY/build/libs/ | grep '.jar' | tail -n 1)
-JAR_PATH=$REPOSITORY/bulid/libs/$JAR_NAME
+JAR_NAME=$(ls $REPOSITORY | grep '.jar' | tail -n 1)
+JAR_PATH=$REPOSITORY/$JAR_NAME
 
 CURRENT_PID=$(pgrep -f $APP_NAME)
 
