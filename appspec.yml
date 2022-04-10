@@ -6,5 +6,5 @@ files:
 
 hooks:
   ApplicationStart:
-    - location: /home/ubuntu/scripts/deploy.sh
+    - location: deploy.sh
       timeout: 60
