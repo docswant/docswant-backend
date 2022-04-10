@@ -23,6 +23,6 @@ sudo chmod +x $JAR_NAME
 
 echo "> 새 애플리케이션 배포"
 
-nohup java -jar -Dspring.profiles.active=dev $JAR_NAME &
+nohup java -jar -Dspring.profiles.active=dev $JAR_NAME >> /home/ubuntu/deploy.log 2>&1 &
 
 echo "> 애플리케이션 배포 완료"
