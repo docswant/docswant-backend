@@ -8,9 +8,6 @@ permissions:
   - object: /home/ubuntu/app/deploy
     pattern: "*.sh"
     mode: 755
-  - object: /home/ubuntu/app/deploy
-    pattern: "*.out"
-    mode: 755
 
 hooks:
   ApplicationStart:
