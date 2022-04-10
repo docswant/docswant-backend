@@ -23,4 +23,4 @@ sudo chmod +x $JAR_NAME
 
 echo "> 새 애플리케이션 배포"
 
-nohup java -jar -Dspring.profiles.active=dev $JAR_NAME 1> /dev/null 2>&1 &
+nohup java -jar -Dspring.profiles.active=dev $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &

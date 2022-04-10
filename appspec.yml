@@ -6,6 +6,7 @@ files:
 
 permissions:
   - object: /
+    pattern: "*.sh"
     mode: 755
 
 hooks:
