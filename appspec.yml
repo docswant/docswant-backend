@@ -5,7 +5,7 @@ files:
     destination: /home/ubuntu/app/deploy
 
 permissions:
-  - object: /
+  - object: /home/ubuntu/app/deploy
     pattern: "*.sh"
     mode: 755
 
