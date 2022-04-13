@@ -5,4 +5,6 @@ import sju.capstone.docswant.domain.member.entity.Member;
 
 public interface MemberRepository extends JpaRepository<Member, String> {
 
+    Member findByUsername(String username);
+
 }
