@@ -5,14 +5,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sju.capstone.docswant.domain.member.entity.Member;
-import sju.capstone.docswant.domain.member.entity.Role;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@DiscriminatorValue("patient")
+@DiscriminatorValue("MEMBER_PATIENT")
 @PrimaryKeyJoinColumn(name = "patient_code")
 @Table(name = "patient")
 @Entity
@@ -34,9 +33,9 @@ public class Patient extends Member {
     private int hospitalRoom;
 
     @Builder
-    public Patient(String code, String username, String password, Role role, String name, LocalDate birthDate,
+    public Patient(String code, String username, String password, String name, LocalDate birthDate,
                    PatientSchedule patientSchedule, String diseaseName, int hospitalRoom) {
-        super(code, username, password, role);
+        super(code, username, password);
         this.name = name;
         this.birthDate = birthDate;
         this.patientSchedule = patientSchedule;

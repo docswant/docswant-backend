@@ -25,14 +25,12 @@ public abstract class Member extends BaseTimeEntity {
     @Column(name = "member_password", nullable = false, length = 50)
     private String password;
 
-    @Enumerated(value = EnumType.STRING)
-    @Column(name = "member_role", nullable = false, length = 15)
-    private Role role;
+    @Column(name = "member_type", updatable = false, insertable = false, length = 30)
+    private String memberType;
 
-    public Member(String code, String username, String password, Role role) {
+    public Member(String code, String username, String password) {
         this.code = code;
         this.username = username;
         this.password = password;
-        this.role = role;
     }
 }

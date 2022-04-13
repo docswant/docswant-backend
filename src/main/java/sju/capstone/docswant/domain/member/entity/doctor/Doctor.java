@@ -5,13 +5,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sju.capstone.docswant.domain.member.entity.Member;
-import sju.capstone.docswant.domain.member.entity.Role;
 
 import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@DiscriminatorValue("doctor")
+@DiscriminatorValue("MEMBER_DOCTOR")
 @PrimaryKeyJoinColumn(name = "doctor_code")
 @Table(name = "doctor")
 @Entity
@@ -24,8 +23,8 @@ public class Doctor extends Member {
     private String major;
 
     @Builder
-    public Doctor(String code, String username, String password, Role role, String name, String major) {
-        super(code, username, password, role);
+    public Doctor(String code, String username, String password, String name, String major) {
+        super(code, username, password);
         this.name = name;
         this.major = major;
     }
