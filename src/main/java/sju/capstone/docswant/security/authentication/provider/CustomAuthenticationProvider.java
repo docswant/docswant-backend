@@ -18,6 +18,8 @@ import sju.capstone.docswant.security.core.userdetails.CustomUserDetails;
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
+    private static final String BAD_CREDENTIALS_MESSAGE = "Password Mismatch";
+
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
@@ -29,8 +31,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         CustomUserDetails userDetails = (CustomUserDetails) userDetailsService.loadUserByUsername(username);
         //TODO: PasswordEncoder 사용
         if (!userDetails.getPassword().equals(password)) {
-            log.error("Invalid password. username = {}", userDetails.getUsername());
-            throw new BadCredentialsException("Invalid password");
+            log.error("Password Mismatch. username = {}", userDetails.getUsername());
+            throw new BadCredentialsException(BAD_CREDENTIALS_MESSAGE);
         }
 
         return new CustomAuthenticationToken(userDetails.getMember(), null, userDetails.getAuthorities());

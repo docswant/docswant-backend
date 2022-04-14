@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
+import sju.capstone.docswant.core.error.ErrorCode;
+import sju.capstone.docswant.core.error.ErrorResponse;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +30,7 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
-        objectMapper.writeValue(response.getWriter(), "로그인 인증에 실패했습니다.");
+        objectMapper.writeValue(response.getWriter(), ErrorResponse.of(ErrorCode.HANDLE_AUTHENTICATION_FAILED, exception.getMessage()));
     }
 
 }

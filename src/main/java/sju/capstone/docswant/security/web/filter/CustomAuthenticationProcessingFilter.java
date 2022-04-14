@@ -20,6 +20,8 @@ import java.io.IOException;
 @Slf4j
 public class CustomAuthenticationProcessingFilter extends AbstractAuthenticationProcessingFilter {
 
+    private static final String METHOD_NOT_SUPPORTED_MESSAGE = "Authentication method not supported";
+    private static final String INSUFFICIENT_INPUT_VALUE_MESSAGE = "Username or Password not Provided";
     private static final String LOGIN_URL = "/api/v1/login";
 
     @Autowired
@@ -33,13 +35,13 @@ public class CustomAuthenticationProcessingFilter extends AbstractAuthentication
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException {
         if (!HttpMethod.POST.matches(request.getMethod())) {
             log.error("Authentication method not supported. Request method = {}", request.getMethod());
-            throw new AuthenticationServiceException("Authentication method not supported");
+            throw new AuthenticationServiceException(METHOD_NOT_SUPPORTED_MESSAGE);
         }
 
         AuthenticationDto.Request requestDto = objectMapper.readerFor(AuthenticationDto.Request.class).readValue(request.getReader());
         if (!StringUtils.hasText(requestDto.getUsername()) || !StringUtils.hasText(requestDto.getPassword())) {
             log.error("Username or Password not Provided. username = {} password = {}", requestDto.getUsername(), requestDto.getPassword());
-            throw new AuthenticationServiceException("Username or Password not Provided");
+            throw new AuthenticationServiceException(INSUFFICIENT_INPUT_VALUE_MESSAGE);
         }
 
         CustomAuthenticationToken authenticationToken = new CustomAuthenticationToken(requestDto.getUsername(), requestDto.getPassword());

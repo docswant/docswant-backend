@@ -8,6 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
+import sju.capstone.docswant.core.error.ErrorCode;
+import sju.capstone.docswant.core.error.ErrorResponse;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +31,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
         response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
-        objectMapper.writeValue(response.getWriter(), "해당 자원에 접근할 수 있는 권한이 없습니다.");
+        objectMapper.writeValue(response.getWriter(), ErrorResponse.of(ErrorCode.HANDLE_ACCESS_DENIED));
     }
 
 }

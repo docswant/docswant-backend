@@ -20,6 +20,8 @@ import java.util.List;
 @Service("userDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {
 
+    private static final String USERNAME_NOT_FOUND_MESSAGE = "No user found with username";
+
     private final MemberRepository memberRepository;
 
     @Transactional(readOnly = true)
@@ -28,7 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         Member member = memberRepository.findByUsername(username);
         if (member == null) {
             log.error("No user found with username. username = {}", username);
-            throw new UsernameNotFoundException("No user found with username");
+            throw new UsernameNotFoundException(USERNAME_NOT_FOUND_MESSAGE);
         }
 
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();

@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.ArrayList;
@@ -26,6 +25,13 @@ public class ErrorResponse {
         this.errors = errors;
     }
 
+    private ErrorResponse(final ErrorCode code, final String message) {
+        this.code = code.getCode();
+        this.status = code.getStatus();
+        this.message = message;
+        this.errors = new ArrayList<>();
+    }
+
     private ErrorResponse(final ErrorCode code) {
         this.code = code.getCode();
         this.status = code.getStatus();
@@ -43,6 +49,10 @@ public class ErrorResponse {
 
     public static ErrorResponse of(final ErrorCode code, List<FieldError> errors) {
         return new ErrorResponse(code, errors);
+    }
+
+    public static ErrorResponse of(final ErrorCode code, String message) {
+        return new ErrorResponse(code, message);
     }
 
     public static ErrorResponse of(MethodArgumentTypeMismatchException e) {
