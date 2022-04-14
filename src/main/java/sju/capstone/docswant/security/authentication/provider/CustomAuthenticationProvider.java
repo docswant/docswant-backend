@@ -7,7 +7,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import sju.capstone.docswant.security.authentication.token.CustomAuthenticationToken;
@@ -21,7 +20,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     private static final String BAD_CREDENTIALS_MESSAGE = "Password Mismatch";
 
     private final UserDetailsService userDetailsService;
-    private final PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
