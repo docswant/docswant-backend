@@ -1,0 +1,1 @@
+-- INSERT INTO member(member_code, member_username, member_password, member_type, created_at, updated_at) values("DOCTOR0001", "username", "password", "MEMBER_DOCTOR", "2022-04-16 12:00:00.000000", "2022-04-16 12:00:00.000000");

@@ -3,6 +3,7 @@ package sju.capstone.docswant.domain.member.model.entity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.domain.Persistable;
 import sju.capstone.docswant.common.entity.BaseTimeEntity;
 
 import javax.persistence.*;
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @DiscriminatorColumn(name = "member_type")
 @Table(name = "member")
 @Entity
-public abstract class Member extends BaseTimeEntity {
+public abstract class Member extends BaseTimeEntity implements Persistable<String> {
 
     @Id
     @Column(name = "member_code", updatable = false, length = 30)
@@ -39,6 +40,16 @@ public abstract class Member extends BaseTimeEntity {
 
     public void setRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
+    }
+
+    @Override
+    public String getId() {
+        return code;
+    }
+
+    @Override
+    public boolean isNew() {
+        return this.getCreatedAt() == null;
     }
 
 }
