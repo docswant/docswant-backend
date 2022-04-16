@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@DiscriminatorValue("MEMBER_DOCTOR")
+@DiscriminatorValue("ACCOUNT_DOCTOR")
 @PrimaryKeyJoinColumn(name = "doctor_code")
 @Table(name = "doctor")
 @Entity

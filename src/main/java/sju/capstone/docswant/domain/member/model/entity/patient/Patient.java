@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@DiscriminatorValue("MEMBER_PATIENT")
+@DiscriminatorValue("ACCOUNT_PATIENT")
 @PrimaryKeyJoinColumn(name = "patient_code")
 @Table(name = "patient")
 @Entity

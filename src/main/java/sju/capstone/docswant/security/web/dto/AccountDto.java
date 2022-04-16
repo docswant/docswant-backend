@@ -25,14 +25,14 @@ public class AccountDto {
     @Getter
     public static class Response {
         private String code;
-        private String memberType;
+        private String accountType;
         private String accessToken;
         private String refreshToken;
 
         @Builder
-        public Response(String code, String memberType, String accessToken, String refreshToken) {
+        public Response(String code, String accountType, String accessToken, String refreshToken) {
             this.code = code;
-            this.memberType = memberType;
+            this.accountType = accountType;
             this.accessToken = accessToken;
             this.refreshToken = refreshToken;
         }

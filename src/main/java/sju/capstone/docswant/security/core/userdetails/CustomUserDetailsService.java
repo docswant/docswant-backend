@@ -32,7 +32,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
 
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority(account.getMemberType()));
+        grantedAuthorities.add(new SimpleGrantedAuthority(account.getAccountType()));
 
         return new CustomUserDetails(account, grantedAuthorities);
     }

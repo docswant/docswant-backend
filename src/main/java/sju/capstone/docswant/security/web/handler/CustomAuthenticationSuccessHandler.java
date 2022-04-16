@@ -44,7 +44,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         accountRepository.save(account);
 
         AccountDto.Response responseDto = AccountDto.Response.builder()
-                .code(account.getCode()).memberType(account.getMemberType())
+                .code(account.getCode()).accountType(account.getAccountType())
                 .accessToken(accessToken).refreshToken(refreshToken)
                 .build();
         response.setStatus(HttpServletResponse.SC_OK);

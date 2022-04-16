@@ -38,7 +38,7 @@ class AccountControllerTest {
     private ObjectMapper objectMapper;
 
     @Sql(statements = {
-            "INSERT INTO account(account_code, account_username, account_password, member_type, created_at, updated_at) values(\"DOCTOR0001\", \"username\", \"password\", \"MEMBER_DOCTOR\", \"2022-04-16 12:00:00.000000\", \"2022-04-16 12:00:00.000000\");",
+            "INSERT INTO account(account_code, account_username, account_password, account_type, created_at, updated_at) values(\"DOCTOR0001\", \"username\", \"password\", \"ACCOUNT_DOCTOR\", \"2022-04-16 12:00:00.000000\", \"2022-04-16 12:00:00.000000\");",
             "INSERT INTO doctor(doctor_major, doctor_name, doctor_code) values (\"NONE\", \"Kim\", \"DOCTOR0001\");"
     }, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
     @Test
@@ -46,7 +46,7 @@ class AccountControllerTest {
         //given
         String loginUrl = "/api/v1/login";
         String code = "DOCTOR0001";
-        String memberType = "MEMBER_DOCTOR";
+        String accountType = "ACCOUNT_DOCTOR";
         String username = "username";
         String password = "password";
         AccountDto.Request requestDto = new AccountDto.Request(username, password);
@@ -71,14 +71,14 @@ class AccountControllerTest {
                                 fieldWithPath("password").description("비밀번호")
                         ),
                         responseFields(
-                                fieldWithPath("code").description("사용자 코드"),
-                                fieldWithPath("memberType").description("사용자 타입"),
+                                fieldWithPath("code").description("계정 코드"),
+                                fieldWithPath("accountType").description("계정 타입"),
                                 fieldWithPath("accessToken").description("JWT access token"),
                                 fieldWithPath("refreshToken").description("JWT refresh token")
                         )
                 ))
                 .andExpect(jsonPath("$.code").value(code))
-                .andExpect(jsonPath("$.memberType").value(memberType))
+                .andExpect(jsonPath("$.accountType").value(accountType))
                 .andExpect(jsonPath("$.accessToken").exists())
                 .andExpect(jsonPath("$.refreshToken").exists());
     }
