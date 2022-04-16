@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: docswant
   profiles:
     active: local
 
@@ -32,6 +34,11 @@ spring:
         default_batch_fetch_size: 500
     open-in-view: false
 
+jwt:
+  secret: ZG9jc3dhbnRsb2NhbHNlY3JldGRvY3N3YW50bG9jYWwK
+  access-token-expired-time: 3600
+  refresh-token-expired-time: 2592000
+
 ---
 spring:
   config:
@@ -52,9 +59,10 @@ spring:
         default_batch_fetch_size: 500
     open-in-view: false
 
+jwt:
+  secret: ${JWT_SECRET}
+  access-token-expired-time: ${JWT_ACCESS_TOKEN_EXPIRED_TIME}
+  refresh-token-expired-time: ${JWT_REFRESH_TOKEN_EXPIRED_TIME}
+
 logging:
   level: debug
-
-aws:
-  paramstore:
-    name: docswant

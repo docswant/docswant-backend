@@ -1,7 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.6.5'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'org.asciidoctor.convert' version '1.5.8'
+    id 'org.asciidoctor.jvm.convert' version '3.3.2'
     id 'java'
 }
 
@@ -56,6 +56,12 @@ dependencies {
 
     //parameter store
     implementation 'io.awspring.cloud:spring-cloud-starter-aws-parameter-store-config'
+
+    //jwt
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+
 }
 
 //querydsl
@@ -80,6 +86,7 @@ asciidoctor.doFirst {
 
 bootJar {
     dependsOn asciidoctor
+    duplicatesStrategy(DuplicatesStrategy.INCLUDE)
     from("${asciidoctor.outputDir}") {
         into "BOOT-INF/classes/static/docs"
     }
@@ -90,4 +97,8 @@ task copyDocument(type: Copy) {
     dependsOn asciidoctor
     from file("build/docs/asciidoc")
     into file("src/main/resources/static/docs")
+}
+
+build {
+    dependsOn copyDocument
 }
