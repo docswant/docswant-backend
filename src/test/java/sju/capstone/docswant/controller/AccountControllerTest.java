@@ -1,4 +1,4 @@
-package sju.capstone.docswant.auth;
+package sju.capstone.docswant.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,7 @@ import static sju.capstone.docswant.utils.ApiDocumentUtils.getDocumentResponse;
 @AutoConfigureRestDocs
 @ExtendWith(RestDocumentationExtension.class)
 @SpringBootTest
-class AuthTest {
+class AccountControllerTest {
 
     @Autowired
     private MockMvc mvc;
@@ -63,7 +63,7 @@ class AuthTest {
         actions
                 .andExpect(status().isOk())
                 .andDo(print())
-                .andDo(document("account-login",
+                .andDo(document("account/login",
                         getDocumentRequest(),
                         getDocumentResponse(),
                         requestFields(
