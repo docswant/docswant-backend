@@ -26,11 +26,15 @@ public class AuthenticationDto {
     public static class Response {
         private String code;
         private String memberType;
+        private String accessToken;
+        private String refreshToken;
 
         @Builder
-        public Response(String code, String memberType) {
+        public Response(String code, String memberType, String accessToken, String refreshToken) {
             this.code = code;
             this.memberType = memberType;
+            this.accessToken = accessToken;
+            this.refreshToken = refreshToken;
         }
     }
 

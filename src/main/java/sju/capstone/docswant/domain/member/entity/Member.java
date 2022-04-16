@@ -3,6 +3,7 @@ package sju.capstone.docswant.domain.member.entity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import sju.capstone.docswant.common.entity.BaseTimeEntity;
 
 import javax.persistence.*;
@@ -28,9 +29,17 @@ public abstract class Member extends BaseTimeEntity {
     @Column(name = "member_type", updatable = false, insertable = false, length = 30)
     private String memberType;
 
+    @Column(name = "member_refresh_token")
+    private String refreshToken;
+
     public Member(String code, String username, String password) {
         this.code = code;
         this.username = username;
         this.password = password;
     }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+    }
+
 }

@@ -8,6 +8,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 import sju.capstone.docswant.domain.member.entity.Member;
+import sju.capstone.docswant.domain.member.repository.MemberRepository;
+import sju.capstone.docswant.security.authentication.token.JwtToken;
 import sju.capstone.docswant.security.web.dto.AuthenticationDto;
 
 import javax.servlet.FilterChain;
@@ -22,6 +24,8 @@ import java.nio.charset.StandardCharsets;
 @Component
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
+    private final JwtToken jwtToken;
+    private final MemberRepository memberRepository;
     private final ObjectMapper objectMapper;
 
     @Override
@@ -34,7 +38,15 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         Member member = (Member) authentication.getPrincipal();
         log.info("Authentication Success. member_code = {}", member.getCode());
 
-        AuthenticationDto.Response responseDto = AuthenticationDto.Response.builder().code(member.getCode()).memberType(member.getMemberType()).build();
+        String accessToken = jwtToken.createAccessToken(member);
+        String refreshToken = jwtToken.createRefreshToken(member);
+        member.setRefreshToken(refreshToken);
+        memberRepository.save(member);
+
+        AuthenticationDto.Response responseDto = AuthenticationDto.Response.builder()
+                .code(member.getCode()).memberType(member.getMemberType())
+                .accessToken(accessToken).refreshToken(refreshToken)
+                .build();
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
