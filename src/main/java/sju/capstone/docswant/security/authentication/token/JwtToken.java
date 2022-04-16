@@ -7,7 +7,7 @@ import io.jsonwebtoken.security.SecurityException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import sju.capstone.docswant.domain.member.entity.Member;
+import sju.capstone.docswant.domain.member.model.entity.Member;
 
 import javax.crypto.SecretKey;
 import java.util.Date;

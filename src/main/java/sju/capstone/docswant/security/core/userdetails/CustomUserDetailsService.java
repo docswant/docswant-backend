@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import sju.capstone.docswant.domain.member.entity.Member;
+import sju.capstone.docswant.domain.member.model.entity.Member;
 import sju.capstone.docswant.domain.member.repository.MemberRepository;
 
 import java.util.ArrayList;

@@ -7,7 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.GenericFilterBean;
-import sju.capstone.docswant.domain.member.entity.Member;
+import sju.capstone.docswant.domain.member.model.entity.Member;
 import sju.capstone.docswant.security.authentication.provider.JwtAuthenticationProvider;
 import sju.capstone.docswant.security.authentication.token.JwtToken;
 

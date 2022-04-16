@@ -1,10 +1,10 @@
-package sju.capstone.docswant.domain.member.entity.doctor;
+package sju.capstone.docswant.domain.member.model.entity.doctor;
 
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import sju.capstone.docswant.domain.member.entity.Member;
+import sju.capstone.docswant.domain.member.model.entity.Member;
 
 import javax.persistence.*;
 

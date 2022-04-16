@@ -1,9 +1,8 @@
-package sju.capstone.docswant.domain.member.entity;
+package sju.capstone.docswant.domain.member.model.entity;
 
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import sju.capstone.docswant.common.entity.BaseTimeEntity;
 
 import javax.persistence.*;

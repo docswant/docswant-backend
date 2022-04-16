@@ -3,7 +3,7 @@ package sju.capstone.docswant.security.core.userdetails;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import sju.capstone.docswant.domain.member.entity.Member;
+import sju.capstone.docswant.domain.member.model.entity.Member;
 
 import java.util.Collection;
 

@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
-import sju.capstone.docswant.domain.member.entity.Member;
+import sju.capstone.docswant.domain.member.model.entity.Member;
 import sju.capstone.docswant.domain.member.repository.MemberRepository;
 import sju.capstone.docswant.security.authentication.token.JwtToken;
 import sju.capstone.docswant.security.web.dto.AuthenticationDto;

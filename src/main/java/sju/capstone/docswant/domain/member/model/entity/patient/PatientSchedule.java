@@ -1,4 +1,4 @@
-package sju.capstone.docswant.domain.member.entity.patient;
+package sju.capstone.docswant.domain.member.model.entity.patient;
 
 import lombok.AccessLevel;
 import lombok.Builder;
