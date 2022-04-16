@@ -36,12 +36,7 @@ public class JwtAuthenticationFilter extends GenericFilterBean {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         String token = resolveToken(httpRequest);
 
-        if (!StringUtils.hasText(token)) {
-            log.error("No Token to Authenticate. request url = {}", httpRequest.getRequestURL());
-            throw new AuthenticationException(TOKEN_NOT_FOUND_MESSAGE);
-        }
-
-        if (jwtToken.isValid(token)) {
+        if (StringUtils.hasText(token) && jwtToken.isValid(token)) {
             Authentication authentication = jwtAuthenticationProvider.authenticate(token);
             SecurityContextHolder.getContext().setAuthentication(authentication);
             Account account = (Account) authentication.getPrincipal();
