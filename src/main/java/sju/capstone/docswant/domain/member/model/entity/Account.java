@@ -12,27 +12,27 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "member_type")
-@Table(name = "member")
+@Table(name = "account")
 @Entity
-public abstract class Member extends BaseTimeEntity implements Persistable<String> {
+public abstract class Account extends BaseTimeEntity implements Persistable<String> {
 
     @Id
-    @Column(name = "member_code", updatable = false, length = 30)
+    @Column(name = "account_code", updatable = false, length = 30)
     private String code;
 
-    @Column(name = "member_username", nullable = false, unique = true, length = 30)
+    @Column(name = "account_username", nullable = false, unique = true, length = 30)
     private String username;
 
-    @Column(name = "member_password", nullable = false, length = 50)
+    @Column(name = "account_password", nullable = false, length = 50)
     private String password;
 
     @Column(name = "member_type", updatable = false, insertable = false, length = 30)
     private String memberType;
 
-    @Column(name = "member_refresh_token")
+    @Column(name = "account_refresh_token")
     private String refreshToken;
 
-    public Member(String code, String username, String password) {
+    public Account(String code, String username, String password) {
         this.code = code;
         this.username = username;
         this.password = password;

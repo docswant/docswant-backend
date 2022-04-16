@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class AuthenticationDto {
+public class AccountDto {
 
     @Getter
     public static class Request {

@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import sju.capstone.docswant.domain.member.model.entity.Member;
+import sju.capstone.docswant.domain.member.model.entity.Account;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @PrimaryKeyJoinColumn(name = "patient_code")
 @Table(name = "patient")
 @Entity
-public class Patient extends Member {
+public class Patient extends Account {
 
     @Column(name = "patient_name", nullable = false, length = 20)
     private String name;

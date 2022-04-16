@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import sju.capstone.docswant.domain.member.model.entity.Member;
-import sju.capstone.docswant.domain.member.repository.MemberRepository;
+import sju.capstone.docswant.domain.member.model.entity.Account;
+import sju.capstone.docswant.domain.member.repository.AccountRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,20 +21,20 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private static final String USERNAME_NOT_FOUND_MESSAGE = "No user found with username";
 
-    private final MemberRepository memberRepository;
+    private final AccountRepository accountRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Member member = memberRepository.findByUsername(username);
-        if (member == null) {
+        Account account = accountRepository.findByUsername(username);
+        if (account == null) {
             log.error("No user found with username. username = {}", username);
             throw new UsernameNotFoundException(USERNAME_NOT_FOUND_MESSAGE);
         }
 
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority(member.getMemberType()));
+        grantedAuthorities.add(new SimpleGrantedAuthority(account.getMemberType()));
 
-        return new CustomUserDetails(member, grantedAuthorities);
+        return new CustomUserDetails(account, grantedAuthorities);
     }
 
 }

@@ -34,7 +34,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             throw new BadCredentialsException(BAD_CREDENTIALS_MESSAGE);
         }
 
-        return new CustomAuthenticationToken(userDetails.getMember(), null, userDetails.getAuthorities());
+        return new CustomAuthenticationToken(userDetails.getAccount(), null, userDetails.getAuthorities());
     }
 
     @Override

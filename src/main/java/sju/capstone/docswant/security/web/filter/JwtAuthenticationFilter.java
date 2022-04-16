@@ -7,7 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.GenericFilterBean;
-import sju.capstone.docswant.domain.member.model.entity.Member;
+import sju.capstone.docswant.domain.member.model.entity.Account;
 import sju.capstone.docswant.security.authentication.provider.JwtAuthenticationProvider;
 import sju.capstone.docswant.security.authentication.token.JwtToken;
 
@@ -44,8 +44,8 @@ public class JwtAuthenticationFilter extends GenericFilterBean {
         if (jwtToken.isValid(token)) {
             Authentication authentication = jwtAuthenticationProvider.authenticate(token);
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            Member member = (Member) authentication.getPrincipal();
-            log.info("Authentication Success. member_code = {}", member.getCode());
+            Account account = (Account) authentication.getPrincipal();
+            log.info("Authentication Success. account_code = {}", account.getCode());
         }
 
         chain.doFilter(request, response);

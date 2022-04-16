@@ -7,10 +7,10 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
-import sju.capstone.docswant.domain.member.model.entity.Member;
-import sju.capstone.docswant.domain.member.repository.MemberRepository;
+import sju.capstone.docswant.domain.member.model.entity.Account;
+import sju.capstone.docswant.domain.member.repository.AccountRepository;
 import sju.capstone.docswant.security.authentication.token.JwtToken;
-import sju.capstone.docswant.security.web.dto.AuthenticationDto;
+import sju.capstone.docswant.security.web.dto.AccountDto;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -25,7 +25,7 @@ import java.nio.charset.StandardCharsets;
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
     private final JwtToken jwtToken;
-    private final MemberRepository memberRepository;
+    private final AccountRepository accountRepository;
     private final ObjectMapper objectMapper;
 
     @Override
@@ -35,16 +35,16 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        Member member = (Member) authentication.getPrincipal();
-        log.info("Authentication Success. member_code = {}", member.getCode());
+        Account account = (Account) authentication.getPrincipal();
+        log.info("Authentication Success. account_code = {}", account.getCode());
 
-        String accessToken = jwtToken.createAccessToken(member);
-        String refreshToken = jwtToken.createRefreshToken(member);
-        member.setRefreshToken(refreshToken);
-        memberRepository.save(member);
+        String accessToken = jwtToken.createAccessToken(account);
+        String refreshToken = jwtToken.createRefreshToken(account);
+        account.setRefreshToken(refreshToken);
+        accountRepository.save(account);
 
-        AuthenticationDto.Response responseDto = AuthenticationDto.Response.builder()
-                .code(member.getCode()).memberType(member.getMemberType())
+        AccountDto.Response responseDto = AccountDto.Response.builder()
+                .code(account.getCode()).memberType(account.getMemberType())
                 .accessToken(accessToken).refreshToken(refreshToken)
                 .build();
         response.setStatus(HttpServletResponse.SC_OK);

@@ -11,7 +11,7 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.util.StringUtils;
 import sju.capstone.docswant.security.authentication.token.CustomAuthenticationToken;
-import sju.capstone.docswant.security.web.dto.AuthenticationDto;
+import sju.capstone.docswant.security.web.dto.AccountDto;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,7 +38,7 @@ public class CustomAuthenticationProcessingFilter extends AbstractAuthentication
             throw new AuthenticationServiceException(METHOD_NOT_SUPPORTED_MESSAGE);
         }
 
-        AuthenticationDto.Request requestDto = objectMapper.readerFor(AuthenticationDto.Request.class).readValue(request.getReader());
+        AccountDto.Request requestDto = objectMapper.readerFor(AccountDto.Request.class).readValue(request.getReader());
         if (!StringUtils.hasText(requestDto.getUsername()) || !StringUtils.hasText(requestDto.getPassword())) {
             log.error("Username or Password not Provided. username = {} password = {}", requestDto.getUsername(), requestDto.getPassword());
             throw new AuthenticationServiceException(INSUFFICIENT_INPUT_VALUE_MESSAGE);

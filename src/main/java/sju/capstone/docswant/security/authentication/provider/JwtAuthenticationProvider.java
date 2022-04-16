@@ -4,7 +4,6 @@ import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -33,6 +32,6 @@ public class JwtAuthenticationProvider {
         String username = jwtParser.parseClaimsJws(token).getBody().getSubject();
         CustomUserDetails userDetails = (CustomUserDetails) userDetailsService.loadUserByUsername(username);
 
-        return new CustomAuthenticationToken(userDetails.getMember(), null, userDetails.getAuthorities());
+        return new CustomAuthenticationToken(userDetails.getAccount(), null, userDetails.getAuthorities());
     }
 }

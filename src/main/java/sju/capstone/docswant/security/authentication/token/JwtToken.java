@@ -7,7 +7,7 @@ import io.jsonwebtoken.security.SecurityException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import sju.capstone.docswant.domain.member.model.entity.Member;
+import sju.capstone.docswant.domain.member.model.entity.Account;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
@@ -32,10 +32,10 @@ public class JwtToken {
         this.refreshTokenExpiredTimeMillis = refreshTokenExpiredTime * 1000;
     }
 
-    public String createAccessToken(Member member) {
+    public String createAccessToken(Account account) {
         Claims claims = Jwts.claims();
         claims.put(TOKEN_TYPE, ACCESS_TOKEN);
-        claims.setSubject(member.getCode());
+        claims.setSubject(account.getCode());
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(new Date())
@@ -44,10 +44,10 @@ public class JwtToken {
                 .compact();
     }
 
-    public String createRefreshToken(Member member) {
+    public String createRefreshToken(Account account) {
         Claims claims = Jwts.claims();
         claims.put(TOKEN_TYPE, REFRESH_TOKEN);
-        claims.setSubject(member.getCode());
+        claims.setSubject(account.getCode());
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(new Date())
