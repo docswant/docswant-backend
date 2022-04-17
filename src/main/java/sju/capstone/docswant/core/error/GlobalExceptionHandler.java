@@ -7,11 +7,17 @@ import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import sju.capstone.docswant.core.error.exception.BusinessException;
+import sju.capstone.docswant.core.error.exception.EntityNotFoundException;
+
+import javax.annotation.PostConstruct;
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
-@ControllerAdvice
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -40,9 +46,8 @@ public class GlobalExceptionHandler {
         log.warn("handleBusinessException. message = {}", e.getMessage());
         final ErrorCode code = e.getCode();
         final ErrorResponse response = ErrorResponse.of(code);
-        return ResponseEntity.status(HttpStatus.valueOf(code.getStatus())).body(response);
+        return ResponseEntity.status(code.getStatus()).body(response);
     }
-
 
     @ExceptionHandler(Exception.class)
     protected ResponseEntity<ErrorResponse> handleException(Exception e) {

@@ -4,6 +4,10 @@ import sju.capstone.docswant.core.error.ErrorCode;
 
 public class EntityNotFoundException extends BusinessException {
 
+    public EntityNotFoundException(String message) {
+        super(message);
+    }
+
     public EntityNotFoundException(String message, ErrorCode code) {
         super(message, code);
     }

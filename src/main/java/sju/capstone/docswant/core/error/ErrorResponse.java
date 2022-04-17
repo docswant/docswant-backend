@@ -1,5 +1,6 @@
 package sju.capstone.docswant.core.error;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,30 +14,27 @@ import java.util.stream.Collectors;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ErrorResponse {
+
     private String code;
-    private int status;
     private String message;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<FieldError> errors;
 
     private ErrorResponse(final ErrorCode code, final List<FieldError> errors) {
         this.code = code.getCode();
-        this.status = code.getStatus();
         this.message = code.getMessage();
         this.errors = errors;
     }
 
     private ErrorResponse(final ErrorCode code, final String message) {
         this.code = code.getCode();
-        this.status = code.getStatus();
         this.message = message;
-        this.errors = new ArrayList<>();
     }
 
     private ErrorResponse(final ErrorCode code) {
         this.code = code.getCode();
-        this.status = code.getStatus();
         this.message = code.getMessage();
-        this.errors = new ArrayList<>();
     }
 
     public static ErrorResponse of(final ErrorCode code, BindingResult bindingResult) {
