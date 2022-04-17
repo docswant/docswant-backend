@@ -17,7 +17,7 @@ endif::[]
 [[account-login]]
 == 로그인
 
-=== Curl Request
+=== curl Request
 include::{snippets}/account/login/curl-request.adoc[]
 
 === HTTP Request
