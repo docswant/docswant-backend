@@ -21,8 +21,12 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Create mysql docker container
-      run: |
-        sudo docker run -d -p 3306:3306 -e MYSQL_DATABASE=docswant -e MYSQL_USER=docswant -e MYSQL_PASSWORD=docswant mysql:8.0.23
+      uses: samin/mysql-action@v1
+      with:
+        mysql version: '8.0'
+        mysql database: docswant
+        mysql user: docswant
+        mysql password: docswant
 
     - name: Set up JDK 11
       uses: actions/setup-java@v3
