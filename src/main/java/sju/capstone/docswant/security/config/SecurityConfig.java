@@ -2,6 +2,7 @@ package sju.capstone.docswant.security.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -22,10 +23,13 @@ import sju.capstone.docswant.security.web.handler.CustomAuthenticationSuccessHan
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private static final String ROLE_PREFIX = "MEMBER_";
-    private static final String[] PERMITTED_URLS = {
-            "/api/v1/login",
+    private static final String ROLE_PREFIX = "ACCOUNT_";
+    private static final String[] GET_PERMITTED_URLS = {
             "/docs/**"
+    };
+    private static final String[] POST_PERMITTED_URLS = {
+            "/api/v1/login",
+            "/api/v1/doctors"
     };
 
     private final CorsConfigurationSource corsConfigurationSource;
@@ -47,7 +51,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers(PERMITTED_URLS).permitAll()
+                .antMatchers(HttpMethod.GET, GET_PERMITTED_URLS).permitAll()
+                .antMatchers(HttpMethod.POST, POST_PERMITTED_URLS).permitAll()
                 .anyRequest().authenticated()
         ;
 
