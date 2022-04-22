@@ -28,8 +28,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String password = (String) authentication.getCredentials();
 
         CustomUserDetails userDetails = (CustomUserDetails) userDetailsService.loadUserByUsername(username);
-        //TODO: PasswordEncoder 사용
-        if (!userDetails.getPassword().equals(password)) {
+        if (!passwordEncoder.matches(password, userDetails.getPassword())) {
             log.error("Password Mismatch. username = {}", userDetails.getUsername());
             throw new BadCredentialsException(BAD_CREDENTIALS_MESSAGE);
         }

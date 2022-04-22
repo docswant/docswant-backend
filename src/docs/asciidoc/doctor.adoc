@@ -1,0 +1,33 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+
+= Doctor API Docs
+권준원
+1.0.0, 23/04/2022
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+:operation-http-request-title: Example Request
+:operation-http-response-title: Example Response
+
+[[doctor-register]]
+== 회원가입
+
+=== curl Request
+include::{snippets}/doctor/register/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/doctor/register/http-request.adoc[]
+
+=== Request Fields
+include::{snippets}/doctor/register/request-fields.adoc[]
+
+=== HTTP Response
+include::{snippets}/doctor/register/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/doctor/register/response-fields.adoc[]
