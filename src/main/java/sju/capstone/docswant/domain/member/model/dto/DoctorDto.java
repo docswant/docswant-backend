@@ -1,30 +1,29 @@
-package sju.capstone.docswant.domain.member.model.dto.doctor;
+package sju.capstone.docswant.domain.member.model.dto;
 
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class DoctorDTO {
+public class DoctorDto {
 
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class Request {
-        @NotNull
+        @NotBlank @Size(max = 30)
         private String code;
-        @NotBlank
+        @NotBlank @Size(max = 30)
         private String username;
-        @NotBlank
+        @NotBlank @Size(max = 50)
         private String password;
-        @NotBlank
+        @NotBlank @Size(max = 20)
         private String name;
-        @NotBlank
+        @NotBlank @Size(max = 50)
         private String major;
 
         @Builder
@@ -36,28 +35,22 @@ public class DoctorDTO {
             this.major = major;
         }
 
-        public Doctor toEntity() {
-            return Doctor.builder()
-                    .code(code)
-                    .username(username)
-                    .password(password)
-                    .name(name)
-                    .major(major)
-                    .build();
-        }
     }
 
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class Response {
         private String code;
-
+        private String name;
+        private String major;
 
         @Builder
-        public Response(String code, String accessToken, String refreshToken) {
+        public Response(String code, String name, String major) {
             this.code = code;
-
+            this.name = name;
+            this.major = major;
         }
+
     }
 
 }
