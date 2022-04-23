@@ -23,7 +23,7 @@ public abstract class Account extends BaseTimeEntity implements Persistable<Stri
     @Column(name = "account_username", nullable = false, unique = true, length = 30)
     private String username;
 
-    @Column(name = "account_password", nullable = false, length = 100)
+    @Column(name = "account_password", nullable = false)
     private String password;
 
     @Column(name = "account_type", updatable = false, insertable = false, length = 30)
