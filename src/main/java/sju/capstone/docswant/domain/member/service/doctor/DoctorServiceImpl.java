@@ -15,7 +15,7 @@ public class DoctorServiceImpl implements DoctorService{
 
     private final DoctorRepository doctorRepository;
     private final PasswordEncoder passwordEncoder;
-    private final DoctorMapper mapper;
+    private final DoctorMapper mapper = DoctorMapper.INSTANCE;
 
     @Transactional
     @Override
