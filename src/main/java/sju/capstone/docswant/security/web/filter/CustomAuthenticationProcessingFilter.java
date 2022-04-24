@@ -11,7 +11,7 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.util.StringUtils;
 import sju.capstone.docswant.security.authentication.token.CustomAuthenticationToken;
-import sju.capstone.docswant.security.web.dto.AccountDto;
+import sju.capstone.docswant.domain.member.model.dto.AccountDto;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

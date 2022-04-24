@@ -13,7 +13,7 @@ import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
-import sju.capstone.docswant.security.web.dto.AccountDto;
+import sju.capstone.docswant.domain.member.model.dto.AccountDto;
 
 import java.nio.charset.StandardCharsets;
 
