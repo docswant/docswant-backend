@@ -8,7 +8,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Component;
 import sju.capstone.docswant.core.error.ErrorCode;
-import sju.capstone.docswant.core.error.ErrorResponse;
+import sju.capstone.docswant.common.format.ErrorFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +30,7 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
-        objectMapper.writeValue(response.getWriter(), ErrorResponse.of(ErrorCode.HANDLE_AUTHENTICATION_FAILED, exception.getMessage()));
+        objectMapper.writeValue(response.getWriter(), ErrorFormat.of(ErrorCode.HANDLE_AUTHENTICATION_FAILED, exception.getMessage()));
     }
 
 }

@@ -1,58 +1,59 @@
-package sju.capstone.docswant.core.error;
+package sju.capstone.docswant.common.format;
 
 import lombok.Getter;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import sju.capstone.docswant.core.error.ErrorCode;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
-public class ErrorResponse {
+public class ErrorFormat {
 
     private final String code;
     private final String message;
     private final List<FieldError> fields;
 
-    private ErrorResponse(final ErrorCode code, final List<FieldError> fields) {
+    private ErrorFormat(final ErrorCode code, final List<FieldError> fields) {
         this.code = code.getCode();
         this.message = code.getMessage();
         this.fields = fields;
     }
 
-    private ErrorResponse(final ErrorCode code, final String message) {
+    private ErrorFormat(final ErrorCode code, final String message) {
         this.code = code.getCode();
         this.message = message;
         this.fields = new ArrayList<>();
     }
 
-    private ErrorResponse(final ErrorCode code) {
+    private ErrorFormat(final ErrorCode code) {
         this.code = code.getCode();
         this.message = code.getMessage();
         this.fields = new ArrayList<>();
     }
 
-    public static ErrorResponse of(final ErrorCode code, BindingResult bindingResult) {
-        return new ErrorResponse(code, FieldError.of(bindingResult));
+    public static ErrorFormat of(final ErrorCode code, BindingResult bindingResult) {
+        return new ErrorFormat(code, FieldError.of(bindingResult));
     }
 
-    public static ErrorResponse of(final ErrorCode code) {
-        return new ErrorResponse(code);
+    public static ErrorFormat of(final ErrorCode code) {
+        return new ErrorFormat(code);
     }
 
-    public static ErrorResponse of(final ErrorCode code, List<FieldError> errors) {
-        return new ErrorResponse(code, errors);
+    public static ErrorFormat of(final ErrorCode code, List<FieldError> errors) {
+        return new ErrorFormat(code, errors);
     }
 
-    public static ErrorResponse of(final ErrorCode code, String message) {
-        return new ErrorResponse(code, message);
+    public static ErrorFormat of(final ErrorCode code, String message) {
+        return new ErrorFormat(code, message);
     }
 
-    public static ErrorResponse of(MethodArgumentTypeMismatchException e) {
+    public static ErrorFormat of(MethodArgumentTypeMismatchException e) {
         final String value = e.getValue() == null ? "" : e.getValue().toString();
-        final List<ErrorResponse.FieldError> errors = ErrorResponse.FieldError.of(e.getName(), value, e.getMessage());
-        return new ErrorResponse(ErrorCode.INVALID_TYPE_VALUE, errors);
+        final List<ErrorFormat.FieldError> errors = ErrorFormat.FieldError.of(e.getName(), value, e.getMessage());
+        return new ErrorFormat(ErrorCode.INVALID_TYPE_VALUE, errors);
     }
 
     @Getter
