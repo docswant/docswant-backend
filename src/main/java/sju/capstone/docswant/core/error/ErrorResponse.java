@@ -17,14 +17,12 @@ public class ErrorResponse {
 
     private String code;
     private String message;
+    private List<FieldError> fields;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<FieldError> errors;
-
-    private ErrorResponse(final ErrorCode code, final List<FieldError> errors) {
+    private ErrorResponse(final ErrorCode code, final List<FieldError> fields) {
         this.code = code.getCode();
         this.message = code.getMessage();
-        this.errors = errors;
+        this.fields = fields;
     }
 
     private ErrorResponse(final ErrorCode code, final String message) {
