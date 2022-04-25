@@ -15,15 +15,20 @@ public class DoctorDto {
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class Request {
-        @NotBlank @Size(max = 30)
+        @Size(max = 30)
+        @NotBlank(message = "필수 값입니다.")
         private String code;
-        @NotBlank @Size(max = 30)
+        @Size(max = 30)
+        @NotBlank(message = "필수 값입니다.")
         private String username;
-        @NotBlank @Size(max = 50)
+        @Size(max = 50)
+        @NotBlank(message = "필수 값입니다.")
         private String password;
-        @NotBlank @Size(max = 20)
+        @Size(max = 20)
+        @NotBlank(message = "필수 값입니다.")
         private String name;
-        @NotBlank @Size(max = 50)
+        @Size(max = 50)
+        @NotBlank(message = "필수 값입니다.")
         private String major;
 
         @Builder
@@ -38,7 +43,6 @@ public class DoctorDto {
     }
 
     @Getter
-    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class Response {
         private String code;
         private String name;

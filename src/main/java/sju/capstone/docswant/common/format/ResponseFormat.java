@@ -18,25 +18,25 @@ public class ResponseFormat<T> {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private final ErrorFormat error;
 
-    public ResponseFormat(T data) {
+    public ResponseFormat(final T data) {
         this.status = StatusMessage.SUCCESS;
         this.timestamp = LocalDateTime.now();
         this.data = data;
         this.error = null;
     }
 
-    public ResponseFormat(String status, ErrorFormat error) {
+    public ResponseFormat(final String status, final ErrorFormat error) {
         this.status = status;
         this.timestamp = LocalDateTime.now();
         this.data = null;
         this.error = error;
     }
 
-    public static <T> ResponseFormat<T> of(T data) {
+    public static <T> ResponseFormat<T> of(final T data) {
         return new ResponseFormat<>(data);
     }
 
-    public static ResponseFormat of(String status, ErrorFormat error) {
+    public static ResponseFormat of(final String status, final ErrorFormat error) {
         return new ResponseFormat(status, error);
     }
 }

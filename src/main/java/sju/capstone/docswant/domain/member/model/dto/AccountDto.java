@@ -1,18 +1,20 @@
 package sju.capstone.docswant.domain.member.model.dto;
 
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.extern.jackson.Jacksonized;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AccountDto {
 
     @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class Request {
         private String username;
         private String password;
 
-        @Jacksonized
         @Builder
         public Request(String username, String password) {
             this.username = username;
