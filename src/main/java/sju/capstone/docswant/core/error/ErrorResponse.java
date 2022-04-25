@@ -1,9 +1,6 @@
 package sju.capstone.docswant.core.error;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
@@ -12,12 +9,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ErrorResponse {
 
-    private String code;
-    private String message;
-    private List<FieldError> fields;
+    private final String code;
+    private final String message;
+    private final List<FieldError> fields;
 
     private ErrorResponse(final ErrorCode code, final List<FieldError> fields) {
         this.code = code.getCode();
@@ -28,11 +24,13 @@ public class ErrorResponse {
     private ErrorResponse(final ErrorCode code, final String message) {
         this.code = code.getCode();
         this.message = message;
+        this.fields = new ArrayList<>();
     }
 
     private ErrorResponse(final ErrorCode code) {
         this.code = code.getCode();
         this.message = code.getMessage();
+        this.fields = new ArrayList<>();
     }
 
     public static ErrorResponse of(final ErrorCode code, BindingResult bindingResult) {
@@ -58,11 +56,10 @@ public class ErrorResponse {
     }
 
     @Getter
-    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class FieldError {
-        private String field;
-        private String value;
-        private String reason;
+        private final String field;
+        private final String value;
+        private final String reason;
 
         private FieldError(final String field, final String value, final String reason) {
             this.field = field;
