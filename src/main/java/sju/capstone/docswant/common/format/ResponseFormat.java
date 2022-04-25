@@ -1,6 +1,7 @@
 package sju.capstone.docswant.common.format;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import sju.capstone.docswant.common.message.StatusMessage;
 
@@ -12,7 +13,9 @@ public class ResponseFormat<T> {
     private final String status;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private final LocalDateTime timestamp;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private final T data;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private final ErrorFormat error;
 
     public ResponseFormat(T data) {

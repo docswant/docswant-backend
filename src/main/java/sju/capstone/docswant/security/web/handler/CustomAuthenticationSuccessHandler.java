@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
+import sju.capstone.docswant.common.format.ResponseFormat;
 import sju.capstone.docswant.domain.member.model.entity.Account;
 import sju.capstone.docswant.domain.member.model.mapper.AccountMapper;
 import sju.capstone.docswant.domain.member.repository.AccountRepository;
@@ -49,7 +50,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
-        objectMapper.writeValue(response.getWriter(), responseDto);
+        objectMapper.writeValue(response.getWriter(), ResponseFormat.of(responseDto));
     }
 
 }

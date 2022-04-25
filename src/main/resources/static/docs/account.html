@@ -540,13 +540,17 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 459
+Content-Length: 547
 
 {
-  "code" : "DOCTOR0001",
-  "accountType" : "ACCOUNT_DOCTOR",
-  "accessToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoiRE9DVE9SMDAwMSIsImlhdCI6MTY1MDY0NjU2NSwiZXhwIjoxNjUwNjUwMTY1fQ.zo7MDqs7JX73S6Wy18Baqs4w3IZKuXpwkRlfw6JOGUA",
-  "refreshToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoicmVmcmVzaCB0b2tlbiIsInN1YiI6IkRPQ1RPUjAwMDEiLCJpYXQiOjE2NTA2NDY1NjUsImV4cCI6MTY1MzIzODU2NX0.FDz9W5xuDf15tYNZfQFymwYMJtPWog5y9FOK0jlJ2gU"
+  "status" : "success",
+  "timestamp" : "2022-04-25 22:46:08",
+  "data" : {
+    "code" : "DOCTOR0001",
+    "accountType" : "ACCOUNT_DOCTOR",
+    "accessToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoiRE9DVE9SMDAwMSIsImlhdCI6MTY1MDg5NDM2OCwiZXhwIjoxNjUwODk3OTY4fQ.Bi_awVNj-gq6GmZd2n2BLT-NFmAJviQClGmgHHsbpfI",
+    "refreshToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoicmVmcmVzaCB0b2tlbiIsInN1YiI6IkRPQ1RPUjAwMDEiLCJpYXQiOjE2NTA4OTQzNjgsImV4cCI6MTY1MzQ4NjM2OH0.Gq1SxXzXQ7KTn0FCBIQae0E50Qu8pj0Da7gfmX-RPRE"
+  }
 }</code></pre>
 </div>
 </div>
@@ -568,22 +572,37 @@ Content-Length: 459
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>code</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>status</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">응답 상태</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>timestamp</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">응답 시간</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Object</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">응답 데이터</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.code</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">계정 코드</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>accountType</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.accountType</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">계정 타입</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>accessToken</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.accessToken</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JWT access token</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>refreshToken</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.refreshToken</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JWT refresh token</p></td>
 </tr>

@@ -1,4 +1,4 @@
-package sju.capstone.docswant.controller;
+package sju.capstone.docswant.domain.member.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -68,10 +68,13 @@ class AccountControllerTest {
                                 fieldWithPath("password").description("비밀번호")
                         ),
                         responseFields(
-                                fieldWithPath("code").description("계정 코드"),
-                                fieldWithPath("accountType").description("계정 타입"),
-                                fieldWithPath("accessToken").description("JWT access token"),
-                                fieldWithPath("refreshToken").description("JWT refresh token")
+                                fieldWithPath("status").description("응답 상태"),
+                                fieldWithPath("timestamp").description("응답 시간"),
+                                fieldWithPath("data").description("응답 데이터"),
+                                fieldWithPath("data.code").description("계정 코드"),
+                                fieldWithPath("data.accountType").description("계정 타입"),
+                                fieldWithPath("data.accessToken").description("JWT access token"),
+                                fieldWithPath("data.refreshToken").description("JWT refresh token")
                         )
                 ))
         ;

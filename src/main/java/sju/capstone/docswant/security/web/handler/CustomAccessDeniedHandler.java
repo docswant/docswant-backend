@@ -7,6 +7,8 @@ import org.springframework.http.MediaType;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
+import sju.capstone.docswant.common.format.ResponseFormat;
+import sju.capstone.docswant.common.message.StatusMessage;
 import sju.capstone.docswant.core.error.ErrorCode;
 import sju.capstone.docswant.common.format.ErrorFormat;
 
@@ -30,7 +32,8 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
         response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
-        objectMapper.writeValue(response.getWriter(), ErrorFormat.of(ErrorCode.HANDLE_ACCESS_DENIED));
+        ErrorFormat error = ErrorFormat.of(ErrorCode.HANDLE_ACCESS_DENIED);
+        objectMapper.writeValue(response.getWriter(), ResponseFormat.of(StatusMessage.ERROR, error));
     }
 
 }
