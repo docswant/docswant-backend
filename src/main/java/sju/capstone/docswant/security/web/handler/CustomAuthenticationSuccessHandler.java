@@ -7,10 +7,12 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
+import sju.capstone.docswant.common.format.ResponseFormat;
 import sju.capstone.docswant.domain.member.model.entity.Account;
+import sju.capstone.docswant.domain.member.model.mapper.AccountMapper;
 import sju.capstone.docswant.domain.member.repository.AccountRepository;
 import sju.capstone.docswant.security.authentication.token.JwtToken;
-import sju.capstone.docswant.security.web.dto.AccountDto;
+import sju.capstone.docswant.domain.member.model.dto.AccountDto;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -27,6 +29,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     private final JwtToken jwtToken;
     private final AccountRepository accountRepository;
     private final ObjectMapper objectMapper;
+    private final AccountMapper mapper = AccountMapper.INSTANCE;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {
@@ -43,14 +46,11 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         account.setRefreshToken(refreshToken);
         accountRepository.save(account);
 
-        AccountDto.Response responseDto = AccountDto.Response.builder()
-                .code(account.getCode()).accountType(account.getAccountType())
-                .accessToken(accessToken).refreshToken(refreshToken)
-                .build();
+        AccountDto.Response responseDto = mapper.toDto(account, accessToken);
         response.setStatus(HttpServletResponse.SC_OK);
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         response.setCharacterEncoding(StandardCharsets.UTF_8.toString());
-        objectMapper.writeValue(response.getWriter(), responseDto);
+        objectMapper.writeValue(response.getWriter(), ResponseFormat.of(responseDto));
     }
 
 }

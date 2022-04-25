@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import sju.capstone.docswant.common.dto.ResponseDto;
-import sju.capstone.docswant.common.message.ResponseMessage;
+import sju.capstone.docswant.common.format.ResponseFormat;
 import sju.capstone.docswant.domain.member.model.dto.DoctorDto;
 import sju.capstone.docswant.domain.member.service.doctor.DoctorService;
 
@@ -22,9 +21,9 @@ public class DoctorController {
     private final DoctorService doctorService;
 
     @PostMapping
-    public ResponseEntity<ResponseDto> registerApi(@Valid @RequestBody DoctorDto.Request requestDto) {
+    public ResponseEntity<ResponseFormat<DoctorDto.Response>> registerApi(@Valid @RequestBody DoctorDto.Request requestDto) {
         DoctorDto.Response responseDto = doctorService.register(requestDto);
-        return ResponseEntity.status(HttpStatus.OK).body(ResponseDto.of(ResponseMessage.CREATE_SUCCESS, responseDto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(ResponseFormat.of(responseDto));
     }
 
 }

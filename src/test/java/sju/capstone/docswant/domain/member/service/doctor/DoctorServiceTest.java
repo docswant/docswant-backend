@@ -20,12 +20,8 @@ class DoctorServiceTest {
 
     @Mock
     private DoctorRepository doctorRepository;
-
     @Mock
     private PasswordEncoder passwordEncoder;
-
-    @Mock
-    private DoctorMapper mapper;
 
     @InjectMocks
     private DoctorServiceImpl doctorService;
@@ -41,19 +37,12 @@ class DoctorServiceTest {
     void 의사_회원가입_테스트() {
         //given
         String password = "password";
-        String encodedPassword = "encodedPassword";
-        Doctor doctor = Doctor.builder().password(password).build();
         DoctorDto.Response expectedDto = DoctorDto.Response.builder().code("DOCTOR001").name("zooneon").major("orthopedics").build();
-
-        given(mapper.toEntity(requestDto)).willReturn(doctor);
-        given(passwordEncoder.encode(doctor.getPassword())).willReturn(encodedPassword);
-        given(mapper.toDto(doctor)).willReturn(expectedDto);
 
         //when
         DoctorDto.Response result = doctorService.register(requestDto);
 
         //then
-        assertThat(doctor.getPassword()).isEqualTo(encodedPassword);
         assertThat(result.getCode()).isEqualTo(expectedDto.getCode());
         assertThat(result.getName()).isEqualTo(expectedDto.getName());
         assertThat(result.getMajor()).isEqualTo(expectedDto.getMajor());

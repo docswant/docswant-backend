@@ -1,22 +1,22 @@
-package sju.capstone.docswant.security.web.dto;
+package sju.capstone.docswant.domain.member.model.dto;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class AccountDto {
 
     @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class Request {
         private String username;
         private String password;
 
-        @JsonCreator
-        public Request(
-                @JsonProperty("username") String username,
-                @JsonProperty("password") String password) {
+        @Builder
+        public Request(String username, String password) {
             this.username = username;
             this.password = password;
         }

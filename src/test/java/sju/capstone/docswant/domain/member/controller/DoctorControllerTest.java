@@ -58,7 +58,7 @@ class DoctorControllerTest {
 
         //then
         actions
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andDo(print())
                 .andDo(document("doctor/register",
                     getDocumentRequest(),
@@ -71,7 +71,7 @@ class DoctorControllerTest {
                             fieldWithPath("major").description("의사 전공")
                     ),
                     responseFields(
-                            fieldWithPath("message").description("응답 메시지"),
+                            fieldWithPath("status").description("응답 상태"),
                             fieldWithPath("timestamp").description("응답 시간"),
                             fieldWithPath("data").description("응답 데이터"),
                             fieldWithPath("data.code").description("의사 코드"),

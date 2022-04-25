@@ -1,18 +1,14 @@
 package sju.capstone.docswant.domain.member.model.mapper;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import sju.capstone.docswant.domain.member.model.dto.DoctorDto;
 import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
 class DoctorMapperTest {
 
-    @Autowired
-    private DoctorMapper mapper;
+    private DoctorMapper mapper = DoctorMapper.INSTANCE;
 
     @Test
     void 엔티티에서_DTO_테스트() {

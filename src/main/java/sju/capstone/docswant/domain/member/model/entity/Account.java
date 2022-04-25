@@ -32,7 +32,7 @@ public abstract class Account extends BaseTimeEntity implements Persistable<Stri
     @Column(name = "account_refresh_token")
     private String refreshToken;
 
-    public Account(String code, String username, String password) {
+    protected Account(String code, String username, String password) {
         this.code = code;
         this.username = username;
         this.password = password;
