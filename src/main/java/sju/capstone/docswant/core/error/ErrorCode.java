@@ -16,6 +16,7 @@ public enum ErrorCode {
     INVALID_TYPE_VALUE("C003", HttpStatus.BAD_REQUEST, " Invalid Type Value"),
     ENTITY_NOT_FOUND("C004", HttpStatus.BAD_REQUEST, "Entity Not Found"),
     INTERNAL_SERVER_ERROR("C005", HttpStatus.INTERNAL_SERVER_ERROR, "Internal Server Error"),
+    MEDIA_TYPE_NOT_SUPPORTED("C006", HttpStatus.BAD_REQUEST, "Media Type Not Supported"),
 
     //auth
     HANDLE_AUTHENTICATION_FAILED("A001", HttpStatus.UNAUTHORIZED, "Authentication Failed"),

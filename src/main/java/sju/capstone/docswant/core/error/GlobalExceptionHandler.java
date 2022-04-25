@@ -3,6 +3,7 @@ package sju.capstone.docswant.core.error;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -36,6 +37,13 @@ public class GlobalExceptionHandler {
         log.error("handleHttpRequestMethodNotSupportedException. method = {}", e.getMethod());
         final ErrorFormat error = ErrorFormat.of(ErrorCode.METHOD_NOT_ALLOWED);
         return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(ResponseFormat.of(StatusMessage.FAIL, error));
+    }
+
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    protected ResponseEntity<ResponseFormat> handleHttpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException e) {
+        log.error("handleHttpMediaTypeNotSupportedException. contentType = {}", e.getContentType());
+        final ErrorFormat error = ErrorFormat.of(ErrorCode.MEDIA_TYPE_NOT_SUPPORTED);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ResponseFormat.of(StatusMessage.FAIL, error));
     }
 
     @ExceptionHandler(BusinessException.class)
