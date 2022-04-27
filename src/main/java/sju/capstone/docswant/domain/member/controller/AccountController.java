@@ -19,8 +19,8 @@ public class AccountController {
 
     @GetMapping("/exists")
     public ResponseEntity<ResponseFormat<Boolean>> existsUsernameApi(@RequestParam(name = "username") String username) {
-        boolean existsUsername = accountService.isExistsUsername(username);
-        return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(existsUsername));
+        boolean isExists = accountService.isExistsUsername(username);
+        return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(isExists));
     }
 
 }
