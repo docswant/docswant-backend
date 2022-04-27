@@ -32,3 +32,20 @@ include::{snippets}/account/login/http-response.adoc[]
 === Response Fields
 include::{snippets}/account/login/response-fields.adoc[]
 
+[[account-exists]]
+== 사용자명 중복 확인
+
+=== curl Request
+include::{snippets}/account/exists/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/account/exists/http-request.adoc[]
+
+=== Request Parameters
+include::{snippets}/account/exists/request-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/account/exists/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/account/exists/response-fields.adoc[]
