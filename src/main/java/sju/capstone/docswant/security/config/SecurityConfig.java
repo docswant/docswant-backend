@@ -25,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String ROLE_PREFIX = "ACCOUNT_";
     private static final String[] GET_PERMITTED_URLS = {
+            "/api/v1/account/**",
             "/docs/**"
     };
     private static final String[] POST_PERMITTED_URLS = {
