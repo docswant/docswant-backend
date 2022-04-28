@@ -3,6 +3,7 @@ package sju.capstone.docswant.security.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -25,11 +26,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String ROLE_PREFIX = "ACCOUNT_";
     private static final String[] GET_PERMITTED_URLS = {
+            "/api/v1/account/**",
+            "/api/v1/doctor/validate",
             "/docs/**"
     };
     private static final String[] POST_PERMITTED_URLS = {
             "/api/v1/login",
-            "/api/v1/doctors"
+            "/api/v1/doctor"
     };
 
     private final CorsConfigurationSource corsConfigurationSource;

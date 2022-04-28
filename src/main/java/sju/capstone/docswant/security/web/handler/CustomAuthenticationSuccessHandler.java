@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import sju.capstone.docswant.common.format.ResponseFormat;
 import sju.capstone.docswant.domain.member.model.entity.Account;
 import sju.capstone.docswant.domain.member.model.mapper.AccountMapper;
-import sju.capstone.docswant.domain.member.repository.AccountRepository;
+import sju.capstone.docswant.domain.member.repository.account.AccountRepository;
 import sju.capstone.docswant.security.authentication.token.JwtToken;
 import sju.capstone.docswant.domain.member.model.dto.AccountDto;
 
