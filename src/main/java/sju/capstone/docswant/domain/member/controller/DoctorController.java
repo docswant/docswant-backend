@@ -11,7 +11,7 @@ import sju.capstone.docswant.domain.member.service.doctor.DoctorService;
 import javax.validation.Valid;
 
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/doctors")
+@RequestMapping("/api/v1/doctor")
 @RestController
 public class DoctorController {
 
