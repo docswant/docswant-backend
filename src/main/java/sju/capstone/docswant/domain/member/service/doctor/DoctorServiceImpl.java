@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import sju.capstone.docswant.domain.member.model.dto.DoctorDto;
 import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 import sju.capstone.docswant.domain.member.model.mapper.DoctorMapper;
+import sju.capstone.docswant.domain.member.repository.doctor.DoctorCodeRepository;
 import sju.capstone.docswant.domain.member.repository.doctor.DoctorRepository;
 
 @Slf4j
@@ -16,8 +17,15 @@ import sju.capstone.docswant.domain.member.repository.doctor.DoctorRepository;
 public class DoctorServiceImpl implements DoctorService{
 
     private final DoctorRepository doctorRepository;
+    private final DoctorCodeRepository doctorCodeRepository;
     private final PasswordEncoder passwordEncoder;
     private final DoctorMapper mapper = DoctorMapper.INSTANCE;
+
+    @Override
+    public boolean isValidCode(String code) {
+        log.info("validate doctor code. code = {}", code);
+        return doctorCodeRepository.existsById(code);
+    }
 
     @Transactional
     @Override
