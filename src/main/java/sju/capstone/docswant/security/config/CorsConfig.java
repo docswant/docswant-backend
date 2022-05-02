@@ -12,14 +12,15 @@ import java.util.Arrays;
 public class CorsConfig {
 
     private static final String CORS_PATTERN = "/**";
+    private static final String CLIENT_URL = "http://localhost:3000";
     private static final String[] CORS_ALLOWED_METHODS = {"GET", "POST", "PUT", "DELETE", "OPTIONS"};
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         //TODO: origin 변경
-        configuration.addAllowedOrigin(CorsConfiguration.ALL);
-        configuration.addAllowedHeader(CorsConfiguration.ALL);
+        configuration.addAllowedOrigin(CLIENT_URL);
+        configuration.setAllowedHeaders(Arrays.asList(CorsConfiguration.ALL));
         configuration.setAllowedMethods(Arrays.asList(CORS_ALLOWED_METHODS));
         configuration.setAllowCredentials(true);
 
