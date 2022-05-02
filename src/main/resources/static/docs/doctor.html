@@ -478,7 +478,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h3 id="_curl_request"><a class="link" href="#_curl_request">curl Request</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/doctor/validate?code=DOCTOR0001' -i -X GET</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/doctor/validate?code=DOCTOR001' -i -X GET</code></pre>
 </div>
 </div>
 </div>
@@ -486,7 +486,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h3 id="_http_request"><a class="link" href="#_http_request">HTTP Request</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/doctor/validate?code=DOCTOR0001 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/doctor/validate?code=DOCTOR001 HTTP/1.1
 Host: docswant.zooneon.dev</code></pre>
 </div>
 </div>
@@ -527,12 +527,12 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 82
+Content-Length: 85
 
 {
   "status" : "success",
-  "timestamp" : "2022-04-28 15:37:12",
-  "data" : true
+  "timestamp" : "2022-05-02 23:58:58",
+  "data" : "VALID"
 }</code></pre>
 </div>
 </div>
@@ -565,7 +565,7 @@ Content-Length: 82
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Boolean</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">응답 데이터</p></td>
 </tr>
 </tbody>
@@ -676,7 +676,7 @@ Content-Length: 161
 
 {
   "status" : "success",
-  "timestamp" : "2022-04-28 15:37:12",
+  "timestamp" : "2022-05-02 23:58:58",
   "data" : {
     "code" : "DOCTOR001",
     "name" : "zooneon",
@@ -741,7 +741,7 @@ Content-Length: 161
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-04-28 15:13:26 +0900
+Last updated 2022-05-02 13:40:10 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
