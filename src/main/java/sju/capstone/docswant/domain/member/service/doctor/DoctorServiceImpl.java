@@ -6,7 +6,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sju.capstone.docswant.domain.member.model.dto.DoctorDto;
-import sju.capstone.docswant.domain.member.model.entity.doctor.CodeValidity;
 import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 import sju.capstone.docswant.domain.member.model.mapper.DoctorMapper;
 import sju.capstone.docswant.domain.member.repository.doctor.DoctorCodeRepository;
@@ -23,10 +22,9 @@ public class DoctorServiceImpl implements DoctorService{
     private final DoctorMapper mapper = DoctorMapper.INSTANCE;
 
     @Override
-    public CodeValidity validateCode(String code) {
+    public boolean isValidCode(String code) {
         log.info("validate doctor code. code = {}", code);
-        boolean isValid = doctorCodeRepository.existsById(code);
-        return isValid ? CodeValidity.VALID : CodeValidity.INVALID;
+        return doctorCodeRepository.existsById(code);
     }
 
     @Transactional
@@ -41,7 +39,7 @@ public class DoctorServiceImpl implements DoctorService{
     }
 
     @Override
-    public DoctorDto.Response update(DoctorDto.Request requestDTO) {
+    public DoctorDto.Response update(DoctorDto.Request requestDto) {
         return null;
     }
 
