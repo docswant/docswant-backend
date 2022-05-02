@@ -39,7 +39,7 @@ public class DoctorServiceImpl implements DoctorService{
     }
 
     @Override
-    public DoctorDto.Response update(DoctorDto.Request requestDTO) {
+    public DoctorDto.Response update(DoctorDto.Request requestDto) {
         return null;
     }
 

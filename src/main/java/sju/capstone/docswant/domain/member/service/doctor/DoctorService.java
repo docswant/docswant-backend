@@ -6,8 +6,8 @@ public interface DoctorService {
 
     boolean isValidCode(String code);
 
-    DoctorDto.Response register(DoctorDto.Request requestDTO);
+    DoctorDto.Response register(DoctorDto.Request requestDto);
 
-    DoctorDto.Response update(DoctorDto.Request requestDTO);
+    DoctorDto.Response update(DoctorDto.Request requestDto);
 
 }
