@@ -20,11 +20,11 @@ import sju.capstone.docswant.domain.member.repository.doctor.DoctorCodeRepositor
 public class DataInitializeRunner implements ApplicationRunner {
 
     private final DoctorCodeRepository doctorCodeRepository;
-    private static final String ONE = "DOCTOR0001";
-    private static final String TWO = "DOCTOR0002";
-    private static final String THREE = "DOCTOR0003";
-    private static final String FOUR = "DOCTOR0004";
-    private static final String FIVE = "DOCTOR0005";
+    private static final String ONE = "DOCTOR001";
+    private static final String TWO = "DOCTOR002";
+    private static final String THREE = "DOCTOR003";
+    private static final String FOUR = "DOCTOR004";
+    private static final String FIVE = "DOCTOR005";
 
 
     @Override

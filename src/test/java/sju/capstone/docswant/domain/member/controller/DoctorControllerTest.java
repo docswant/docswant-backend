@@ -47,7 +47,7 @@ class DoctorControllerTest {
     void 의사_코드_검증_API_테스트() throws Exception {
         //given
         String validateUrl = "/api/v1/doctor/validate?code={code}";
-        String code = "DOCTOR0001";
+        String code = "DOCTOR001";
 
         //when
         ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.get(validateUrl, code));
