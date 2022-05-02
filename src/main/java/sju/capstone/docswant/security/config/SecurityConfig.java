@@ -21,6 +21,7 @@ import sju.capstone.docswant.security.web.handler.CustomAuthenticationFailureHan
 import sju.capstone.docswant.security.web.handler.CustomAuthenticationSuccessHandler;
 
 @RequiredArgsConstructor
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
