@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import sju.capstone.docswant.common.format.ResponseFormat;
 import sju.capstone.docswant.domain.member.model.dto.DoctorDto;
+import sju.capstone.docswant.domain.member.model.entity.doctor.CodeValidity;
 import sju.capstone.docswant.domain.member.service.doctor.DoctorService;
 
 import javax.validation.Valid;
@@ -18,9 +19,9 @@ public class DoctorController {
     private final DoctorService doctorService;
 
     @GetMapping("/validate")
-    public ResponseEntity<ResponseFormat<Boolean>> validateCodeApi(@RequestParam(name = "code") String code) {
-        boolean isValid = doctorService.isValidCode(code);
-        return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(isValid));
+    public ResponseEntity<ResponseFormat<CodeValidity>> validateCodeApi(@RequestParam(name = "code") String code) {
+        CodeValidity validity = doctorService.validateCode(code);
+        return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(validity));
     }
 
     @PostMapping
