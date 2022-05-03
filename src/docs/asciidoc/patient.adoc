@@ -1,0 +1,36 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+
+= Patient API Docs
+권준원
+1.0.0, 04/05/2022
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+:operation-http-request-title: Example Request
+:operation-http-response-title: Example Response
+
+[[patient-register]]
+== 환자 등록
+
+=== curl Request
+include::{snippets}/patient/register/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/patient/register/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/patient/register/request-headers.adoc[]
+
+=== Request Fields
+include::{snippets}/patient/register/request-fields.adoc[]
+
+=== HTTP Response
+include::{snippets}/patient/register/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/patient/register/response-fields.adoc[]
