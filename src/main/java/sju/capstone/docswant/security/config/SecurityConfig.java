@@ -5,11 +5,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfigurationSource;
 import sju.capstone.docswant.security.authentication.provider.CustomAuthenticationProvider;
@@ -21,10 +19,10 @@ import sju.capstone.docswant.security.web.handler.CustomAuthenticationFailureHan
 import sju.capstone.docswant.security.web.handler.CustomAuthenticationSuccessHandler;
 
 @RequiredArgsConstructor
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private static final String ROLE_PREFIX = "ACCOUNT_";
     private static final String[] GET_PERMITTED_URLS = {
             "/api/v1/account/**",
             "/api/v1/doctor/validate",
@@ -67,16 +65,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticationEntryPoint(customAuthenticationEntryPoint)
                 .accessDeniedHandler(customAccessDeniedHandler)
         ;
-    }
-
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.expressionHandler(new DefaultWebSecurityExpressionHandler() {
-            @Override
-            public void setDefaultRolePrefix(String defaultRolePrefix) {
-                super.setDefaultRolePrefix(ROLE_PREFIX);
-            }
-        });
     }
 
     @Bean
