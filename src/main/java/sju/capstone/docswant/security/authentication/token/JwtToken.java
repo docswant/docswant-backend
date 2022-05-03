@@ -32,28 +32,25 @@ public class JwtToken {
         this.refreshTokenExpiredTimeMillis = refreshTokenExpiredTime * 1000;
     }
 
-    public String createAccessToken(Account account) {
+    private String createToken(Account account, String tokenType) {
         Claims claims = Jwts.claims();
-        claims.put(TOKEN_TYPE, ACCESS_TOKEN);
-        claims.setSubject(account.getCode());
+        claims.put(TOKEN_TYPE, tokenType);
+        claims.setSubject(account.getUsername());
+        long expiredTimeMillis = tokenType == ACCESS_TOKEN ? accessTokenExpiredTimeMillis : refreshTokenExpiredTimeMillis;
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + accessTokenExpiredTimeMillis))
+                .setExpiration(new Date(System.currentTimeMillis() + expiredTimeMillis))
                 .signWith(secretKey, SignatureAlgorithm.HS256)
                 .compact();
     }
 
+    public String createAccessToken(Account account) {
+        return createToken(account, ACCESS_TOKEN);
+    }
+
     public String createRefreshToken(Account account) {
-        Claims claims = Jwts.claims();
-        claims.put(TOKEN_TYPE, REFRESH_TOKEN);
-        claims.setSubject(account.getCode());
-        return Jwts.builder()
-                .setClaims(claims)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + refreshTokenExpiredTimeMillis))
-                .signWith(secretKey, SignatureAlgorithm.HS256)
-                .compact();
+        return createToken(account, REFRESH_TOKEN);
     }
 
     public boolean isValid(String token) {
