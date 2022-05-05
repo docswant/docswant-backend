@@ -75,7 +75,7 @@ class DoctorControllerTest {
     void 의사_회원가입_API_테스트() throws Exception {
         //given
         String registerUrl = "/api/v1/doctor";
-        DoctorDto.Request requestDto = DoctorDto.Request.builder().code("DOCTOR001").username("doctor").password("password").name("zooneon").major("orthopedics").build();
+        DoctorDto.Request requestDto = DoctorDto.Request.builder().code("DOCTOR002").username("doctor").password("password").name("zooneon").major("orthopedics").build();
 
         //when
         ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.post(registerUrl)
