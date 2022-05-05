@@ -42,10 +42,6 @@ public abstract class Account extends BaseTimeEntity implements Persistable<Stri
         this.refreshToken = refreshToken;
     }
 
-    public void setEncodedPassword(String encodedPassword) {
-        this.password = encodedPassword;
-    }
-
     public void updateAccount(String username, String password) {
         this.username = username;
         if (password != null) {

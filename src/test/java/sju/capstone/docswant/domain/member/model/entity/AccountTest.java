@@ -22,7 +22,7 @@ class AccountTest {
     }
 
     @Test
-    void setRefreshToken() {
+    void Refresh_Token_저장_테스트() {
         //given
         String refreshToken = "refreshToken";
 
@@ -34,14 +34,16 @@ class AccountTest {
     }
 
     @Test
-    void setEncodedPassword() {
+    void 계정_업데이트_테스트() {
         //given
+        String username = "username";
         String encodedPassword = passwordEncoder.encode(account.getPassword());
 
         //when
-        account.setEncodedPassword(encodedPassword);
+        account.updateAccount(username, encodedPassword);
 
         //then
+        assertThat(account.getUsername()).isEqualTo(username);
         assertThat(account.getPassword()).isEqualTo(encodedPassword);
     }
 }

@@ -32,7 +32,7 @@ public class DoctorServiceImpl implements DoctorService{
     public DoctorDto.Response register(DoctorDto.Request requestDto) {
         Doctor doctor = mapper.toEntity(requestDto);
         String encodedPassword = passwordEncoder.encode(doctor.getPassword());
-        doctor.setEncodedPassword(encodedPassword);
+        doctor.updateAccount(requestDto.getUsername(), encodedPassword);
         doctorRepository.save(doctor);
         log.info("register success. code = {}", doctor.getCode());
         return mapper.toDto(doctor);
