@@ -24,7 +24,7 @@ public class DoctorServiceImpl implements DoctorService{
     @Override
     public boolean isValidCode(String code) {
         log.info("validate doctor code. code = {}", code);
-        return doctorCodeRepository.existsById(code);
+        return doctorCodeRepository.existsByCode(code);
     }
 
     @Transactional
