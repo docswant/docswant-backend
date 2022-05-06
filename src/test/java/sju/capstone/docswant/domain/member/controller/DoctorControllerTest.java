@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.test.web.servlet.ResultActions;
 import sju.capstone.docswant.common.MockMvcTest;
+import sju.capstone.docswant.common.factory.DtoFactory;
 import sju.capstone.docswant.domain.member.model.dto.DoctorDto;
 
 import java.nio.charset.StandardCharsets;
@@ -52,7 +53,7 @@ class DoctorControllerTest extends MockMvcTest {
     void 의사_회원가입_API_테스트() throws Exception {
         //given
         String registerUrl = "/api/v1/doctor";
-        DoctorDto.Request requestDto = DoctorDto.Request.builder().code("DOCTOR002").username("doctor").password("password").name("zooneon").major("orthopedics").build();
+        DoctorDto.Request requestDto = DtoFactory.getDoctorRequestDto();
 
         //when
         ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.post(registerUrl)

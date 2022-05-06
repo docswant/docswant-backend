@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.test.web.servlet.ResultActions;
 import sju.capstone.docswant.common.MockMvcTest;
+import sju.capstone.docswant.common.factory.DtoFactory;
 import sju.capstone.docswant.domain.member.model.dto.PatientDto;
 import sju.capstone.docswant.mock.WithMockDoctor;
 
@@ -29,14 +30,7 @@ class PatientControllerTest extends MockMvcTest {
         String registerUrl = "/api/v1/patient";
         String authorizationHeader = "Authorization";
         String bearerToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoicmVmcmVzaCB0b2tlbiIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNjUxNTk1Mjk2LCJleHAiOjE2NTQxODcyOTZ9.gKvFVjbooMDIqO4qUP9FPaqSUjfZP6tT8RwJwu43i3Y";
-        PatientDto.Request requestDto = PatientDto.Request.builder()
-                .code("PATIENT001")
-                .name("zooneon")
-                .birthDate(LocalDate.of(1997, 8, 26))
-                .hospitalizationDate(LocalDate.of(2022, 5, 3))
-                .diseaseName("COVID-19")
-                .hospitalRoom(302)
-                .build();
+        PatientDto.Request requestDto = DtoFactory.getPatientRegisterRequestDto();
 
         //when
         ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.post(registerUrl)

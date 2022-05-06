@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.test.web.servlet.ResultActions;
 import sju.capstone.docswant.common.MockMvcTest;
+import sju.capstone.docswant.common.factory.DtoFactory;
 import sju.capstone.docswant.domain.member.model.dto.AccountDto;
 
 import java.nio.charset.StandardCharsets;
@@ -25,9 +26,7 @@ class AccountControllerTest extends MockMvcTest {
 
         //given
         String loginUrl = "/api/v1/login";
-        String username = "username";
-        String password = "password";
-        AccountDto.Request requestDto = AccountDto.Request.builder().username(username).password(password).build();
+        AccountDto.Request requestDto = DtoFactory.getAccountRequestDto();
 
         //when
         ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.post(loginUrl)
