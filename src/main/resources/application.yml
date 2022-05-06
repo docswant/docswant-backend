@@ -65,6 +65,7 @@ jwt:
   refresh-token-expired-time: ${JWT_REFRESH_TOKEN_EXPIRED_TIME}
 
 logging:
+  config: classpath:logback-${spring.profiles.active}.xml
   level: debug
 
 ---
