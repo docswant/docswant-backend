@@ -2,7 +2,7 @@
 <configuration>
     <!-- properties -->
     <springProperty scope="context" name="LOG_LEVEL" source="logging.level"/>
-    <property name="LOGS_ABSOLUTE_PATH" value="/home/app/logs"/>
+    <property name="LOGS_ABSOLUTE_PATH" value="/home/ubuntu/app/deploy/logs"/>
     <property name="LOG_PATTERN" value="%-5level %d{yy-MM-dd HH:mm:ss}[%thread] [%logger{0}:%line] - %msg%n"/>
     <!-- console appender -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
@@ -12,12 +12,12 @@
     </appender>
     <!-- file appender -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/home/app/logs/dev.log</file>
+        <file>${LOGS_ABSOLUTE_PATH}/dev.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>${LOG_PATTERN}</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/home/app/logs/dev.%d{yyyy-MM-dd}_%i.log.gz</fileNamePattern>
+            <fileNamePattern>${LOGS_ABSOLUTE_PATH}}/dev.%d{yyyy-MM-dd}_%i.log.gz</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -31,12 +31,12 @@
             <onMatch>ACCEPT</onMatch>
             <onMismatch>DENY</onMismatch>
         </filter>
-        <file>/home/app/logs/dev-err.log</file>
+        <file>${LOGS_ABSOLUTE_PATH}/dev-err.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <pattern>${LOG_PATTERN}</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/home/app/logs/dev-err.%d{yyyy-MM-dd}_%i.log.gz</fileNamePattern>
+            <fileNamePattern>${LOGS_ABSOLUTE_PATH}/dev-err.%d{yyyy-MM-dd}_%i.log.gz</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
