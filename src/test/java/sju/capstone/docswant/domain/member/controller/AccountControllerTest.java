@@ -1,18 +1,10 @@
 package sju.capstone.docswant.domain.member.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
+import sju.capstone.docswant.common.MockMvcTest;
 import sju.capstone.docswant.domain.member.model.dto.AccountDto;
 
 import java.nio.charset.StandardCharsets;
@@ -26,18 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static sju.capstone.docswant.utils.ApiDocumentUtils.getDocumentRequest;
 import static sju.capstone.docswant.utils.ApiDocumentUtils.getDocumentResponse;
 
-@ActiveProfiles("test")
-@AutoConfigureMockMvc
-@AutoConfigureRestDocs
-@ExtendWith(RestDocumentationExtension.class)
-@SpringBootTest
-class AccountControllerTest {
-
-    @Autowired
-    private MockMvc mvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
+class AccountControllerTest extends MockMvcTest {
 
     @Test
     void 로그인_API_테스트() throws Exception {
