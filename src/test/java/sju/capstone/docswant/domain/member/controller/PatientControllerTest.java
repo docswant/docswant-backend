@@ -10,7 +10,6 @@ import sju.capstone.docswant.domain.member.model.dto.PatientDto;
 import sju.capstone.docswant.mock.WithMockDoctor;
 
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
 
 import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
 import static org.springframework.restdocs.headers.HeaderDocumentation.requestHeaders;
@@ -18,8 +17,8 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static sju.capstone.docswant.utils.ApiDocumentUtils.getDocumentRequest;
-import static sju.capstone.docswant.utils.ApiDocumentUtils.getDocumentResponse;
+import static sju.capstone.docswant.common.utils.ApiDocumentUtils.getDocumentRequest;
+import static sju.capstone.docswant.common.utils.ApiDocumentUtils.getDocumentResponse;
 
 class PatientControllerTest extends MockMvcTest {
 

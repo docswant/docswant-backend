@@ -16,8 +16,8 @@ import static org.springframework.restdocs.request.RequestDocumentation.paramete
 import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static sju.capstone.docswant.utils.ApiDocumentUtils.getDocumentRequest;
-import static sju.capstone.docswant.utils.ApiDocumentUtils.getDocumentResponse;
+import static sju.capstone.docswant.common.utils.ApiDocumentUtils.getDocumentRequest;
+import static sju.capstone.docswant.common.utils.ApiDocumentUtils.getDocumentResponse;
 
 class DoctorControllerTest extends MockMvcTest {
 

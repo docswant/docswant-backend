@@ -1,4 +1,4 @@
-package sju.capstone.docswant.utils;
+package sju.capstone.docswant.common.utils;
 
 import org.springframework.restdocs.operation.preprocess.OperationRequestPreprocessor;
 import org.springframework.restdocs.operation.preprocess.OperationResponsePreprocessor;
