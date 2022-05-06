@@ -1,24 +1,20 @@
 package sju.capstone.docswant.domain.member.model.entity;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
-import sju.capstone.docswant.security.utils.PasswordEncoderFactory;
+import sju.capstone.docswant.common.factory.EntityFactory;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class AccountTest {
 
     private Account account;
-    private PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
     @BeforeEach
     void setUp() {
-        account = Doctor.builder().code("DOCTOR001").username("username").password("password").build();
+        account = EntityFactory.getDoctorEntity();
     }
 
     @Test
@@ -37,13 +33,13 @@ class AccountTest {
     void 계정_업데이트_테스트() {
         //given
         String username = "username";
-        String encodedPassword = passwordEncoder.encode(account.getPassword());
+        String password = "password";
 
         //when
-        account.updateAccount(username, encodedPassword);
+        account.updateAccount(username, password);
 
         //then
         assertThat(account.getUsername()).isEqualTo(username);
-        assertThat(account.getPassword()).isEqualTo(encodedPassword);
+        assertThat(account.getPassword()).isEqualTo(password);
     }
 }
