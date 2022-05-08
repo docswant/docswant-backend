@@ -1,15 +1,19 @@
 package sju.capstone.docswant.domain.member.controller;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.test.web.servlet.ResultActions;
 import sju.capstone.docswant.common.MockMvcTest;
 import sju.capstone.docswant.common.factory.DtoFactory;
 import sju.capstone.docswant.domain.member.model.dto.DoctorDto;
+import sju.capstone.docswant.domain.member.service.doctor.DoctorService;
 
 import java.nio.charset.StandardCharsets;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
@@ -21,11 +25,15 @@ import static sju.capstone.docswant.common.utils.ApiDocumentUtils.getDocumentRes
 
 class DoctorControllerTest extends MockMvcTest {
 
+    @MockBean
+    private DoctorService doctorService;
+
     @Test
     void 의사_코드_검증_API_테스트() throws Exception {
         //given
         String validateUrl = "/api/v1/doctor/validate?code={code}";
         String code = "DOCTOR001";
+        given(doctorService.isValidCode(any(String.class))).willReturn(true);
 
         //when
         ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.get(validateUrl, code));
@@ -54,6 +62,7 @@ class DoctorControllerTest extends MockMvcTest {
         //given
         String registerUrl = "/api/v1/doctor";
         DoctorDto.Request requestDto = DtoFactory.getDoctorRequestDto();
+        given(doctorService.register(any(DoctorDto.Request.class))).willReturn(DtoFactory.getDoctorResponseDto());
 
         //when
         ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.post(registerUrl)
