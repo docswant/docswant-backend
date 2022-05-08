@@ -5,4 +5,6 @@ import sju.capstone.docswant.domain.member.model.entity.doctor.DoctorCode;
 
 public interface DoctorCodeRepository extends JpaRepository<DoctorCode, String> {
 
+    boolean existsByCode(String code);
+
 }

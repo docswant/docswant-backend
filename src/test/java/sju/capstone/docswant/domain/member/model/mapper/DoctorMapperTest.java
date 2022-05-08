@@ -1,6 +1,8 @@
 package sju.capstone.docswant.domain.member.model.mapper;
 
 import org.junit.jupiter.api.Test;
+import sju.capstone.docswant.common.factory.DtoFactory;
+import sju.capstone.docswant.common.factory.EntityFactory;
 import sju.capstone.docswant.domain.member.model.dto.DoctorDto;
 import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 
@@ -13,7 +15,7 @@ class DoctorMapperTest {
     @Test
     void 엔티티에서_DTO_테스트() {
         //given
-        Doctor requestEntity = Doctor.builder().code("DOCTOR001").name("zooneon").major("orthopedics").build();
+        Doctor requestEntity = EntityFactory.getDoctorEntity();
 
         //when
         DoctorDto.Response resultDto = mapper.toDto(requestEntity);
@@ -27,7 +29,7 @@ class DoctorMapperTest {
     @Test
     void DTO에서_엔티티_테스트() {
         //given
-        DoctorDto.Request requestDto = DoctorDto.Request.builder().code("DOCTOR001").username("username").password("password").name("zooneon").major("orthopedics").build();
+        DoctorDto.Request requestDto = DtoFactory.getDoctorRequestDto();
 
         //when
         Doctor resultEntity = mapper.toEntity(requestDto);

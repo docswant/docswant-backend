@@ -1,6 +1,8 @@
 package sju.capstone.docswant.domain.member.model.mapper;
 
 import org.junit.jupiter.api.Test;
+import sju.capstone.docswant.common.factory.DtoFactory;
+import sju.capstone.docswant.common.factory.EntityFactory;
 import sju.capstone.docswant.domain.member.model.dto.PatientDto;
 import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
 import sju.capstone.docswant.domain.member.model.entity.patient.PatientSchedule;
@@ -16,23 +18,20 @@ class PatientMapperTest {
     @Test
     void 엔티티에서_DTO_테스트() {
         //given
-        LocalDate hospitalizationDate = LocalDate.of(2022, 05, 03);
-        PatientSchedule patientSchedule = PatientSchedule.builder().hospitalizationDate(hospitalizationDate).build();
-        Patient requestEntity = Patient.builder().code("PATIENT001").patientSchedule(patientSchedule).build();
+        Patient requestEntity = EntityFactory.getPatientEntity();
 
         //when
         PatientDto.Response resultDto = mapper.toDto(requestEntity);
 
         //then
         assertThat(resultDto.getCode()).isEqualTo(requestEntity.getCode());
-        assertThat(resultDto.getHospitalizationDate()).isEqualTo(patientSchedule.getHospitalizationDate());
+        assertThat(resultDto.getHospitalizationDate()).isEqualTo(requestEntity.getPatientSchedule().getHospitalizationDate());
     }
 
     @Test
     void DTO에서_엔티티_테스트() {
         //given
-        LocalDate hospitalizationDate = LocalDate.of(2022, 05, 03);
-        PatientDto.Request requestDto = PatientDto.Request.builder().code("PATIENT001").hospitalizationDate(hospitalizationDate).build();
+        PatientDto.Request requestDto = DtoFactory.getPatientRegisterRequestDto();
 
         //when
         Patient resultEntity = mapper.toEntity(requestDto);

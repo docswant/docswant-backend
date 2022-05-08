@@ -1,45 +1,34 @@
 package sju.capstone.docswant.domain.member.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
+import sju.capstone.docswant.common.MockMvcTest;
+import sju.capstone.docswant.common.factory.DtoFactory;
 import sju.capstone.docswant.domain.member.model.dto.PatientDto;
+import sju.capstone.docswant.domain.member.model.entity.Account;
+import sju.capstone.docswant.domain.member.service.patient.PatientService;
 import sju.capstone.docswant.mock.WithMockDoctor;
 
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
 import static org.springframework.restdocs.headers.HeaderDocumentation.requestHeaders;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static sju.capstone.docswant.utils.ApiDocumentUtils.getDocumentRequest;
-import static sju.capstone.docswant.utils.ApiDocumentUtils.getDocumentResponse;
+import static sju.capstone.docswant.common.utils.ApiDocumentUtils.getDocumentRequest;
+import static sju.capstone.docswant.common.utils.ApiDocumentUtils.getDocumentResponse;
 
-@ActiveProfiles("test")
-@AutoConfigureMockMvc
-@AutoConfigureRestDocs
-@ExtendWith(RestDocumentationExtension.class)
-@SpringBootTest
-class PatientControllerTest {
+class PatientControllerTest extends MockMvcTest {
 
-    @Autowired
-    private MockMvc mvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
+    @MockBean
+    private PatientService patientService;
 
     @WithMockDoctor
     @Test
@@ -48,14 +37,8 @@ class PatientControllerTest {
         String registerUrl = "/api/v1/patient";
         String authorizationHeader = "Authorization";
         String bearerToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoicmVmcmVzaCB0b2tlbiIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNjUxNTk1Mjk2LCJleHAiOjE2NTQxODcyOTZ9.gKvFVjbooMDIqO4qUP9FPaqSUjfZP6tT8RwJwu43i3Y";
-        PatientDto.Request requestDto = PatientDto.Request.builder()
-                .code("PATIENT001")
-                .name("zooneon")
-                .birthDate(LocalDate.of(1997, 8, 26))
-                .hospitalizationDate(LocalDate.of(2022, 5, 3))
-                .diseaseName("COVID-19")
-                .hospitalRoom(302)
-                .build();
+        PatientDto.Request requestDto = DtoFactory.getPatientRegisterRequestDto();
+        given(patientService.register(any(Account.class), any(PatientDto.Request.class))).willReturn(DtoFactory.getPatientRegisterResponseDto());
 
         //when
         ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.post(registerUrl)
