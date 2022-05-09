@@ -17,7 +17,7 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
+import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static sju.capstone.docswant.common.utils.ApiDocumentUtils.getDocumentRequest;
@@ -31,7 +31,7 @@ class DoctorControllerTest extends MockMvcTest {
     @Test
     void 의사_코드_검증_API_테스트() throws Exception {
         //given
-        String validateUrl = "/api/v1/doctor/validate?code={code}";
+        String validateUrl = "/api/v1/doctor/validate/{code}";
         String code = "DOCTOR001";
         given(doctorService.isValidCode(any(String.class))).willReturn(true);
 
@@ -45,7 +45,7 @@ class DoctorControllerTest extends MockMvcTest {
                 .andDo(document("doctor/validate",
                         getDocumentRequest(),
                         getDocumentResponse(),
-                        requestParameters(
+                        pathParameters(
                                 parameterWithName("code").description("의사 코드")
                         ),
                         responseFields(

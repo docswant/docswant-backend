@@ -17,8 +17,8 @@ public class DoctorController {
 
     private final DoctorService doctorService;
 
-    @GetMapping("/validate")
-    public ResponseEntity<ResponseFormat<Boolean>> validateCodeApi(@RequestParam(name = "code") String code) {
+    @GetMapping("/validate/{code}")
+    public ResponseEntity<ResponseFormat<Boolean>> validateCodeApi(@PathVariable(name = "code") String code) {
         boolean isValid = doctorService.isValidCode(code);
         return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(isValid));
     }

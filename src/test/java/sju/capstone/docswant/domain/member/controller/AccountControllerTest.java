@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
+import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static sju.capstone.docswant.common.utils.ApiDocumentUtils.getDocumentRequest;
@@ -63,7 +63,7 @@ class AccountControllerTest extends MockMvcTest {
     @Test
     void 사용자명_중복_확인_API_테스트() throws Exception {
         //given
-        String requestUrl = "/api/v1/account/exists?username={username}";
+        String requestUrl = "/api/v1/account/exists/{username}";
         String username = "username";
 
         //when
@@ -76,7 +76,7 @@ class AccountControllerTest extends MockMvcTest {
                 .andDo(document("account/exists",
                         getDocumentRequest(),
                         getDocumentResponse(),
-                        requestParameters(
+                        pathParameters(
                                 parameterWithName("username").description("사용자명")
                         ),
                         responseFields(
