@@ -18,15 +18,19 @@ public class DoctorDto {
         @Size(max = 30)
         @NotBlank(message = "필수 값입니다.")
         private String code;
+
         @Size(max = 30)
         @NotBlank(message = "필수 값입니다.")
         private String username;
+
         @Size(max = 50)
         @NotBlank(message = "필수 값입니다.")
         private String password;
+
         @Size(max = 20)
         @NotBlank(message = "필수 값입니다.")
         private String name;
+
         @Size(max = 50)
         @NotBlank(message = "필수 값입니다.")
         private String major;
@@ -45,12 +49,14 @@ public class DoctorDto {
     @Getter
     public static class Response {
         private String code;
+        private String username;
         private String name;
         private String major;
 
         @Builder
-        public Response(String code, String name, String major) {
+        public Response(String code, String username, String name, String major) {
             this.code = code;
+            this.username = username;
             this.name = name;
             this.major = major;
         }

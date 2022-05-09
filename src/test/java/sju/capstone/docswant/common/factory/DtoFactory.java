@@ -38,6 +38,7 @@ public class DtoFactory {
     public static DoctorDto.Response getDoctorResponseDto() {
         return DoctorDto.Response.builder()
                 .code("DOCTOR002")
+                .username("doctor")
                 .name("zooneon")
                 .major("orthopedics")
                 .build();

@@ -91,6 +91,7 @@ class DoctorControllerTest extends MockMvcTest {
                                 fieldWithPath("timestamp").description("응답 시간"),
                                 fieldWithPath("data").description("응답 데이터"),
                                 fieldWithPath("data.code").description("의사 코드"),
+                                fieldWithPath("data.username").description("의사 사용자명"),
                                 fieldWithPath("data.name").description("의사 이름"),
                                 fieldWithPath("data.major").description("의사 전공")
                         )
