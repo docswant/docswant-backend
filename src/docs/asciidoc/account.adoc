@@ -41,8 +41,8 @@ include::{snippets}/account/exists/curl-request.adoc[]
 === HTTP Request
 include::{snippets}/account/exists/http-request.adoc[]
 
-=== Request Parameters
-include::{snippets}/account/exists/request-parameters.adoc[]
+=== Path Parameters
+include::{snippets}/account/exists/path-parameters.adoc[]
 
 === HTTP Response
 include::{snippets}/account/exists/http-response.adoc[]

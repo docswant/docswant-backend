@@ -23,8 +23,8 @@ include::{snippets}/doctor/validate/curl-request.adoc[]
 === HTTP Request
 include::{snippets}/doctor/validate/http-request.adoc[]
 
-=== Request Parameters
-include::{snippets}/doctor/validate/request-parameters.adoc[]
+=== Path Parameters
+include::{snippets}/doctor/validate/path-parameters.adoc[]
 
 === HTTP Response
 include::{snippets}/doctor/validate/http-response.adoc[]

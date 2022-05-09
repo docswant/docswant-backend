@@ -462,7 +462,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_curl_request_2">curl Request</a></li>
 <li><a href="#_http_request_2">HTTP Request</a></li>
-<li><a href="#_request_parameters">Request Parameters</a></li>
+<li><a href="#_path_parameters">Path Parameters</a></li>
 <li><a href="#_http_response_2">HTTP Response</a></li>
 <li><a href="#_response_fields_2">Response Fields</a></li>
 </ul>
@@ -553,12 +553,12 @@ Content-Length: 540
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-05 21:39:27",
+  "timestamp" : "2022-05-09 20:12:51",
   "data" : {
     "code" : "DOCTOR001",
     "accountType" : "ACCOUNT_DOCTOR",
-    "accessToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTE3NTQzNjcsImV4cCI6MTY1MTc1Nzk2N30.s3rgpVejrPTsFGULwmKAKfUhu2f66dB2BxvOW7OQ50w",
-    "refreshToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoicmVmcmVzaCB0b2tlbiIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNjUxNzU0MzY3LCJleHAiOjE2NTQzNDYzNjd9.EZB8PzPYAkuVC50coUHND5oQ-88ZZCli9HZv38LjA0Q"
+    "accessToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTIwOTQ3NzEsImV4cCI6MTY1MjA5ODM3MX0.PI3ZuE5LNfMoe_eEoRK-gUOSbF1_MWBM_0bOeVdgoco",
+    "refreshToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoicmVmcmVzaCB0b2tlbiIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNjUyMDk0NzcxLCJleHAiOjE2NTQ2ODY3NzF9.0lh9rTGj6o997mUs1SkQeHRXP4-7Ir11pZzZP95NtoE"
   }
 }</code></pre>
 </div>
@@ -627,7 +627,7 @@ Content-Length: 540
 <h3 id="_curl_request_2"><a class="link" href="#_curl_request_2">curl Request</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/account/exists?username=username' -i -X GET</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/account/exists/username' -i -X GET</code></pre>
 </div>
 </div>
 </div>
@@ -635,14 +635,15 @@ Content-Length: 540
 <h3 id="_http_request_2"><a class="link" href="#_http_request_2">HTTP Request</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/account/exists?username=username HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/account/exists/username HTTP/1.1
 Host: docswant.zooneon.dev</code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_request_parameters"><a class="link" href="#_request_parameters">Request Parameters</a></h3>
+<h3 id="_path_parameters"><a class="link" href="#_path_parameters">Path Parameters</a></h3>
 <table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. /api/v1/account/exists/{username}</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -680,7 +681,7 @@ Content-Length: 82
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-05 21:39:27",
+  "timestamp" : "2022-05-09 20:12:51",
   "data" : true
 }</code></pre>
 </div>
@@ -726,7 +727,7 @@ Content-Length: 82
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-05-02 13:40:10 +0900
+Last updated 2022-05-09 19:57:13 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
