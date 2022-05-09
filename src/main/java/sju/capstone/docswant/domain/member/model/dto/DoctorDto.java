@@ -24,7 +24,6 @@ public class DoctorDto {
         private String username;
 
         @Size(max = 50)
-        @NotBlank(message = "필수 값입니다.")
         private String password;
 
         @Size(max = 20)
