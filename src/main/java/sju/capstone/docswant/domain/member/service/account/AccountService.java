@@ -6,6 +6,6 @@ public interface AccountService {
 
     boolean isExistsUsername(String username);
 
-    String reissueAccessToken(AccountDto.Request requestDto);
+    String reissueAccessToken(String code, String refreshToken);
 
 }
