@@ -1,21 +1,16 @@
 package sju.capstone.docswant.domain.member.controller;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.test.web.servlet.ResultActions;
 import sju.capstone.docswant.common.IntegrationTest;
 import sju.capstone.docswant.common.factory.DtoFactory;
+import sju.capstone.docswant.common.factory.EntityFactory;
 import sju.capstone.docswant.domain.member.model.dto.PatientDto;
-import sju.capstone.docswant.domain.member.model.entity.Account;
-import sju.capstone.docswant.domain.member.service.patient.PatientService;
-import sju.capstone.docswant.mock.WithMockDoctor;
 
 import java.nio.charset.StandardCharsets;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
 import static org.springframework.restdocs.headers.HeaderDocumentation.headerWithName;
 import static org.springframework.restdocs.headers.HeaderDocumentation.requestHeaders;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -27,22 +22,15 @@ import static sju.capstone.docswant.common.utils.ApiDocumentUtils.getDocumentRes
 
 class PatientControllerTest extends IntegrationTest {
 
-    @MockBean
-    private PatientService patientService;
-
-    @WithMockDoctor
     @Test
     void 환자_등록_API_테스트() throws Exception {
         //given
         String registerUrl = "/api/v1/patient";
-        String authorizationHeader = "Authorization";
-        String bearerToken = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoicmVmcmVzaCB0b2tlbiIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNjUxNTk1Mjk2LCJleHAiOjE2NTQxODcyOTZ9.gKvFVjbooMDIqO4qUP9FPaqSUjfZP6tT8RwJwu43i3Y";
-        PatientDto.Request requestDto = DtoFactory.getPatientRegisterRequestDto();
-        given(patientService.register(any(Account.class), any(PatientDto.Request.class))).willReturn(DtoFactory.getPatientRegisterResponseDto());
+        PatientDto.Request requestDto = DtoFactory.getPatientRequestDto();
 
         //when
         ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.post(registerUrl)
-                .header(authorizationHeader, bearerToken)
+                .header("Authorization", "Bearer " + jwtToken.createAccessToken(EntityFactory.getDoctorEntity()))
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding(StandardCharsets.UTF_8)
                 .accept(MediaType.APPLICATION_JSON)
