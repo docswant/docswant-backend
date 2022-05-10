@@ -4,8 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import sju.capstone.docswant.common.annotation.CurrentUser;
 import sju.capstone.docswant.common.format.ResponseFormat;
 import sju.capstone.docswant.domain.member.model.dto.DoctorDto;
+import sju.capstone.docswant.domain.member.model.entity.Account;
 import sju.capstone.docswant.domain.member.service.doctor.DoctorService;
 
 import javax.validation.Valid;
@@ -24,9 +26,15 @@ public class DoctorController {
     }
 
     @PostMapping
-    public ResponseEntity<ResponseFormat<DoctorDto.Response>> registerApi(@Valid @RequestBody DoctorDto.Request requestDto) {
+    public ResponseEntity<ResponseFormat<DoctorDto.Response>> registerApi(@RequestBody @Valid DoctorDto.Request requestDto) {
         DoctorDto.Response responseDto = doctorService.register(requestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(ResponseFormat.of(responseDto));
+    }
+
+    @PutMapping
+    public ResponseEntity<ResponseFormat<DoctorDto.Response>> updateApi(@RequestBody @Valid DoctorDto.Request requestDto, @CurrentUser Account account) {
+        DoctorDto.Response responseDto = doctorService.update(account, requestDto);
+        return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(responseDto));
     }
 
 }

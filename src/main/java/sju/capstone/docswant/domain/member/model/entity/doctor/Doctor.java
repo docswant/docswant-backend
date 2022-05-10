@@ -38,4 +38,8 @@ public class Doctor extends Account {
     public void addPatient(Patient patient) {
         this.patients.add(patient);
     }
+
+    public void update(String username, String password) {
+        updateAccount(username, password);
+    }
 }

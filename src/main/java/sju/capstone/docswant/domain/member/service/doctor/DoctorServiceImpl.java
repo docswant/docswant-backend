@@ -5,11 +5,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sju.capstone.docswant.common.annotation.DoctorOnly;
+import sju.capstone.docswant.core.error.ErrorCode;
+import sju.capstone.docswant.core.error.exception.EntityNotFoundException;
 import sju.capstone.docswant.domain.member.model.dto.DoctorDto;
+import sju.capstone.docswant.domain.member.model.entity.Account;
 import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 import sju.capstone.docswant.domain.member.model.mapper.DoctorMapper;
 import sju.capstone.docswant.domain.member.repository.doctor.DoctorCodeRepository;
 import sju.capstone.docswant.domain.member.repository.doctor.DoctorRepository;
+
+import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -21,6 +27,7 @@ public class DoctorServiceImpl implements DoctorService{
     private final PasswordEncoder passwordEncoder;
     private final DoctorMapper mapper = DoctorMapper.INSTANCE;
 
+    @Transactional(readOnly = true)
     @Override
     public boolean isValidCode(String code) {
         log.info("validate doctor code. code = {}", code);
@@ -38,9 +45,19 @@ public class DoctorServiceImpl implements DoctorService{
         return mapper.toDto(doctor);
     }
 
+    @DoctorOnly
+    @Transactional
     @Override
-    public DoctorDto.Response update(DoctorDto.Request requestDto) {
-        return null;
+    public DoctorDto.Response update(Account account, DoctorDto.Request requestDto) {
+        Doctor doctor = doctorRepository.findByCode(account.getCode()).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
+        if (requestDto.getPassword() != null) {
+            String encodedPassword = passwordEncoder.encode(requestDto.getPassword());
+            doctor.update(requestDto.getUsername(), encodedPassword);
+        } else {
+            doctor.update(requestDto.getUsername(), requestDto.getPassword());
+        }
+        log.info("update success. code = {}", doctor.getCode());
+        return mapper.toDto(doctor);
     }
 
 }
