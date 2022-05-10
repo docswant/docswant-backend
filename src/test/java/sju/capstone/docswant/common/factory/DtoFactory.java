@@ -44,6 +44,25 @@ public class DtoFactory {
                 .build();
     }
 
+    public static DoctorDto.Request getDoctorUpdateRequestDto() {
+        return DoctorDto.Request.builder()
+                .code("DOCTOR002")
+                .username("update username")
+                .password("update password")
+                .name("zooneon")
+                .major("orthopedics")
+                .build();
+    }
+
+    public static DoctorDto.Response getDoctorUpdateResponseDto() {
+        return DoctorDto.Response.builder()
+                .code("DOCTOR002")
+                .username("update username")
+                .name("zooneon")
+                .major("orthopedics")
+                .build();
+    }
+
     public static PatientDto.Request getPatientRegisterRequestDto() {
         return PatientDto.Request.builder()
                 .code("PATIENT001")
