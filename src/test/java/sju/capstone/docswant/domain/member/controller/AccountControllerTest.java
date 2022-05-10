@@ -101,7 +101,7 @@ class AccountControllerTest extends IntegrationTest {
         //given
         String requestUrl = "/api/v1/account/{code}?token={token}";
         String code = "code";
-        String refreshToken = "REFRESH_TOKEN";
+        String refreshToken = "refresh-token";
         given(accountService.reissueAccessToken(any(String.class), any(String.class))).willReturn("ACCESS_TOKEN");
 
         //when
