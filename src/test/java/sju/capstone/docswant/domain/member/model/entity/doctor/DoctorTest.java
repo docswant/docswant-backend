@@ -20,4 +20,19 @@ class DoctorTest {
         //then
         assertThat(doctor.getPatients().contains(patient)).isTrue();
     }
+
+    @Test
+    void 정보수정_테스트() {
+        //given
+        Doctor doctor = EntityFactory.getDoctorEntity();
+        String username = "update username";
+        String password = "update password";
+
+        //when
+        doctor.update(username, password);
+
+        //then
+        assertThat(doctor.getUsername()).isEqualTo(username);
+        assertThat(doctor.getPassword()).isEqualTo(password);
+    }
 }

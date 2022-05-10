@@ -23,8 +23,8 @@ include::{snippets}/doctor/validate/curl-request.adoc[]
 === HTTP Request
 include::{snippets}/doctor/validate/http-request.adoc[]
 
-=== Request Parameters
-include::{snippets}/doctor/validate/request-parameters.adoc[]
+=== Path Parameters
+include::{snippets}/doctor/validate/path-parameters.adoc[]
 
 === HTTP Response
 include::{snippets}/doctor/validate/http-response.adoc[]
@@ -49,3 +49,24 @@ include::{snippets}/doctor/register/http-response.adoc[]
 
 === Response Fields
 include::{snippets}/doctor/register/response-fields.adoc[]
+
+[[doctor-update]]
+== 의사 정보수정
+
+=== curl Request
+include::{snippets}/doctor/update/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/doctor/update/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/doctor/update/request-headers.adoc[]
+
+=== Request Fields
+include::{snippets}/doctor/update/request-fields.adoc[]
+
+=== HTTP Response
+include::{snippets}/doctor/update/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/doctor/update/response-fields.adoc[]

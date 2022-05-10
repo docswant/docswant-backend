@@ -11,7 +11,7 @@ public class EntityFactory {
     public static Doctor getDoctorEntity() {
         return Doctor.builder()
                 .code("DOCTOR001")
-                .username("doctor")
+                .username("username")
                 .password("password")
                 .name("zooneon")
                 .major("orthopedics")

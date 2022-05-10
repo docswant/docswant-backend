@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.test.web.servlet.ResultActions;
-import sju.capstone.docswant.common.MockMvcTest;
+import sju.capstone.docswant.common.IntegrationTest;
 import sju.capstone.docswant.common.factory.DtoFactory;
 import sju.capstone.docswant.domain.member.model.dto.AccountDto;
 
@@ -13,13 +13,13 @@ import java.nio.charset.StandardCharsets;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.*;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
+import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static sju.capstone.docswant.common.utils.ApiDocumentUtils.getDocumentRequest;
 import static sju.capstone.docswant.common.utils.ApiDocumentUtils.getDocumentResponse;
 
-class AccountControllerTest extends MockMvcTest {
+class AccountControllerTest extends IntegrationTest {
 
     @Test
     void 로그인_API_테스트() throws Exception {
@@ -63,7 +63,7 @@ class AccountControllerTest extends MockMvcTest {
     @Test
     void 사용자명_중복_확인_API_테스트() throws Exception {
         //given
-        String requestUrl = "/api/v1/account/exists?username={username}";
+        String requestUrl = "/api/v1/account/exists/{username}";
         String username = "username";
 
         //when
@@ -76,7 +76,7 @@ class AccountControllerTest extends MockMvcTest {
                 .andDo(document("account/exists",
                         getDocumentRequest(),
                         getDocumentResponse(),
-                        requestParameters(
+                        pathParameters(
                                 parameterWithName("username").description("사용자명")
                         ),
                         responseFields(
