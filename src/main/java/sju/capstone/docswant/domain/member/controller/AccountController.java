@@ -20,4 +20,10 @@ public class AccountController {
         return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(isExists));
     }
 
+    @GetMapping("/{code}")
+    public ResponseEntity<ResponseFormat<String>> reissueTokenApi(@PathVariable(name = "code") String code, @RequestParam(name = "token") String refreshToken) {
+        String accessToken = accountService.reissueAccessToken(code, refreshToken);
+        return ResponseEntity.status(HttpStatus.CREATED).body(ResponseFormat.of(accessToken));
+    }
+
 }

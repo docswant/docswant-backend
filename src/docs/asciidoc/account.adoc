@@ -49,3 +49,24 @@ include::{snippets}/account/exists/http-response.adoc[]
 
 === Response Fields
 include::{snippets}/account/exists/response-fields.adoc[]
+
+[[account-reissueToken]]
+== 토큰 재발급
+
+=== curl Request
+include::{snippets}/account/reissueToken/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/account/reissueToken/http-request.adoc[]
+
+=== Path Parameters
+include::{snippets}/account/reissueToken/path-parameters.adoc[]
+
+=== Request Parameters
+include::{snippets}/account/reissueToken/request-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/account/reissueToken/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/account/reissueToken/response-fields.adoc[]
