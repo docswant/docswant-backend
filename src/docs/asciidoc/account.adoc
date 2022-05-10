@@ -50,7 +50,7 @@ include::{snippets}/account/exists/http-response.adoc[]
 === Response Fields
 include::{snippets}/account/exists/response-fields.adoc[]
 
-[[account-reissueToken]]
+[[account-reissue]]
 == 토큰 재발급
 
 === curl Request

@@ -467,7 +467,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_response_fields_2">Response Fields</a></li>
 </ul>
 </li>
-<li><a href="#account-reissueToken">토큰 재발급</a>
+<li><a href="#account-reissue">토큰 재발급</a>
 <ul class="sectlevel2">
 <li><a href="#_curl_request_3">curl Request</a></li>
 <li><a href="#_http_request_3">HTTP Request</a></li>
@@ -563,12 +563,12 @@ Content-Length: 540
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-11 00:09:39",
+  "timestamp" : "2022-05-11 00:31:27",
   "data" : {
     "code" : "DOCTOR001",
     "accountType" : "ACCOUNT_DOCTOR",
-    "accessToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTIxOTUzNzksImV4cCI6MTY1MjE5ODk3OX0.mey19HbAL-vxR8UuhIspinXp9bnuh3aA79anZWgl34k",
-    "refreshToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoicmVmcmVzaCB0b2tlbiIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNjUyMTk1Mzc5LCJleHAiOjE2NTQ3ODczNzl9.iIwj35hlyMPLhpvwz0s9DYpQcxtCe9HpVCOHXpw3FVI"
+    "accessToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTIxOTY2ODcsImV4cCI6MTY1MjIwMDI4N30.r0BnloulynnTqemsnnTrpO5pD4CJPm14F1BsH2iGjHg",
+    "refreshToken" : "eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoicmVmcmVzaCB0b2tlbiIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNjUyMTk2Njg3LCJleHAiOjE2NTQ3ODg2ODd9.BoDf0joA4omLmiDi7D-HCPNwjPnlUhtehYjONss2jLM"
   }
 }</code></pre>
 </div>
@@ -691,7 +691,7 @@ Content-Length: 83
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-11 00:09:38",
+  "timestamp" : "2022-05-11 00:31:26",
   "data" : false
 }</code></pre>
 </div>
@@ -734,13 +734,13 @@ Content-Length: 83
 </div>
 </div>
 <div class="sect1">
-<h2 id="account-reissueToken"><a class="link" href="#account-reissueToken">토큰 재발급</a></h2>
+<h2 id="account-reissue"><a class="link" href="#account-reissue">토큰 재발급</a></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_curl_request_3"><a class="link" href="#_curl_request_3">curl Request</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/account/code?token=REFRESH_TOKEN' -i -X GET</code></pre>
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/account/code?token=refresh-token' -i -X GET</code></pre>
 </div>
 </div>
 </div>
@@ -748,7 +748,7 @@ Content-Length: 83
 <h3 id="_http_request_3"><a class="link" href="#_http_request_3">HTTP Request</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/account/code?token=REFRESH_TOKEN HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/account/code?token=refresh-token HTTP/1.1
 Host: docswant.zooneon.dev</code></pre>
 </div>
 </div>
@@ -815,7 +815,7 @@ Content-Length: 92
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-11 00:09:38",
+  "timestamp" : "2022-05-11 00:31:27",
   "data" : "ACCESS_TOKEN"
 }</code></pre>
 </div>
@@ -861,7 +861,7 @@ Content-Length: 92
 <div id="footer">
 <div id="footer-text">
 Version 0.0.1-SNAPSHOT<br>
-Last updated 2022-05-11 00:07:28 +0900
+Last updated 2022-05-11 00:31:13 +0900
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css">
