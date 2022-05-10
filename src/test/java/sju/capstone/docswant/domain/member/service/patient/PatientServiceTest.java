@@ -35,7 +35,7 @@ class PatientServiceTest {
     @Test
     void 환자_등록_테스트() {
         //given
-        PatientDto.Request requestDto = DtoFactory.getPatientRegisterRequestDto();
+        PatientDto.Request requestDto = DtoFactory.getPatientRequestDto();
         Doctor doctor = EntityFactory.getDoctorEntity();
         given(doctorRepository.findByCode(any())).willReturn(Optional.of(doctor));
 

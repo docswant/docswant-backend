@@ -31,7 +31,7 @@ class PatientMapperTest {
     @Test
     void DTO에서_엔티티_테스트() {
         //given
-        PatientDto.Request requestDto = DtoFactory.getPatientRegisterRequestDto();
+        PatientDto.Request requestDto = DtoFactory.getPatientRequestDto();
 
         //when
         Patient resultEntity = mapper.toEntity(requestDto);

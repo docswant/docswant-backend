@@ -63,7 +63,7 @@ public class DtoFactory {
                 .build();
     }
 
-    public static PatientDto.Request getPatientRegisterRequestDto() {
+    public static PatientDto.Request getPatientRequestDto() {
         return PatientDto.Request.builder()
                 .code("PATIENT001")
                 .name("zooneon")
@@ -74,7 +74,7 @@ public class DtoFactory {
                 .build();
     }
 
-    public static PatientDto.Response getPatientRegisterResponseDto() {
+    public static PatientDto.Response getPatientResponseDto() {
         return PatientDto.Response.builder()
                 .code("PATIENT001")
                 .username("PATIENT001")
