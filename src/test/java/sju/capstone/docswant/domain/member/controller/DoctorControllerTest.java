@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
 import org.springframework.test.web.servlet.ResultActions;
-import sju.capstone.docswant.common.MockMvcTest;
+import sju.capstone.docswant.common.IntegrationTest;
 import sju.capstone.docswant.common.factory.DtoFactory;
 import sju.capstone.docswant.common.factory.EntityFactory;
 import sju.capstone.docswant.domain.member.model.dto.DoctorDto;
@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static sju.capstone.docswant.common.utils.ApiDocumentUtils.getDocumentRequest;
 import static sju.capstone.docswant.common.utils.ApiDocumentUtils.getDocumentResponse;
 
-class DoctorControllerTest extends MockMvcTest {
+class DoctorControllerTest extends IntegrationTest {
 
     @Test
     void 의사_코드_검증_API_테스트() throws Exception {
