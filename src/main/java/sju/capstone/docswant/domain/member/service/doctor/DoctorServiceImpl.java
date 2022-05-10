@@ -48,8 +48,8 @@ public class DoctorServiceImpl implements DoctorService{
     @DoctorOnly
     @Transactional
     @Override
-    public DoctorDto.Response update(Account account, DoctorDto.Request requestDto) {
-        Doctor doctor = doctorRepository.findByCode(account.getCode()).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
+    public DoctorDto.Response update(String code, DoctorDto.Request requestDto) {
+        Doctor doctor = doctorRepository.findByCode(code).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
         if (requestDto.getPassword() != null) {
             String encodedPassword = passwordEncoder.encode(requestDto.getPassword());
             doctor.update(requestDto.getUsername(), encodedPassword);

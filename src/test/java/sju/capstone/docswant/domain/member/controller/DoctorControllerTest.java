@@ -96,11 +96,11 @@ class DoctorControllerTest extends IntegrationTest {
     @Test
     void 의사_정보수정_API_테스트() throws Exception {
         //given
-        String updateUrl = "/api/v1/doctor";
+        String updateUrl = "/api/v1/doctor/{code}";
         DoctorDto.Request requestDto = DtoFactory.getDoctorUpdateRequestDto();
 
         //when
-        ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.put(updateUrl)
+        ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.put(updateUrl, requestDto.getCode())
                 .header("Authorization", "Bearer " + jwtToken.createAccessToken(EntityFactory.getDoctorEntity()))
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding(StandardCharsets.UTF_8)

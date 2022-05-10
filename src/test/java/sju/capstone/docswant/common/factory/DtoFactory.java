@@ -46,7 +46,7 @@ public class DtoFactory {
 
     public static DoctorDto.Request getDoctorUpdateRequestDto() {
         return DoctorDto.Request.builder()
-                .code("DOCTOR002")
+                .code("DOCTOR001")
                 .username("update username")
                 .password("update password")
                 .name("zooneon")
@@ -56,7 +56,7 @@ public class DtoFactory {
 
     public static DoctorDto.Response getDoctorUpdateResponseDto() {
         return DoctorDto.Response.builder()
-                .code("DOCTOR002")
+                .code("DOCTOR001")
                 .username("update username")
                 .name("zooneon")
                 .major("orthopedics")

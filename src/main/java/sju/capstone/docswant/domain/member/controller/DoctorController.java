@@ -31,9 +31,9 @@ public class DoctorController {
         return ResponseEntity.status(HttpStatus.CREATED).body(ResponseFormat.of(responseDto));
     }
 
-    @PutMapping
-    public ResponseEntity<ResponseFormat<DoctorDto.Response>> updateApi(@RequestBody @Valid DoctorDto.Request requestDto, @CurrentUser Account account) {
-        DoctorDto.Response responseDto = doctorService.update(account, requestDto);
+    @PutMapping("/{code}")
+    public ResponseEntity<ResponseFormat<DoctorDto.Response>> updateApi(@PathVariable(name = "code") String code, @RequestBody @Valid DoctorDto.Request requestDto) {
+        DoctorDto.Response responseDto = doctorService.update(code, requestDto);
         return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(responseDto));
     }
 

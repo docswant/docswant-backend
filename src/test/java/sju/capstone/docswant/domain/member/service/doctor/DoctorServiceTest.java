@@ -67,7 +67,7 @@ class DoctorServiceTest {
         given(doctorRepository.findByCode(any(String.class))).willReturn(Optional.of(doctor));
 
         //when
-        DoctorDto.Response result = doctorService.update(doctor, requestDto);
+        DoctorDto.Response result = doctorService.update(doctor.getCode(), requestDto);
 
         //then
         assertThat(result.getUsername()).isEqualTo(requestDto.getUsername());
