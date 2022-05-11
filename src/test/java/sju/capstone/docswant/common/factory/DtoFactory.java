@@ -89,6 +89,7 @@ public class DtoFactory {
     public static PatientDto.Request getPatientUpdateRequestDto() {
         return PatientDto.Request.builder()
                 .code("PATIENT001")
+                .username("zooneon")
                 .name("zooneon")
                 .birthDate(LocalDate.of(1997, 8, 26))
                 .hospitalizationDate(LocalDate.of(2022, 5, 5))
