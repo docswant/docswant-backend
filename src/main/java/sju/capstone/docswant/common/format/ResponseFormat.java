@@ -18,6 +18,13 @@ public class ResponseFormat<T> {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private final ErrorFormat error;
 
+    public ResponseFormat() {
+        this.status = StatusMessage.SUCCESS;
+        this.timestamp = LocalDateTime.now();
+        this.data = null;
+        this.error = null;
+    }
+
     public ResponseFormat(final T data) {
         this.status = StatusMessage.SUCCESS;
         this.timestamp = LocalDateTime.now();
@@ -30,6 +37,10 @@ public class ResponseFormat<T> {
         this.timestamp = LocalDateTime.now();
         this.data = null;
         this.error = error;
+    }
+
+    public static ResponseFormat of() {
+        return new ResponseFormat();
     }
 
     public static <T> ResponseFormat<T> of(final T data) {
