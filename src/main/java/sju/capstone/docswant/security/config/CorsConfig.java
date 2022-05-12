@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class CorsConfig {
 
     private static final String CORS_PATTERN = "/**";
-    private static final String CLIENT_URL = "http://localhost:3000";
+    private static final String CLIENT_URL = "https://localhost:3000";
     private static final String[] CORS_ALLOWED_METHODS = {"GET", "POST", "PUT", "DELETE", "OPTIONS"};
 
     @Bean
