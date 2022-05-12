@@ -2,10 +2,12 @@ package sju.capstone.docswant.domain.member.service.patient;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sju.capstone.docswant.common.annotation.DoctorOnly;
+import sju.capstone.docswant.common.format.PageFormat;
 import sju.capstone.docswant.core.error.ErrorCode;
 import sju.capstone.docswant.core.error.exception.EntityNotFoundException;
 import sju.capstone.docswant.domain.member.model.dto.PatientDto;
@@ -45,24 +47,46 @@ public class PatientServiceImpl implements PatientService {
         return mapper.toDto(patient);
     }
 
+    @Transactional
     @Override
-    public PatientDto.Response update(PatientDto.Request requestDto) {
-        return null;
+    public PatientDto.Response update(String code, PatientDto.Request requestDto) {
+        Patient patient = patientRepository.findByCode(code).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
+        if (requestDto.getPassword() != null) {
+            String encodedPassword = passwordEncoder.encode(requestDto.getPassword());
+            patient.update(requestDto.getUsername(), encodedPassword, requestDto.getName(), requestDto.getBirthDate(), requestDto.getHospitalizationDate(),
+                    requestDto.getSurgeryDate(), requestDto.getDischargeDate(), requestDto.getDiseaseName(), requestDto.getHospitalRoom());
+        } else {
+            patient.update(requestDto.getUsername(), requestDto.getPassword(), requestDto.getName(), requestDto.getBirthDate(), requestDto.getHospitalizationDate(),
+                    requestDto.getSurgeryDate(), requestDto.getDischargeDate(), requestDto.getDiseaseName(), requestDto.getHospitalRoom());
+        }
+        log.info("update success. code = {}", patient.getCode());
+        return mapper.toDto(patient);
     }
 
+    @DoctorOnly
+    @Transactional
     @Override
-    public void delete(Account account, String code) {
-
+    public void delete(String code) {
+        patientRepository.deleteByCode(code);
+        log.info("delete success. code = {}", code);
+        return;
     }
 
+    @Transactional(readOnly = true)
     @Override
-    public PatientDto.Response find(Account account) {
-        return null;
+    public PatientDto.Response find(String code) {
+        Patient patient = patientRepository.findByCode(code).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
+        return mapper.toDto(patient);
     }
 
+    @DoctorOnly
+    @Transactional(readOnly = true)
     @Override
-    public List<PatientDto.Response> findAll(Account account) {
-        return null;
+    public PageFormat.Response<List<PatientDto.Response>> findAll(Account account, PageFormat.Request pageRequest) {
+        Doctor doctor = (Doctor) account;
+        Page<Patient> patientPage = patientRepository.findAllByDoctorCode(doctor.getCode(), pageRequest.of());
+        List<PatientDto.Response> responseDtos = patientPage.getContent().stream().map(mapper::toDto).collect(Collectors.toList());
+        return PageFormat.Response.of(patientPage.getNumber(), patientPage.hasNext(), responseDtos);
     }
 
     private void generateDefaultAccount(Patient patient) {

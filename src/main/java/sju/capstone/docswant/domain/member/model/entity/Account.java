@@ -43,7 +43,9 @@ public abstract class Account extends BaseTimeEntity implements Persistable<Stri
     }
 
     public void updateAccount(String username, String password) {
-        this.username = username;
+        if (username != null) {
+            this.username = username;
+        }
         if (password != null) {
             this.password = password;
         }

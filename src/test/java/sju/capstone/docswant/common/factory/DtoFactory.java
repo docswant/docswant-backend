@@ -5,6 +5,8 @@ import sju.capstone.docswant.domain.member.model.dto.DoctorDto;
 import sju.capstone.docswant.domain.member.model.dto.PatientDto;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 public class DtoFactory {
 
@@ -89,6 +91,7 @@ public class DtoFactory {
     public static PatientDto.Request getPatientUpdateRequestDto() {
         return PatientDto.Request.builder()
                 .code("PATIENT001")
+                .username("zooneon")
                 .name("zooneon")
                 .birthDate(LocalDate.of(1997, 8, 26))
                 .hospitalizationDate(LocalDate.of(2022, 5, 5))
@@ -111,6 +114,38 @@ public class DtoFactory {
                 .diseaseName("COVID-19")
                 .hospitalRoom(302)
                 .build();
+    }
+
+    public static List<PatientDto.Response> getAllPatientResponseDto() {
+        return Arrays.asList(
+                PatientDto.Response.builder()
+                        .code("PATIENT001")
+                        .username("PATIENT001")
+                        .name("zooneon")
+                        .birthDate(LocalDate.of(1997, 8, 26))
+                        .hospitalizationDate(LocalDate.of(2022, 5, 5))
+                        .diseaseName("COVID-19")
+                        .hospitalRoom(300)
+                        .build(),
+                PatientDto.Response.builder()
+                        .code("PATIENT002")
+                        .username("PATIENT002")
+                        .name("zooneon")
+                        .birthDate(LocalDate.of(1997, 8, 26))
+                        .hospitalizationDate(LocalDate.of(2022, 5, 5))
+                        .diseaseName("COVID-19")
+                        .hospitalRoom(301)
+                        .build(),
+                PatientDto.Response.builder()
+                        .code("PATIENT003")
+                        .username("PATIENT003")
+                        .name("zooneon")
+                        .birthDate(LocalDate.of(1997, 8, 26))
+                        .hospitalizationDate(LocalDate.of(2022, 5, 5))
+                        .diseaseName("COVID-19")
+                        .hospitalRoom(302)
+                        .build()
+        );
     }
 
 }
