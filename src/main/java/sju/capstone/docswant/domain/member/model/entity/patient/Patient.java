@@ -52,4 +52,15 @@ public class Patient extends Account {
         this.doctor = doctor;
     }
 
+    public void update(String username, String password, String name, LocalDate birthDate,
+                       LocalDate hospitalizationDate, LocalDate surgeryDate, LocalDate dischargeDate,
+                       String diseaseName, int hospitalRoom) {
+        updateAccount(username, password);
+        patientSchedule.updateSchedule(hospitalizationDate, surgeryDate, dischargeDate);
+        this.name = name;
+        this.birthDate = birthDate;
+        this.diseaseName = diseaseName;
+        this.hospitalRoom = hospitalRoom;
+    }
+
 }
