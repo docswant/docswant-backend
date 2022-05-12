@@ -34,3 +34,92 @@ include::{snippets}/patient/register/http-response.adoc[]
 
 === Response Fields
 include::{snippets}/patient/register/response-fields.adoc[]
+
+[[patient-update]]
+== 환자 정보수정
+
+=== curl Request
+include::{snippets}/patient/update/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/patient/update/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/patient/update/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/patient/update/path-parameters.adoc[]
+
+=== Request Fields
+include::{snippets}/patient/update/request-fields.adoc[]
+
+=== HTTP Response
+include::{snippets}/patient/update/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/patient/update/response-fields.adoc[]
+
+[[patient-delte]]
+== 환자 삭제
+
+=== curl Request
+include::{snippets}/patient/delete/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/patient/delete/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/patient/delete/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/patient/delete/path-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/patient/delete/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/patient/delete/response-fields.adoc[]
+
+[[patient-find]]
+== 환자 조회
+
+=== curl Request
+include::{snippets}/patient/find/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/patient/find/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/patient/find/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/patient/find/path-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/patient/find/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/patient/find/response-fields.adoc[]
+
+[[patient-find-all]]
+== 환자 리스트 조회
+
+=== curl Request
+include::{snippets}/patient/findAll/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/patient/findAll/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/patient/findAll/request-headers.adoc[]
+
+=== Request Parameters
+include::{snippets}/patient/findAll/request-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/patient/findAll/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/patient/findAll/response-fields.adoc[]
+
+
