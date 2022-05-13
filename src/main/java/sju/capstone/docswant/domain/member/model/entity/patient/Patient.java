@@ -6,9 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sju.capstone.docswant.domain.member.model.entity.Account;
 import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
+import sju.capstone.docswant.domain.question.model.entity.Question;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -36,6 +39,9 @@ public class Patient extends Account {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor_code")
     private Doctor doctor;
+
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    private List<Question> questions = new ArrayList<>();
 
     @Builder
     public Patient(String code, String username, String password, String name, LocalDate birthDate,
