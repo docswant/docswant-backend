@@ -3,6 +3,7 @@ package sju.capstone.docswant.common.factory;
 import sju.capstone.docswant.domain.member.model.dto.AccountDto;
 import sju.capstone.docswant.domain.member.model.dto.DoctorDto;
 import sju.capstone.docswant.domain.member.model.dto.PatientDto;
+import sju.capstone.docswant.domain.question.model.dto.QuestionDto;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -146,6 +147,36 @@ public class DtoFactory {
                         .hospitalRoom(302)
                         .build()
         );
+    }
+
+    public static QuestionDto.Request getQuestionRequestDto() {
+        return QuestionDto.Request.builder()
+                .content("content")
+                .answer("answer")
+                .build();
+    }
+
+    public static QuestionDto.Response getQuestionResponseDto() {
+        return QuestionDto.Response.builder()
+                .id(1L)
+                .content("content")
+                .answer("answer")
+                .build();
+    }
+
+    public static QuestionDto.Request getQuestionUpdateRequestDto() {
+        return QuestionDto.Request.builder()
+                .content("update content")
+                .answer("update answer")
+                .build();
+    }
+
+    public static QuestionDto.Response getQuestionUpdateResponseDto() {
+        return QuestionDto.Response.builder()
+                .id(1L)
+                .content("update content")
+                .answer("update answer")
+                .build();
     }
 
 }
