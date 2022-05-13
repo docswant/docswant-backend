@@ -3,6 +3,7 @@ package sju.capstone.docswant.common.factory;
 import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
 import sju.capstone.docswant.domain.member.model.entity.patient.PatientSchedule;
+import sju.capstone.docswant.domain.question.model.entity.Question;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -76,6 +77,14 @@ public class EntityFactory {
                         .hospitalRoom(302)
                         .build()
         );
+    }
+
+    public static Question getQuestionEntity() {
+        return Question.builder()
+                .id(1L)
+                .content("content")
+                .answer("answer")
+                .build();
     }
 
 }
