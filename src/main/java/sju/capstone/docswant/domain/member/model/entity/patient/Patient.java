@@ -69,4 +69,8 @@ public class Patient extends Account {
         this.hospitalRoom = hospitalRoom;
     }
 
+    public void addQuestion(Question question) {
+        this.questions.add(question);
+    }
+
 }

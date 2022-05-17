@@ -31,11 +31,22 @@ public class Question extends BaseTimeEntity {
     private Patient patient;
 
     @Builder
-    public Question(Long id, String content, String answer, Patient patient) {
-        this.id = id;
+    public Question(String content, String answer) {
         this.content = content;
         this.answer = answer;
+    }
+
+    public void setPatient(Patient patient) {
         this.patient = patient;
     }
 
+    public void update(String content) {
+        if (content != null) {
+            this.content = content;
+        }
+    }
+
+    public void answer(String answer) {
+        this.answer = answer;
+    }
 }

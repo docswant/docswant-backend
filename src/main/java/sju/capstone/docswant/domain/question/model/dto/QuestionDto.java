@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Getter
@@ -18,7 +17,6 @@ public class QuestionDto {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public static class Request {
         @Size(max = 255)
-        @NotBlank(message = "필수 값입니다.")
         private String content;
 
         @Size(max = 100)

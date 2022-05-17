@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@PreAuthorize("hasAuthority('PATIENT')")
+@PreAuthorize("hasAuthority('ACCOUNT_PATIENT')")
 public @interface PatientOnly {
 
 }
