@@ -4,8 +4,11 @@ import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
 import sju.capstone.docswant.domain.member.model.entity.patient.PatientSchedule;
 import sju.capstone.docswant.domain.question.model.entity.Question;
+import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
+import sju.capstone.docswant.domain.rounding.model.entity.RoundingSchedule;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -101,6 +104,17 @@ public class EntityFactory {
                         .answer("answer3")
                         .build()
         );
+    }
+
+    public static Rounding getRoundingEntity() {
+        RoundingSchedule roundingSchedule = RoundingSchedule.builder()
+                .roundingDate(LocalDate.of(2022, 5, 17))
+                .roundingTime(LocalTime.of(12, 0))
+                .build();
+        return Rounding.builder()
+                .roundingSchedule(roundingSchedule)
+                .hospitalRoom(300)
+                .build();
     }
 
 }
