@@ -11,3 +11,7 @@ INSERT INTO patient(patient_birth_date, patient_disease_name, patient_hospital_r
 
 INSERT INTO account(account_code, account_username, account_password, account_type, created_at, updated_at) values("PATIENT003", "PATIENT003", "{bcrypt}$2a$10$fMZSzFrq4nrj8QxAX6ISFOQ11vIOMExhyodCXtHvwyRCmUTZMBRmy", "ACCOUNT_PATIENT", "2022-05-11 12:00:00.000000", "2022-05-11 12:00:00.000000");
 INSERT INTO patient(patient_birth_date, patient_disease_name, patient_hospital_room, patient_name, patient_discharge_date, patient_hospitalization_date, patient_surgery_date, patient_code, doctor_code) values("1997-08-26", "COVID-19", 302, "zooneon", "2022-05-12", "2022-05-05", "2022-05-08", "PATIENT003", "DOCTOR001");
+
+INSERT INTO question(question_id, question_content, patient_code, created_at, updated_at) values(1, "content", "PATIENT001", "2022-05-15 12:00:00.000000", "2022-05-15 12:00:00.000000");
+INSERT INTO question(question_id, question_content, question_answer, patient_code, created_at, updated_at) values(2, "content2", "answer2", "PATIENT001", "2022-05-15 12:00:00.000000", "2022-05-15 12:00:00.000000");
+INSERT INTO question(question_id, question_content, question_answer, patient_code, created_at, updated_at) values(3, "content3", "answer3", "PATIENT001", "2022-05-15 12:00:00.000000", "2022-05-15 12:00:00.000000");

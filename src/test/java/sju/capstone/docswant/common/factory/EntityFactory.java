@@ -81,10 +81,26 @@ public class EntityFactory {
 
     public static Question getQuestionEntity() {
         return Question.builder()
-                .id(1L)
                 .content("content")
                 .answer("answer")
                 .build();
+    }
+
+    public static List<Question> getQuestionEntities() {
+        return Arrays.asList(
+                Question.builder()
+                        .content("content1")
+                        .answer("answer1")
+                        .build(),
+                Question.builder()
+                        .content("content2")
+                        .answer("answer2")
+                        .build(),
+                Question.builder()
+                        .content("content3")
+                        .answer("answer3")
+                        .build()
+        );
     }
 
 }

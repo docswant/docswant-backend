@@ -152,7 +152,6 @@ public class DtoFactory {
     public static QuestionDto.Request getQuestionRequestDto() {
         return QuestionDto.Request.builder()
                 .content("content")
-                .answer("answer")
                 .build();
     }
 
@@ -160,14 +159,12 @@ public class DtoFactory {
         return QuestionDto.Response.builder()
                 .id(1L)
                 .content("content")
-                .answer("answer")
                 .build();
     }
 
     public static QuestionDto.Request getQuestionUpdateRequestDto() {
         return QuestionDto.Request.builder()
                 .content("update content")
-                .answer("update answer")
                 .build();
     }
 
@@ -175,7 +172,12 @@ public class DtoFactory {
         return QuestionDto.Response.builder()
                 .id(1L)
                 .content("update content")
-                .answer("update answer")
+                .build();
+    }
+
+    public static QuestionDto.Request getQuestionAnswerRequestDto() {
+        return QuestionDto.Request.builder()
+                .answer("answer")
                 .build();
     }
 
