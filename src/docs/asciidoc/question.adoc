@@ -2,7 +2,7 @@ ifndef::snippets[]
 :snippets: ./build/generated-snippets
 endif::[]
 
-= Patient API Docs
+= Question API Docs
 권준원
 1.0.0, 17/05/2022
 :doctype: book
