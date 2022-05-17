@@ -1,0 +1,153 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+
+= Patient API Docs
+권준원
+1.0.0, 17/05/2022
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+:operation-http-request-title: Example Request
+:operation-http-response-title: Example Response
+
+[[question-create]]
+== 질문 생성
+
+=== curl Request
+include::{snippets}/question/create/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/question/create/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/question/create/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/question/create/path-parameters.adoc[]
+
+=== Request Fields
+include::{snippets}/question/create/request-fields.adoc[]
+
+=== HTTP Response
+include::{snippets}/question/create/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/question/create/response-fields.adoc[]
+
+[[question-update]]
+== 질문 수정
+
+=== curl Request
+include::{snippets}/question/update/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/question/update/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/question/update/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/question/update/path-parameters.adoc[]
+
+=== Request Fields
+include::{snippets}/question/update/request-fields.adoc[]
+
+=== HTTP Response
+include::{snippets}/question/update/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/question/update/response-fields.adoc[]
+
+[[question-answer]]
+== 질문 응답
+
+=== curl Request
+include::{snippets}/question/answer/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/question/answer/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/question/answer/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/question/answer/path-parameters.adoc[]
+
+=== Request Fields
+include::{snippets}/question/answer/request-fields.adoc[]
+
+=== HTTP Response
+include::{snippets}/question/answer/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/question/answer/response-fields.adoc[]
+
+[[question-delete]]
+== 질문 삭제
+
+=== curl Request
+include::{snippets}/question/delete/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/question/delete/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/question/delete/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/question/delete/path-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/question/delete/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/question/delete/response-fields.adoc[]
+
+[[question-find]]
+== 질문 조회
+
+=== curl Request
+include::{snippets}/question/find/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/question/find/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/question/find/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/question/find/path-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/question/find/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/question/find/response-fields.adoc[]
+
+[[question-find-all]]
+== 질문 리스트 조회
+
+=== curl Request
+include::{snippets}/question/findAll/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/question/findAll/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/question/findAll/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/question/findAll/path-parameters.adoc[]
+
+=== Request Parameters
+include::{snippets}/question/findAll/request-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/question/findAll/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/question/findAll/response-fields.adoc[]
