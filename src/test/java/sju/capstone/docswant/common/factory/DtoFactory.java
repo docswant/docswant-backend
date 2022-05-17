@@ -1,11 +1,15 @@
 package sju.capstone.docswant.common.factory;
 
+import org.apache.tomcat.jni.Local;
 import sju.capstone.docswant.domain.member.model.dto.AccountDto;
 import sju.capstone.docswant.domain.member.model.dto.DoctorDto;
 import sju.capstone.docswant.domain.member.model.dto.PatientDto;
 import sju.capstone.docswant.domain.question.model.dto.QuestionDto;
+import sju.capstone.docswant.domain.rounding.model.dto.RoundingDto;
+import sju.capstone.docswant.domain.rounding.model.entity.RoundingStatus;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -178,6 +182,24 @@ public class DtoFactory {
     public static QuestionDto.Request getQuestionAnswerRequestDto() {
         return QuestionDto.Request.builder()
                 .answer("answer")
+                .build();
+    }
+
+    public static RoundingDto.Request getRoundingRequestDto() {
+        return RoundingDto.Request.builder()
+                .roundingDate(LocalDate.of(2022, 5, 17))
+                .roundingTime(LocalTime.of(12, 0))
+                .hospitalRoom(300)
+                .build();
+    }
+
+    public static RoundingDto.Response getRoundingResponseDto() {
+        return RoundingDto.Response.builder()
+                .id(1L)
+                .roundingDate(LocalDate.of(2022, 5, 17))
+                .roundingTime(LocalTime.of(12, 0))
+                .hospitalRoom(300)
+                .roundingStatus(RoundingStatus.TODO)
                 .build();
     }
 
