@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sju.capstone.docswant.domain.member.model.entity.Account;
 import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
+import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -28,6 +29,9 @@ public class Doctor extends Account {
     @OneToMany(mappedBy = "doctor")
     private List<Patient> patients = new ArrayList<>();
 
+    @OneToMany(mappedBy = "doctor")
+    private List<Rounding> roundings = new ArrayList<>();
+
     @Builder
     public Doctor(String code, String username, String password, String name, String major) {
         super(code, username, password);
@@ -41,5 +45,9 @@ public class Doctor extends Account {
 
     public void update(String username, String password) {
         updateAccount(username, password);
+    }
+
+    public void addRounding(Rounding rounding) {
+        this.roundings.add(rounding);
     }
 }

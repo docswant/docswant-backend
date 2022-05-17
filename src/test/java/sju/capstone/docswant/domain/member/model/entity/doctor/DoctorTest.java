@@ -3,6 +3,7 @@ package sju.capstone.docswant.domain.member.model.entity.doctor;
 import org.junit.jupiter.api.Test;
 import sju.capstone.docswant.common.factory.EntityFactory;
 import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
+import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -34,5 +35,18 @@ class DoctorTest {
         //then
         assertThat(doctor.getUsername()).isEqualTo(username);
         assertThat(doctor.getPassword()).isEqualTo(password);
+    }
+
+    @Test
+    void 회진_추가_테스트() {
+        //given
+        Doctor doctor = EntityFactory.getDoctorEntity();
+        Rounding rounding = EntityFactory.getRoundingEntity();
+
+        //when
+        doctor.addRounding(rounding);
+
+        //then
+        assertThat(doctor.getRoundings().contains(rounding)).isTrue();
     }
 }

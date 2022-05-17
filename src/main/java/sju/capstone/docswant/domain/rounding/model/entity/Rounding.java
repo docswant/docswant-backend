@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import sju.capstone.docswant.common.entity.BaseTimeEntity;
+import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 
 import javax.persistence.*;
 
@@ -28,10 +29,18 @@ public class Rounding extends BaseTimeEntity {
     @Column(name = "rounding_status", nullable = false)
     private RoundingStatus roundingStatus;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "doctor_code")
+    private Doctor doctor;
+
     @Builder
     public Rounding(RoundingSchedule roundingSchedule, int hospitalRoom) {
         this.roundingSchedule = roundingSchedule;
         this.hospitalRoom = hospitalRoom;
         this.roundingStatus = RoundingStatus.TODO;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 }
