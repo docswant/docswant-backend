@@ -5,6 +5,7 @@ import sju.capstone.docswant.common.factory.DtoFactory;
 import sju.capstone.docswant.common.factory.EntityFactory;
 import sju.capstone.docswant.domain.member.model.dto.PatientDto;
 import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
+import sju.capstone.docswant.domain.question.model.entity.Question;
 
 import java.time.LocalDate;
 
@@ -40,6 +41,20 @@ class PatientTest {
         assertThat(patient.getName()).isEqualTo(requestDto.getName());
         assertThat(patient.getBirthDate()).isEqualTo(requestDto.getBirthDate());
         assertThat(patient.getPatientSchedule().getDischargeDate()).isEqualTo(requestDto.getDischargeDate());
+    }
+
+    @Test
+    void 질문_추가_테스트() {
+        //given
+        Question question = EntityFactory.getQuestionEntity();
+        Patient patient = EntityFactory.getPatientEntity();
+
+        //when
+        patient.addQuestion(question);
+
+        //then
+        assertThat(patient.getQuestions().size()).isEqualTo(1);
+        assertThat(patient.getQuestions().get(0).getContent()).isEqualTo(question.getContent());
     }
 
 }
