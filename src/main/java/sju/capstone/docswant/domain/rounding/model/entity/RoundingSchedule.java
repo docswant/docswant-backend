@@ -26,4 +26,13 @@ public class RoundingSchedule {
         this.roundingDate = roundingDate;
         this.roundingTime = roundingTime;
     }
+
+    public void updateSchedule(LocalDate roundingDate, LocalTime roundingTime) {
+        if (roundingDate != null) {
+            this.roundingDate = roundingDate;
+        }
+        if (roundingTime != null) {
+            this.roundingTime = roundingTime;
+        }
+    }
 }
