@@ -1,0 +1,171 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+
+= Rounding API Docs
+권준원
+1.0.0, 20/05/2022
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+:operation-http-request-title: Example Request
+:operation-http-response-title: Example Response
+
+[[rounding-create]]
+== 회진 생성
+
+=== curl Request
+include::{snippets}/rounding/create/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/rounding/create/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/rounding/create/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/rounding/create/path-parameters.adoc[]
+
+=== Request Fields
+include::{snippets}/rounding/create/request-fields.adoc[]
+
+=== HTTP Response
+include::{snippets}/rounding/create/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/rounding/create/response-fields.adoc[]
+
+[[rounding-update]]
+== 회진 수정
+
+=== curl Request
+include::{snippets}/rounding/update/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/rounding/update/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/rounding/update/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/rounding/update/path-parameters.adoc[]
+
+=== Request Fields
+include::{snippets}/rounding/update/request-fields.adoc[]
+
+=== HTTP Response
+include::{snippets}/rounding/update/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/rounding/update/response-fields.adoc[]
+
+[[rounding-delete]]
+== 회진 삭제
+
+=== curl Request
+include::{snippets}/rounding/delete/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/rounding/delete/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/rounding/delete/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/rounding/delete/path-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/rounding/delete/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/rounding/delete/response-fields.adoc[]
+
+[[rounding-delete-all]]
+== 회진 전체 삭제
+
+=== curl Request
+include::{snippets}/rounding/deleteAll/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/rounding/deleteAll/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/rounding/deleteAll/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/rounding/deleteAll/path-parameters.adoc[]
+
+=== Request Parameters
+include::{snippets}/rounding/deleteAll/request-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/rounding/deleteAll/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/rounding/deleteAll/response-fields.adoc[]
+
+[[rounding-change-status]]
+== 회진 상태 변경
+
+=== curl Request
+include::{snippets}/rounding/changeStatus/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/rounding/changeStatus/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/rounding/changeStatus/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/rounding/changeStatus/path-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/rounding/changeStatus/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/rounding/changeStatus/response-fields.adoc[]
+
+[[rounding-find]]
+== 회진 조회
+
+=== curl Request
+include::{snippets}/rounding/find/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/rounding/find/http-request.adoc[]}
+
+=== Request Headers
+include::{snippets}/rounding/find/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/rounding/find/path-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/rounding/find/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/rounding/find/response-fields.adoc[]
+
+[[rounding-find-all-by-date]]
+== 날짜별 회진 조회
+
+=== curl Request
+include::{snippets}/rounding/findAllByDate/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/rounding/findAllByDate/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/rounding/findAllByDate/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/rounding/findAllByDate/path-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/rounding/findAllByDate/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/rounding/findAllByDate/response-fields.adoc[]
