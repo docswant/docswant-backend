@@ -20,6 +20,7 @@ public class Rounding extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "rounding_id")
     private Long id;
 
     @Embedded
