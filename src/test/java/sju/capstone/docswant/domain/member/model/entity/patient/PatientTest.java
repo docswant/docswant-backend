@@ -6,6 +6,7 @@ import sju.capstone.docswant.common.factory.EntityFactory;
 import sju.capstone.docswant.domain.member.model.dto.PatientDto;
 import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 import sju.capstone.docswant.domain.question.model.entity.Question;
+import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
 
 import java.time.LocalDate;
 
@@ -57,4 +58,16 @@ class PatientTest {
         assertThat(patient.getQuestions().get(0).getContent()).isEqualTo(question.getContent());
     }
 
+    @Test
+    void 회진_추가_테스트() {
+        //given
+        Rounding rounding = EntityFactory.getRoundingEntity();
+        Patient patient = EntityFactory.getPatientEntity();
+
+        //when
+        patient.addRounding(rounding);
+
+        //then
+        assertThat(patient.getRoundings().contains(rounding)).isTrue();
+    }
 }
