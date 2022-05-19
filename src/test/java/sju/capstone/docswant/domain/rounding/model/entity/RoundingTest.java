@@ -41,7 +41,7 @@ class RoundingTest {
     void 회진_수정_테스트() {
         //given
         Rounding rounding = EntityFactory.getRoundingEntity();
-        RoundingDto.Request requestDto = DtoFactory.getRoundingUpdateRequestDto();
+        RoundingDto.UpdateRequest requestDto = DtoFactory.getRoundingUpdateRequestDto();
 
         //when
         rounding.update(requestDto.getRoundingDate(), requestDto.getRoundingTime());
