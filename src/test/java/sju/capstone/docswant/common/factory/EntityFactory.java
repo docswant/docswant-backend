@@ -5,7 +5,6 @@ import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
 import sju.capstone.docswant.domain.member.model.entity.patient.PatientSchedule;
 import sju.capstone.docswant.domain.question.model.entity.Question;
 import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
-import sju.capstone.docswant.domain.rounding.model.entity.RoundingSchedule;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -107,14 +106,38 @@ public class EntityFactory {
     }
 
     public static Rounding getRoundingEntity() {
-        RoundingSchedule roundingSchedule = RoundingSchedule.builder()
+        Rounding rounding = Rounding.builder()
                 .roundingDate(LocalDate.of(2022, 5, 17))
                 .roundingTime(LocalTime.of(12, 0))
                 .build();
-        return Rounding.builder()
-                .roundingSchedule(roundingSchedule)
-                .hospitalRoom(300)
+        rounding.setDoctor(getDoctorEntity());
+        rounding.setPatient(getPatientEntity());
+        return rounding;
+    }
+
+    public static List<Rounding> getRoundingEntities() {
+        Rounding rounding1 = Rounding.builder()
+                .roundingDate(LocalDate.of(2022, 5, 17))
+                .roundingTime(LocalTime.of(12, 0))
                 .build();
+        rounding1.setDoctor(getDoctorEntity());
+        rounding1.setPatient(getPatientEntity());
+
+        Rounding rounding2 = Rounding.builder()
+                .roundingDate(LocalDate.of(2022, 5, 17))
+                .roundingTime(LocalTime.of(12, 5))
+                .build();
+        rounding2.setDoctor(getDoctorEntity());
+        rounding2.setPatient(getPatientEntity());
+
+        Rounding rounding3 = Rounding.builder()
+                .roundingDate(LocalDate.of(2022, 5, 17))
+                .roundingTime(LocalTime.of(12, 10))
+                .build();
+        rounding3.setDoctor(getDoctorEntity());
+        rounding3.setPatient(getPatientEntity());
+
+        return Arrays.asList(rounding1, rounding2, rounding3);
     }
 
 }
