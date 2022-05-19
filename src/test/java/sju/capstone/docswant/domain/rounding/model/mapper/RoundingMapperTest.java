@@ -6,6 +6,8 @@ import sju.capstone.docswant.common.factory.EntityFactory;
 import sju.capstone.docswant.domain.rounding.model.dto.RoundingDto;
 import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RoundingMapperTest {
@@ -22,6 +24,7 @@ class RoundingMapperTest {
 
         //then
         assertThat(resultDto.getRoundingDate()).isEqualTo(requestEntity.getRoundingSchedule().getRoundingDate());
+        assertThat(resultDto.getPatientName()).isEqualTo(requestEntity.getPatient().getName());
         assertThat(resultDto.getRoundingTime()).isEqualTo(requestEntity.getRoundingSchedule().getRoundingTime());
     }
 
@@ -37,4 +40,20 @@ class RoundingMapperTest {
         assertThat(resultEntity.getRoundingSchedule().getRoundingDate()).isEqualTo(requestDto.getRoundingDate());
         assertThat(resultEntity.getRoundingSchedule().getRoundingTime()).isEqualTo(requestDto.getRoundingTime());
     }
+
+    @Test
+    void 엔티티_리스트에서_리스트_DTO_테스트() {
+        //given
+        List<Rounding> roundings = EntityFactory.getRoundingEntities();
+
+        //when
+        List<RoundingDto.ListResponse> listResponseDto = mapper.toListDto(roundings);
+
+        //then
+        assertThat(listResponseDto.get(0).getHospitalRoom()).isEqualTo(roundings.get(0).getPatient().getHospitalRoom());
+        assertThat(listResponseDto.get(0).getRoundings().size()).isEqualTo(roundings.size());
+        assertThat(listResponseDto.get(0).getRoundings().get(0).getPatientName()).isEqualTo(roundings.get(0).getPatient().getName());
+        assertThat(listResponseDto.get(0).getRoundings().get(0).getRoundingStatus()).isEqualTo(roundings.get(0).getRoundingStatus());
+    }
+
 }

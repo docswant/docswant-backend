@@ -1,6 +1,5 @@
 package sju.capstone.docswant.common.factory;
 
-import org.apache.tomcat.jni.Local;
 import sju.capstone.docswant.domain.member.model.dto.AccountDto;
 import sju.capstone.docswant.domain.member.model.dto.DoctorDto;
 import sju.capstone.docswant.domain.member.model.dto.PatientDto;
@@ -187,9 +186,9 @@ public class DtoFactory {
 
     public static RoundingDto.Request getRoundingRequestDto() {
         return RoundingDto.Request.builder()
+                .code("PATIENT001")
                 .roundingDate(LocalDate.of(2022, 5, 17))
                 .roundingTime(LocalTime.of(12, 0))
-                .hospitalRoom(300)
                 .build();
     }
 
@@ -197,9 +196,36 @@ public class DtoFactory {
         return RoundingDto.Response.builder()
                 .id(1L)
                 .roundingDate(LocalDate.of(2022, 5, 17))
+                .patientName("zooneon")
                 .roundingTime(LocalTime.of(12, 0))
-                .hospitalRoom(300)
                 .roundingStatus(RoundingStatus.TODO)
+                .build();
+    }
+
+    public static RoundingDto.UpdateRequest getRoundingUpdateRequestDto() {
+        return RoundingDto.UpdateRequest.builder()
+                .roundingDate(LocalDate.of(2022, 5, 18))
+                .roundingTime(LocalTime.of(12, 30))
+                .build();
+    }
+
+    public static RoundingDto.Response getRoundingUpdateResponseDto() {
+        return RoundingDto.Response.builder()
+                .id(1L)
+                .roundingDate(LocalDate.of(2022, 5, 18))
+                .patientName("zooneon")
+                .roundingTime(LocalTime.of(12, 30))
+                .roundingStatus(RoundingStatus.TODO)
+                .build();
+    }
+
+    public static RoundingDto.Response getRoundingChangeStatusResponseDto() {
+        return RoundingDto.Response.builder()
+                .id(1L)
+                .roundingDate(LocalDate.of(2022, 5, 17))
+                .patientName("zooneon")
+                .roundingTime(LocalTime.of(12, 0))
+                .roundingStatus(RoundingStatus.DONE)
                 .build();
     }
 

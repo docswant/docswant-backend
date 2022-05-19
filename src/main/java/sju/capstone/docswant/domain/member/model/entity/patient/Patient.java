@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import sju.capstone.docswant.domain.member.model.entity.Account;
 import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 import sju.capstone.docswant.domain.question.model.entity.Question;
+import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -43,6 +44,9 @@ public class Patient extends Account {
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     private List<Question> questions = new ArrayList<>();
 
+    @OneToMany(mappedBy = "patient")
+    private List<Rounding> roundings = new ArrayList<>();
+
     @Builder
     public Patient(String code, String username, String password, String name, LocalDate birthDate,
                    PatientSchedule patientSchedule, String diseaseName, int hospitalRoom) {
@@ -73,4 +77,7 @@ public class Patient extends Account {
         this.questions.add(question);
     }
 
+    public void addRounding(Rounding rounding) {
+        this.roundings.add(rounding);
+    }
 }
