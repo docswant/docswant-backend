@@ -135,7 +135,7 @@ include::{snippets}/rounding/changeStatus/response-fields.adoc[]
 include::{snippets}/rounding/find/curl-request.adoc[]
 
 === HTTP Request
-include::{snippets}/rounding/find/http-request.adoc[]}
+include::{snippets}/rounding/find/http-request.adoc[]
 
 === Request Headers
 include::{snippets}/rounding/find/request-headers.adoc[]
