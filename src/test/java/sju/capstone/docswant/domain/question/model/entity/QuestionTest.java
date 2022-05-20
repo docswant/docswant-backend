@@ -38,7 +38,7 @@ class QuestionTest {
     void 질문_응답_테스트() {
         //given
         Question question = EntityFactory.getQuestionEntity();
-        String answer = "answer";
+        String answer = "update answer";
 
         //when
         question.answer(answer);

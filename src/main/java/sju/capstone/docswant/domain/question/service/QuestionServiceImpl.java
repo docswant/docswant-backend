@@ -45,7 +45,7 @@ public class QuestionServiceImpl implements QuestionService {
     @DoctorOnly
     @Transactional
     @Override
-    public QuestionDto.Response update(Long id, QuestionDto.Request requestDto) {
+    public QuestionDto.Response update(Long id, QuestionDto.UpdateRequest requestDto) {
         Question question = questionRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
         question.update(requestDto.getContent());
         log.info("update success. id = {}", question.getId());
@@ -55,7 +55,7 @@ public class QuestionServiceImpl implements QuestionService {
     @PatientOnly
     @Transactional
     @Override
-    public QuestionDto.Response answer(Long id, QuestionDto.Request requestDto) {
+    public QuestionDto.Response answer(Long id, QuestionDto.AnswerRequest requestDto) {
         Question question = questionRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
         question.answer(requestDto.getAnswer());
         log.info("answer success. id = {}", question.getId());

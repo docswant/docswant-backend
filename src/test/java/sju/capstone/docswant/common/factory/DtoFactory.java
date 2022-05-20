@@ -165,8 +165,8 @@ public class DtoFactory {
                 .build();
     }
 
-    public static QuestionDto.Request getQuestionUpdateRequestDto() {
-        return QuestionDto.Request.builder()
+    public static QuestionDto.UpdateRequest getQuestionUpdateRequestDto() {
+        return QuestionDto.UpdateRequest.builder()
                 .content("update content")
                 .build();
     }
@@ -178,8 +178,8 @@ public class DtoFactory {
                 .build();
     }
 
-    public static QuestionDto.Request getQuestionAnswerRequestDto() {
-        return QuestionDto.Request.builder()
+    public static QuestionDto.AnswerRequest getQuestionAnswerRequestDto() {
+        return QuestionDto.AnswerRequest.builder()
                 .answer("answer")
                 .build();
     }

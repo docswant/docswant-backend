@@ -26,14 +26,18 @@ public class Question extends BaseTimeEntity {
     @Column(name = "question_answer", length = 100)
     private String answer;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "question_answer_status", nullable = false)
+    private AnswerStatus answerStatus;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_code")
     private Patient patient;
 
     @Builder
-    public Question(String content, String answer) {
+    public Question(String content) {
         this.content = content;
-        this.answer = answer;
+        this.answerStatus = AnswerStatus.TODO;
     }
 
     public void setPatient(Patient patient) {
@@ -48,5 +52,6 @@ public class Question extends BaseTimeEntity {
 
     public void answer(String answer) {
         this.answer = answer;
+        this.answerStatus = AnswerStatus.DONE;
     }
 }
