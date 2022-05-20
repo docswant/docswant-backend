@@ -13,6 +13,7 @@ import sju.capstone.docswant.common.factory.EntityFactory;
 import sju.capstone.docswant.common.format.PageFormat;
 import sju.capstone.docswant.domain.member.repository.patient.PatientRepository;
 import sju.capstone.docswant.domain.question.model.dto.QuestionDto;
+import sju.capstone.docswant.domain.question.model.entity.AnswerStatus;
 import sju.capstone.docswant.domain.question.model.entity.Question;
 import sju.capstone.docswant.domain.question.repository.QuestionRepository;
 
@@ -46,13 +47,14 @@ class QuestionServiceTest {
 
         //then
         assertThat(result.getContent()).isEqualTo(requestDto.getContent());
+        assertThat(result.getAnswerStatus()).isEqualTo(AnswerStatus.TODO);
     }
 
     @Test
     void 질문_수정_테스트() {
         //given
         Long id = 1L;
-        QuestionDto.Request requestDto = DtoFactory.getQuestionUpdateRequestDto();
+        QuestionDto.UpdateRequest requestDto = DtoFactory.getQuestionUpdateRequestDto();
         given(questionRepository.findById(any(Long.class))).willReturn(Optional.of(EntityFactory.getQuestionEntity()));
 
         //when
@@ -66,7 +68,7 @@ class QuestionServiceTest {
     void 질문_응답_테스트() {
         //given
         Long id = 1L;
-        QuestionDto.Request requestDto = DtoFactory.getQuestionAnswerRequestDto();
+        QuestionDto.AnswerRequest requestDto = DtoFactory.getQuestionAnswerRequestDto();
         given(questionRepository.findById(any(Long.class))).willReturn(Optional.of(EntityFactory.getQuestionEntity()));
 
         //when
@@ -74,6 +76,7 @@ class QuestionServiceTest {
 
         //then
         assertThat(result.getAnswer()).isEqualTo(requestDto.getAnswer());
+        assertThat(result.getAnswerStatus()).isEqualTo(AnswerStatus.DONE);
     }
 
     @Test

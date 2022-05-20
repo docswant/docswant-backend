@@ -28,14 +28,14 @@ public class QuestionController {
 
     @PatchMapping("/patient/{code}/question/{id}/content")
     public ResponseEntity<ResponseFormat<QuestionDto.Response>> updateApi(
-            @PathVariable(name = "code") String code, @PathVariable(name = "id") Long id, @RequestBody @Valid QuestionDto.Request requestDto) {
+            @PathVariable(name = "code") String code, @PathVariable(name = "id") Long id, @RequestBody @Valid QuestionDto.UpdateRequest requestDto) {
         QuestionDto.Response responseDto = questionService.update(id, requestDto);
         return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(responseDto));
     }
 
     @PatchMapping("/patient/{code}/question/{id}/answer")
     public ResponseEntity<ResponseFormat<QuestionDto.Response>> answerApi(
-            @PathVariable(name = "code") String code, @PathVariable(name = "id") Long id, @RequestBody @Valid QuestionDto.Request requestDto) {
+            @PathVariable(name = "code") String code, @PathVariable(name = "id") Long id, @RequestBody @Valid QuestionDto.AnswerRequest requestDto) {
         QuestionDto.Response responseDto = questionService.answer(id, requestDto);
         return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(responseDto));
     }

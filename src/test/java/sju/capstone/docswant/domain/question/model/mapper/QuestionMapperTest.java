@@ -37,6 +37,5 @@ class QuestionMapperTest {
 
         //then
         assertThat(resultEntity.getContent()).isEqualTo(requestDto.getContent());
-        assertThat(resultEntity.getAnswer()).isEqualTo(requestDto.getAnswer());
     }
 }

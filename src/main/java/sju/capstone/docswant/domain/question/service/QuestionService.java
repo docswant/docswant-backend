@@ -9,9 +9,9 @@ public interface QuestionService {
 
     QuestionDto.Response create(String code, QuestionDto.Request requestDto);
 
-    QuestionDto.Response update(Long id, QuestionDto.Request requestDto);
+    QuestionDto.Response update(Long id, QuestionDto.UpdateRequest requestDto);
 
-    QuestionDto.Response answer(Long id, QuestionDto.Request requestDto);
+    QuestionDto.Response answer(Long id, QuestionDto.AnswerRequest requestDto);
 
     void delete(Long id);
 

@@ -66,7 +66,8 @@ class QuestionControllerTest extends IntegrationTest {
                                 fieldWithPath("timestamp").description("응답 시간"),
                                 fieldWithPath("data").description("응답 데이터"),
                                 fieldWithPath("data.id").description("질문 id"),
-                                fieldWithPath("data.content").description("질문 내용")
+                                fieldWithPath("data.content").description("질문 내용"),
+                                fieldWithPath("data.answerStatus").description("질문 응답 상태")
                         )
                 ))
         ;
@@ -76,7 +77,7 @@ class QuestionControllerTest extends IntegrationTest {
     void 질문_수정_API_테스트() throws Exception {
         //given
         String updateUrl = "/api/v1/patient/{code}/question/{id}/content";
-        QuestionDto.Request requestDto = DtoFactory.getQuestionUpdateRequestDto();
+        QuestionDto.UpdateRequest requestDto = DtoFactory.getQuestionUpdateRequestDto();
 
         //when
         ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.patch(updateUrl, patient.getCode(), 1L)
@@ -109,7 +110,8 @@ class QuestionControllerTest extends IntegrationTest {
                                 fieldWithPath("timestamp").description("응답 시간"),
                                 fieldWithPath("data").description("응답 데이터"),
                                 fieldWithPath("data.id").description("질문 id"),
-                                fieldWithPath("data.content").description("질문 내용")
+                                fieldWithPath("data.content").description("질문 내용"),
+                                fieldWithPath("data.answerStatus").description("질문 응답 상태")
                         )
                 ))
         ;
@@ -122,7 +124,7 @@ class QuestionControllerTest extends IntegrationTest {
     void 질문_응답_API_테스트() throws Exception {
         //given
         String answerUrl = "/api/v1/patient/{code}/question/{id}/answer";
-        QuestionDto.Request requestDto = DtoFactory.getQuestionAnswerRequestDto();
+        QuestionDto.AnswerRequest requestDto = DtoFactory.getQuestionAnswerRequestDto();
 
         //when
         ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.patch(answerUrl, patient.getCode(), 1L)
@@ -156,7 +158,8 @@ class QuestionControllerTest extends IntegrationTest {
                                 fieldWithPath("data").description("응답 데이터"),
                                 fieldWithPath("data.id").description("질문 id"),
                                 fieldWithPath("data.content").description("질문 내용"),
-                                fieldWithPath("data.answer").description("질문 응답 내용")
+                                fieldWithPath("data.answer").description("질문 응답 내용"),
+                                fieldWithPath("data.answerStatus").description("질문 응답 상태")
                         )
                 ))
         ;
@@ -224,7 +227,8 @@ class QuestionControllerTest extends IntegrationTest {
                                 fieldWithPath("data").description("응답 데이터"),
                                 fieldWithPath("data.id").description("질문 id"),
                                 fieldWithPath("data.content").description("질문 내용"),
-                                fieldWithPath("data.answer").description("질문 응답 내용").optional()
+                                fieldWithPath("data.answer").description("질문 응답 내용").optional(),
+                                fieldWithPath("data.answerStatus").description("질문 응답 상태")
                         )
                 ))
         ;
@@ -268,7 +272,8 @@ class QuestionControllerTest extends IntegrationTest {
                                 fieldWithPath("data.content").description("질문 리스트"),
                                 fieldWithPath("data.content[*].id").description("환자 코드"),
                                 fieldWithPath("data.content[*].content").description("질문 내용"),
-                                fieldWithPath("data.content[*].answer").description("질문 응답 내용").optional()
+                                fieldWithPath("data.content[*].answer").description("질문 응답 내용").optional(),
+                                fieldWithPath("data.content[*].answerStatus").description("질문 응답 상태")
                         )
                 ))
         ;
