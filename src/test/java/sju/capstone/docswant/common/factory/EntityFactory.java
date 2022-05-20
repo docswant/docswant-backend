@@ -82,27 +82,30 @@ public class EntityFactory {
     }
 
     public static Question getQuestionEntity() {
-        return Question.builder()
+        Question question = Question.builder()
                 .content("content")
-                .answer("answer")
                 .build();
+        question.answer("answer");
+        return question;
     }
 
     public static List<Question> getQuestionEntities() {
-        return Arrays.asList(
-                Question.builder()
-                        .content("content1")
-                        .answer("answer1")
-                        .build(),
-                Question.builder()
-                        .content("content2")
-                        .answer("answer2")
-                        .build(),
-                Question.builder()
-                        .content("content3")
-                        .answer("answer3")
-                        .build()
-        );
+        Question question1 = Question.builder()
+                .content("content1")
+                .build();
+        question1.answer("answer1");
+
+        Question question2 = Question.builder()
+                .content("content2")
+                .build();
+        question2.answer("answer2");
+
+        Question question3 = Question.builder()
+                .content("content3")
+                .build();
+        question3.answer("answer3");
+
+        return Arrays.asList(question1, question2, question3);
     }
 
     public static Rounding getRoundingEntity() {
