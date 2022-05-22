@@ -6,17 +6,14 @@ import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 import sju.capstone.docswant.domain.member.model.dto.PatientDto;
 import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
+import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
 
 @Mapper
 public interface PatientMapper {
 
     PatientMapper INSTANCE = Mappers.getMapper(PatientMapper.class);
 
-    @Mappings({
-            @Mapping(target = "patientSchedule.hospitalizationDate", source = "hospitalizationDate"),
-            @Mapping(target = "patientSchedule.surgeryDate", source = "surgeryDate"),
-            @Mapping(target = "patientSchedule.dischargeDate", source = "dischargeDate")
-    })
+    @Mapping(target = "patientSchedule.hospitalizationDate", source = "hospitalizationDate")
     Patient toEntity(PatientDto.Request requestDto);
 
     @Mappings({
@@ -25,5 +22,16 @@ public interface PatientMapper {
             @Mapping(target = "dischargeDate", source = "patientSchedule.dischargeDate")
     })
     PatientDto.Response toDto(Patient patient);
+
+    @Mappings({
+            @Mapping(target = "patientName", source = "patient.name"),
+            @Mapping(target = "hospitalizationDate", source = "patient.patientSchedule.hospitalizationDate"),
+            @Mapping(target = "surgeryDate", source = "patient.patientSchedule.surgeryDate"),
+            @Mapping(target = "dischargeDate", source = "patient.patientSchedule.dischargeDate"),
+            @Mapping(target = "doctorName", source = "patient.doctor.name"),
+            @Mapping(target = "doctorMajor", source = "patient.doctor.major"),
+            @Mapping(target = "roundingTime", source = "rounding.roundingSchedule.roundingTime")
+    })
+    PatientDto.PatientRoundingResponse toPatientRoundingDto(Patient patient, Rounding rounding);
 
 }

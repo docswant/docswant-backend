@@ -31,7 +31,7 @@ class PatientTest {
     void 정보수정_테스트() {
         //given
         Patient patient = EntityFactory.getPatientEntity();
-        PatientDto.Request requestDto = DtoFactory.getPatientUpdateRequestDto();
+        PatientDto.UpdateRequest requestDto = DtoFactory.getPatientUpdateRequestDto();
 
         //when
         patient.update(requestDto.getUsername(), requestDto.getPassword(), requestDto.getName(), requestDto.getBirthDate(),
