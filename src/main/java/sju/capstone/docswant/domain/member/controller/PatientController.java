@@ -29,7 +29,7 @@ public class PatientController {
         return ResponseEntity.status(HttpStatus.CREATED).body(ResponseFormat.of(responseDto));
     }
 
-    @PutMapping("/{code}")
+    @PatchMapping("/{code}")
     public ResponseEntity<ResponseFormat<PatientDto.Response>> updateApi(@PathVariable(name = "code") String code, @RequestBody @Valid PatientDto.UpdateRequest requestDto) {
         PatientDto.Response responseDto = patientService.update(code, requestDto);
         return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(responseDto));

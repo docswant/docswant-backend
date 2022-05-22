@@ -80,7 +80,7 @@ class PatientControllerTest extends IntegrationTest {
         PatientDto.UpdateRequest requestDto = DtoFactory.getPatientUpdateRequestDto();
 
         //when
-        ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.put(updateUrl, code)
+        ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.patch(updateUrl, code)
                 .header("Authorization", "Bearer " + jwtToken.createAccessToken(EntityFactory.getDoctorEntity()))
                 .contentType(MediaType.APPLICATION_JSON)
                 .characterEncoding(StandardCharsets.UTF_8)
