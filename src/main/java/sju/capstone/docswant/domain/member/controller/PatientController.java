@@ -1,6 +1,7 @@
 package sju.capstone.docswant.domain.member.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import sju.capstone.docswant.domain.member.model.entity.Account;
 import sju.capstone.docswant.domain.member.service.patient.PatientService;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -28,7 +30,7 @@ public class PatientController {
     }
 
     @PutMapping("/{code}")
-    public ResponseEntity<ResponseFormat<PatientDto.Response>> updateApi(@PathVariable(name = "code") String code, @RequestBody @Valid PatientDto.Request requestDto) {
+    public ResponseEntity<ResponseFormat<PatientDto.Response>> updateApi(@PathVariable(name = "code") String code, @RequestBody @Valid PatientDto.UpdateRequest requestDto) {
         PatientDto.Response responseDto = patientService.update(code, requestDto);
         return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(responseDto));
     }
@@ -42,6 +44,13 @@ public class PatientController {
     @GetMapping("/{code}")
     public ResponseEntity<ResponseFormat<PatientDto.Response>> findApi(@PathVariable(name = "code") String code) {
         PatientDto.Response responseDto = patientService.find(code);
+        return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(responseDto));
+    }
+
+    @GetMapping("/{code}/rounding")
+    public ResponseEntity<ResponseFormat<PatientDto.PatientRoundingResponse>> findWithRoundingApi(
+            @PathVariable(name = "code") String code, @RequestParam(name = "date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate today) {
+        PatientDto.PatientRoundingResponse responseDto = patientService.findWithRounding(code, today);
         return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(responseDto));
     }
 

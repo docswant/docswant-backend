@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import sju.capstone.docswant.common.annotation.DoctorOnly;
+import sju.capstone.docswant.common.annotation.PatientOnly;
 import sju.capstone.docswant.common.format.PageFormat;
 import sju.capstone.docswant.core.error.ErrorCode;
 import sju.capstone.docswant.core.error.exception.EntityNotFoundException;
@@ -17,6 +18,8 @@ import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
 import sju.capstone.docswant.domain.member.model.mapper.PatientMapper;
 import sju.capstone.docswant.domain.member.repository.doctor.DoctorRepository;
 import sju.capstone.docswant.domain.member.repository.patient.PatientRepository;
+import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
+import sju.capstone.docswant.domain.rounding.repository.RoundingRepository;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -30,6 +33,7 @@ public class PatientServiceImpl implements PatientService {
 
     private final PatientRepository patientRepository;
     private final DoctorRepository doctorRepository;
+    private final RoundingRepository roundingRepository;
     private final PasswordEncoder passwordEncoder;
     private final PatientMapper mapper = PatientMapper.INSTANCE;
 
@@ -49,7 +53,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Transactional
     @Override
-    public PatientDto.Response update(String code, PatientDto.Request requestDto) {
+    public PatientDto.Response update(String code, PatientDto.UpdateRequest requestDto) {
         Patient patient = patientRepository.findByCode(code).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
         if (requestDto.getPassword() != null) {
             String encodedPassword = passwordEncoder.encode(requestDto.getPassword());
@@ -76,7 +80,18 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public PatientDto.Response find(String code) {
         Patient patient = patientRepository.findByCode(code).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
+        log.info("patient find success. code = {}", patient.getCode());
         return mapper.toDto(patient);
+    }
+
+    @PatientOnly
+    @Transactional(readOnly = true)
+    @Override
+    public PatientDto.PatientRoundingResponse findWithRounding(String code, LocalDate today) {
+        Patient patient = patientRepository.findByCode(code).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
+        Rounding rounding = roundingRepository.findByPatientAndRoundingScheduleRoundingDate(patient, today);
+        log.info("patient find with rounding success. code = {}, date = [}", patient.getCode(), today);
+        return mapper.toPatientRoundingDto(patient, rounding);
     }
 
     @DoctorOnly
