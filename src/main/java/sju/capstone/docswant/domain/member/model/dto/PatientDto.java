@@ -41,10 +41,10 @@ public class PatientDto {
         private String diseaseName;
 
         @NotNull(message = "필수 값입니다.")
-        private int hospitalRoom;
+        private Integer hospitalRoom;
 
         @Builder
-        public Request(String code, String name, LocalDate birthDate, LocalDate hospitalizationDate, String diseaseName, int hospitalRoom) {
+        public Request(String code, String name, LocalDate birthDate, LocalDate hospitalizationDate, String diseaseName, Integer hospitalRoom) {
             this.code = code;
             this.name = name;
             this.birthDate = birthDate;
@@ -73,11 +73,11 @@ public class PatientDto {
         private LocalDate dischargeDate;
 
         private String diseaseName;
-        private int hospitalRoom;
+        private Integer hospitalRoom;
 
         @Builder
         public Response(String code, String name, LocalDate birthDate, LocalDate hospitalizationDate,
-                        LocalDate surgeryDate, LocalDate dischargeDate, String diseaseName, int hospitalRoom) {
+                        LocalDate surgeryDate, LocalDate dischargeDate, String diseaseName, Integer hospitalRoom) {
             this.code = code;
             this.name = name;
             this.birthDate = birthDate;
@@ -117,11 +117,11 @@ public class PatientDto {
         @Size(max = 50)
         private String diseaseName;
 
-        private int hospitalRoom;
+        private Integer hospitalRoom;
 
         @Builder
         public UpdateRequest(String username, String password, String name, LocalDate birthDate, LocalDate hospitalizationDate,
-                             LocalDate surgeryDate, LocalDate dischargeDate, String diseaseName, int hospitalRoom) {
+                             LocalDate surgeryDate, LocalDate dischargeDate, String diseaseName, Integer hospitalRoom) {
             this.username = username;
             this.password = password;
             this.name = name;
@@ -153,7 +153,7 @@ public class PatientDto {
         private LocalDate dischargeDate;
 
         private String diseaseName;
-        private int hospitalRoom;
+        private Integer hospitalRoom;
         private String doctorName;
         private String doctorMajor;
 
@@ -162,7 +162,7 @@ public class PatientDto {
 
         @Builder
         public PatientRoundingResponse(String code, String patientName, LocalDate birthDate, LocalDate hospitalizationDate,
-                            LocalDate surgeryDate, LocalDate dischargeDate, String diseaseName, int hospitalRoom,
+                            LocalDate surgeryDate, LocalDate dischargeDate, String diseaseName, Integer hospitalRoom,
                             String doctorName, String doctorMajor, LocalTime roundingTime) {
             this.code = code;
             this.patientName = patientName;
