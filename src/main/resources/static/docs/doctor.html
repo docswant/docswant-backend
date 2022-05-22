@@ -542,7 +542,7 @@ Content-Length: 82
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-22 22:41:08",
+  "timestamp" : "2022-05-22 23:04:10",
   "data" : true
 }</code></pre>
 </div>
@@ -687,7 +687,7 @@ Content-Length: 188
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-22 22:41:08",
+  "timestamp" : "2022-05-22 23:04:09",
   "data" : {
     "code" : "DOCTOR002",
     "username" : "doctor",
@@ -761,9 +761,9 @@ Content-Length: 188
 <h3 id="_curl_request_3"><a class="link" href="#_curl_request_3">curl Request</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/doctor/DOCTOR001' -i -X PUT \
+<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/doctor/DOCTOR001' -i -X PATCH \
     -H 'Content-Type: application/json;charset=UTF-8' \
-    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMyMjY4NjgsImV4cCI6MTY1MzIzMDQ2OH0.o5n16Z8Qj5W1XMNzKvldfh1FL4bEOfkhWCxhud0x4i4' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMyMjgyNDksImV4cCI6MTY1MzIzMTg0OX0.YB4TVYiaUbHqWfYrfYXj_c5JZ5JjHs-MumfxU7G1JBE' \
     -H 'Accept: application/json' \
     -d '{
   "code" : "DOCTOR001",
@@ -779,9 +779,9 @@ Content-Length: 188
 <h3 id="_http_request_3"><a class="link" href="#_http_request_3">HTTP Request</a></h3>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PUT /api/v1/doctor/DOCTOR001 HTTP/1.1
+<pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PATCH /api/v1/doctor/DOCTOR001 HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMyMjY4NjgsImV4cCI6MTY1MzIzMDQ2OH0.o5n16Z8Qj5W1XMNzKvldfh1FL4bEOfkhWCxhud0x4i4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMyMjgyNDksImV4cCI6MTY1MzIzMTg0OX0.YB4TVYiaUbHqWfYrfYXj_c5JZ5JjHs-MumfxU7G1JBE
 Accept: application/json
 Content-Length: 143
 Host: docswant.zooneon.dev
@@ -880,7 +880,7 @@ Content-Length: 197
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-22 22:41:08",
+  "timestamp" : "2022-05-22 23:04:10",
   "data" : {
     "code" : "DOCTOR001",
     "username" : "update username",
