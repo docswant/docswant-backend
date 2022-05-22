@@ -101,6 +101,30 @@ include::{snippets}/patient/find/http-response.adoc[]
 === Response Fields
 include::{snippets}/patient/find/response-fields.adoc[]
 
+[[patient-find-with-rounding]]
+== 환자 메인페이지 조회
+
+=== curl Request
+include::{snippets}/patient/findWithRounding/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/patient/findWithRounding/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/patient/findWithRounding/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/patient/findWithRounding/path-parameters.adoc[]
+
+=== Request Parameters
+include::{snippets}/patient/findWithRounding/request-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/patient/findWithRounding/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/patient/findWithRounding/response-fields.adoc[]
+
 [[patient-find-all]]
 == 환자 리스트 조회
 
