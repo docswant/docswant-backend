@@ -114,7 +114,8 @@ class PatientServiceTest {
         PageFormat.Request pageRequest = new PageFormat.Request(1, 3);
         List<Patient> patients = EntityFactory.getPatientEntities();
         Page<Patient> patientPage = new PageImpl<>(patients);
-        given(patientRepository.findAllByDoctorCode(any(String.class), any(Pageable.class))).willReturn(patientPage);
+        given(doctorRepository.findByCode(any(String.class))).willReturn(Optional.of(EntityFactory.getDoctorEntity()));
+        given(patientRepository.findAllByDoctor(any(Doctor.class), any(Pageable.class))).willReturn(patientPage);
 
         //when
         PageFormat.Response<List<PatientDto.Response>> pageResponse = patientService.findAll(doctor, pageRequest);

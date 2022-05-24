@@ -24,6 +24,7 @@ import sju.capstone.docswant.domain.rounding.repository.RoundingRepository;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -98,9 +99,10 @@ public class PatientServiceImpl implements PatientService {
     @Transactional(readOnly = true)
     @Override
     public PageFormat.Response<List<PatientDto.Response>> findAll(Account account, PageFormat.Request pageRequest) {
-        Doctor doctor = (Doctor) account;
-        Page<Patient> patientPage = patientRepository.findAllByDoctorCode(doctor.getCode(), pageRequest.of());
+        Doctor doctor = doctorRepository.findByCode(account.getCode()).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
+        Page<Patient> patientPage = patientRepository.findAllByDoctor(doctor, pageRequest.of());
         List<PatientDto.Response> responseDtos = patientPage.getContent().stream().map(mapper::toDto).collect(Collectors.toList());
+        log.info("patient find all success. page = {}, size = {}", patientPage.getNumber(), patientPage.getNumberOfElements());
         return PageFormat.Response.of(patientPage.getNumber(), patientPage.hasNext(), responseDtos);
     }
 
