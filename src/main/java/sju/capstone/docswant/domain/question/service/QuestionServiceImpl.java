@@ -82,7 +82,8 @@ public class QuestionServiceImpl implements QuestionService {
     @Transactional(readOnly = true)
     @Override
     public PageFormat.Response<List<QuestionDto.Response>> findAll(String code, PageFormat.Request pageRequest) {
-        Page<Question> questionPage = questionRepository.findAllByPatientCode(code, pageRequest.of());
+        Patient patient = patientRepository.findByCode(code).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
+        Page<Question> questionPage = questionRepository.findAllByPatient(patient, pageRequest.of());
         List<QuestionDto.Response> responseDtos = questionPage.getContent().stream().map(mapper::toDto).collect(Collectors.toList());
         log.info("find all success. page = {}, size = {}", questionPage.getNumber(), questionPage.getNumberOfElements());
         return PageFormat.Response.of(questionPage.getNumber(), questionPage.hasNext(), responseDtos);
