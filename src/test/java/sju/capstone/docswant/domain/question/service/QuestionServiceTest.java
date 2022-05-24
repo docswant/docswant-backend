@@ -1,5 +1,6 @@
 package sju.capstone.docswant.domain.question.service;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import sju.capstone.docswant.common.factory.DtoFactory;
 import sju.capstone.docswant.common.factory.EntityFactory;
 import sju.capstone.docswant.common.format.PageFormat;
+import sju.capstone.docswant.core.error.exception.question.AlreadyAnsweredException;
 import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
 import sju.capstone.docswant.domain.member.repository.patient.PatientRepository;
 import sju.capstone.docswant.domain.question.model.dto.QuestionDto;
@@ -56,13 +58,16 @@ class QuestionServiceTest {
         //given
         Long id = 1L;
         QuestionDto.UpdateRequest requestDto = DtoFactory.getQuestionUpdateRequestDto();
-        given(questionRepository.findById(any(Long.class))).willReturn(Optional.of(EntityFactory.getQuestionEntity()));
+        Question question = EntityFactory.getQuestionEntity();
+        given(questionRepository.findById(any(Long.class))).willReturn(Optional.of(question));
 
         //when
         QuestionDto.Response result = questionService.update(id, requestDto);
+        question.answer("answer");
 
         //then
         assertThat(result.getContent()).isEqualTo(requestDto.getContent());
+        Assertions.assertThrows(AlreadyAnsweredException.class, () -> questionService.update(id, requestDto));
     }
 
     @Test

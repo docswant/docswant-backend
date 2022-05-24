@@ -10,9 +10,11 @@ import sju.capstone.docswant.common.annotation.PatientOnly;
 import sju.capstone.docswant.common.format.PageFormat;
 import sju.capstone.docswant.core.error.ErrorCode;
 import sju.capstone.docswant.core.error.exception.EntityNotFoundException;
+import sju.capstone.docswant.core.error.exception.question.AlreadyAnsweredException;
 import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
 import sju.capstone.docswant.domain.member.repository.patient.PatientRepository;
 import sju.capstone.docswant.domain.question.model.dto.QuestionDto;
+import sju.capstone.docswant.domain.question.model.entity.AnswerStatus;
 import sju.capstone.docswant.domain.question.model.entity.Question;
 import sju.capstone.docswant.domain.question.model.mapper.QuestionMapper;
 import sju.capstone.docswant.domain.question.repository.QuestionRepository;
@@ -46,6 +48,9 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public QuestionDto.Response update(Long id, QuestionDto.UpdateRequest requestDto) {
         Question question = questionRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
+        if (question.getAnswerStatus() == AnswerStatus.DONE) {
+            throw new AlreadyAnsweredException(ErrorCode.ALREADY_ANSWERED_QUESTION);
+        }
         question.update(requestDto.getContent());
         log.info("question update success. id = {}", question.getId());
         return mapper.toDto(question);
