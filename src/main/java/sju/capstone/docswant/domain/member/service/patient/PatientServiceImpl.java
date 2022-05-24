@@ -24,7 +24,6 @@ import sju.capstone.docswant.domain.rounding.repository.RoundingRepository;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -48,7 +47,7 @@ public class PatientServiceImpl implements PatientService {
         doctor.addPatient(patient);
         patient.setDoctor(doctor);
         patientRepository.save(patient);
-        log.info("register success. code = {}", patient.getCode());
+        log.info("patient register success. code = {}", patient.getCode());
         return mapper.toDto(patient);
     }
 
@@ -64,7 +63,7 @@ public class PatientServiceImpl implements PatientService {
             patient.update(requestDto.getUsername(), requestDto.getPassword(), requestDto.getName(), requestDto.getBirthDate(), requestDto.getHospitalizationDate(),
                     requestDto.getSurgeryDate(), requestDto.getDischargeDate(), requestDto.getDiseaseName(), requestDto.getHospitalRoom());
         }
-        log.info("update success. code = {}", patient.getCode());
+        log.info("patient update success. code = {}", patient.getCode());
         return mapper.toDto(patient);
     }
 
@@ -73,7 +72,7 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public void delete(String code) {
         patientRepository.deleteByCode(code);
-        log.info("delete success. code = {}", code);
+        log.info("patient delete success. code = {}", code);
         return;
     }
 
