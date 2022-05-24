@@ -85,15 +85,13 @@ public class EntityFactory {
         Question question = Question.builder()
                 .content("content")
                 .build();
-        question.answer("answer");
         return question;
     }
 
     public static List<Question> getQuestionEntities() {
         Question question1 = Question.builder()
-                .content("content1")
+                .content("content")
                 .build();
-        question1.answer("answer1");
 
         Question question2 = Question.builder()
                 .content("content2")
