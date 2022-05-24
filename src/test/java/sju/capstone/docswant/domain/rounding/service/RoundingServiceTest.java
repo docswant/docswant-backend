@@ -108,13 +108,13 @@ class RoundingServiceTest {
     void 날짜별_회진_조회_테스트() {
         //given
         String code = "code";
-        LocalDate roundingDate = LocalDate.of(2022, 5, 17);
+        LocalDate date = LocalDate.of(2022, 5, 17);
         List<Rounding> roundings = EntityFactory.getRoundingEntities();
         given(doctorRepository.findByCode(any(String.class))).willReturn(Optional.of(EntityFactory.getDoctorEntity()));
         given(roundingRepository.findAllByDoctorAndRoundingDateOrderByRoundingTimeAsc(any(Doctor.class), any(LocalDate.class))).willReturn(roundings);
 
         //when
-        List<RoundingDto.ListResponse> listResponseDto = roundingService.findAllByDate(code, roundingDate);
+        List<RoundingDto.ListResponse> listResponseDto = roundingService.findAllByDate(code, date);
 
         //then
         assertThat(listResponseDto.get(0).getHospitalRoom()).isEqualTo(roundings.get(0).getPatient().getHospitalRoom());
