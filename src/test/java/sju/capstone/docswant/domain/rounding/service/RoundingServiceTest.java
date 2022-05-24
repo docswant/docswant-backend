@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import sju.capstone.docswant.common.factory.DtoFactory;
 import sju.capstone.docswant.common.factory.EntityFactory;
+import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
 import sju.capstone.docswant.domain.member.repository.doctor.DoctorRepository;
 import sju.capstone.docswant.domain.member.repository.patient.PatientRepository;
@@ -109,7 +110,8 @@ class RoundingServiceTest {
         String code = "code";
         LocalDate roundingDate = LocalDate.of(2022, 5, 17);
         List<Rounding> roundings = EntityFactory.getRoundingEntities();
-        given(roundingRepository.findAllByDoctorCodeAndRoundingDateOrderByRoundingTimeAsc(any(String.class), any(LocalDate.class))).willReturn(roundings);
+        given(doctorRepository.findByCode(any(String.class))).willReturn(Optional.of(EntityFactory.getDoctorEntity()));
+        given(roundingRepository.findAllByDoctorAndRoundingDateOrderByRoundingTimeAsc(any(Doctor.class), any(LocalDate.class))).willReturn(roundings);
 
         //when
         List<RoundingDto.ListResponse> listResponseDto = roundingService.findAllByDate(code, roundingDate);

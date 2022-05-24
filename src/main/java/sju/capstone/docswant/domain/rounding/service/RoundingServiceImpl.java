@@ -95,7 +95,8 @@ public class RoundingServiceImpl implements RoundingService {
     @Transactional(readOnly = true)
     @Override
     public List<RoundingDto.ListResponse> findAllByDate(String code, LocalDate roundingDate) {
-        List<Rounding> roundings = roundingRepository.findAllByDoctorCodeAndRoundingDateOrderByRoundingTimeAsc(code, roundingDate);
+        Doctor doctor = doctorRepository.findByCode(code).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
+        List<Rounding> roundings = roundingRepository.findAllByDoctorAndRoundingDateOrderByRoundingTimeAsc(doctor, roundingDate);
         log.info("rounding find all success. doctor code = {}, rounding date = {}", code, roundingDate);
         return mapper.toListDto(roundings);
     }
