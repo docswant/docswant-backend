@@ -45,7 +45,6 @@ public class PatientServiceImpl implements PatientService {
         Patient patient = mapper.toEntity(requestDto);
         generateDefaultAccount(patient);
         doctor.addPatient(patient);
-        patient.setDoctor(doctor);
         patientRepository.save(patient);
         log.info("patient register success. code = {}", patient.getCode());
         return mapper.toDto(patient);

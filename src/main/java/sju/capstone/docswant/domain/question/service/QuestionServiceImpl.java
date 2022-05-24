@@ -35,7 +35,6 @@ public class QuestionServiceImpl implements QuestionService {
     public QuestionDto.Response create(String code, QuestionDto.Request requestDto) {
         Patient patient = patientRepository.findByCode(code).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
         Question question = mapper.toEntity(requestDto);
-        question.setPatient(patient);
         patient.addQuestion(question);
         questionRepository.save(question);
         log.info("question create success. id = {}", question.getId());

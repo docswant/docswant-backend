@@ -56,6 +56,7 @@ class PatientTest {
         //then
         assertThat(patient.getQuestions().size()).isEqualTo(1);
         assertThat(patient.getQuestions().get(0).getContent()).isEqualTo(question.getContent());
+        assertThat(question.getPatient()).isEqualTo(patient);
     }
 
     @Test
@@ -69,5 +70,6 @@ class PatientTest {
 
         //then
         assertThat(patient.getRoundings().contains(rounding)).isTrue();
+        assertThat(rounding.getPatient()).isEqualTo(patient);
     }
 }

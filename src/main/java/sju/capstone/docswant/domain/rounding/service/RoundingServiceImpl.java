@@ -37,9 +37,7 @@ public class RoundingServiceImpl implements RoundingService {
         Patient patient = patientRepository.findByCode(requestDto.getCode()).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
         Rounding rounding = mapper.toEntity(requestDto);
         doctor.addRounding(rounding);
-        rounding.setDoctor(doctor);
         patient.addRounding(rounding);
-        rounding.setPatient(patient);
         roundingRepository.save(rounding);
         log.info("rounding save success. id = {}", rounding.getId());
         return mapper.toDto(rounding);

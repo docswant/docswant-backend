@@ -83,9 +83,11 @@ public class Patient extends Account {
 
     public void addQuestion(Question question) {
         this.questions.add(question);
+        question.setPatient(this);
     }
 
     public void addRounding(Rounding rounding) {
         this.roundings.add(rounding);
+        rounding.setPatient(this);
     }
 }
