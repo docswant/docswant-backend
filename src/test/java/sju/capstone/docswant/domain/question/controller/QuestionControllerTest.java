@@ -67,7 +67,8 @@ class QuestionControllerTest extends IntegrationTest {
                                 fieldWithPath("data").description("응답 데이터"),
                                 fieldWithPath("data.id").description("질문 id"),
                                 fieldWithPath("data.content").description("질문 내용"),
-                                fieldWithPath("data.answerStatus").description("질문 응답 상태")
+                                fieldWithPath("data.answerStatus").description("질문 응답 상태"),
+                                fieldWithPath("data.createdAt").description("질문 생성 시간")
                         )
                 ))
         ;
@@ -111,7 +112,8 @@ class QuestionControllerTest extends IntegrationTest {
                                 fieldWithPath("data").description("응답 데이터"),
                                 fieldWithPath("data.id").description("질문 id"),
                                 fieldWithPath("data.content").description("질문 내용"),
-                                fieldWithPath("data.answerStatus").description("질문 응답 상태")
+                                fieldWithPath("data.answerStatus").description("질문 응답 상태"),
+                                fieldWithPath("data.createdAt").description("질문 생성 시간")
                         )
                 ))
         ;
@@ -159,7 +161,8 @@ class QuestionControllerTest extends IntegrationTest {
                                 fieldWithPath("data.id").description("질문 id"),
                                 fieldWithPath("data.content").description("질문 내용"),
                                 fieldWithPath("data.answer").description("질문 응답 내용"),
-                                fieldWithPath("data.answerStatus").description("질문 응답 상태")
+                                fieldWithPath("data.answerStatus").description("질문 응답 상태"),
+                                fieldWithPath("data.createdAt").description("질문 생성 시간")
                         )
                 ))
         ;
@@ -228,7 +231,8 @@ class QuestionControllerTest extends IntegrationTest {
                                 fieldWithPath("data.id").description("질문 id"),
                                 fieldWithPath("data.content").description("질문 내용"),
                                 fieldWithPath("data.answer").description("질문 응답 내용").optional(),
-                                fieldWithPath("data.answerStatus").description("질문 응답 상태")
+                                fieldWithPath("data.answerStatus").description("질문 응답 상태"),
+                                fieldWithPath("data.createdAt").description("질문 생성 시간")
                         )
                 ))
         ;
@@ -273,7 +277,8 @@ class QuestionControllerTest extends IntegrationTest {
                                 fieldWithPath("data.content[*].id").description("환자 코드"),
                                 fieldWithPath("data.content[*].content").description("질문 내용"),
                                 fieldWithPath("data.content[*].answer").description("질문 응답 내용").optional(),
-                                fieldWithPath("data.content[*].answerStatus").description("질문 응답 상태")
+                                fieldWithPath("data.content[*].answerStatus").description("질문 응답 상태"),
+                                fieldWithPath("data.content[*].createdAt").description("질문 생성 시간")
                         )
                 ))
         ;
