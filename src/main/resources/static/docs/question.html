@@ -526,7 +526,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/patient/PATIENT001/question' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
-    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMyMjgyNTEsImV4cCI6MTY1MzIzMTg1MX0.U3Clmfq2C7xL1Q0mf94myAXFcJa0aei6YxJIpXovma4' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNTk0MDEsImV4cCI6MTY1MzM2MzAwMX0.4ganRdtpzkpinu1JdTR5pSHNr-R3LH8V8juCJyicDlM' \
     -H 'Accept: application/json' \
     -d '{
   "content" : "content"
@@ -540,7 +540,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/patient/PATIENT001/question HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMyMjgyNTEsImV4cCI6MTY1MzIzMTg1MX0.U3Clmfq2C7xL1Q0mf94myAXFcJa0aei6YxJIpXovma4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNTk0MDEsImV4cCI6MTY1MzM2MzAwMX0.4ganRdtpzkpinu1JdTR5pSHNr-R3LH8V8juCJyicDlM
 Accept: application/json
 Content-Length: 27
 Host: docswant.zooneon.dev
@@ -633,15 +633,16 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 152
+Content-Length: 193
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-22 23:04:11",
+  "timestamp" : "2022-05-24 11:30:01",
   "data" : {
     "id" : 4,
     "content" : "content",
-    "answerStatus" : "TODO"
+    "answerStatus" : "TODO",
+    "createdAt" : "2022-05-24 11:30:01"
   }
 }</code></pre>
 </div>
@@ -693,6 +694,11 @@ Content-Length: 152
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">질문 응답 상태</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">질문 생성 시간</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -707,7 +713,7 @@ Content-Length: 152
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/patient/PATIENT001/question/1/content' -i -X PATCH \
     -H 'Content-Type: application/json;charset=UTF-8' \
-    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMyMjgyNTEsImV4cCI6MTY1MzIzMTg1MX0.U3Clmfq2C7xL1Q0mf94myAXFcJa0aei6YxJIpXovma4' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNTk0MDAsImV4cCI6MTY1MzM2MzAwMH0._tAFzfWHZiVuaJNhFRXdWy3jpmV-FPGpMr5EAEarhwc' \
     -H 'Accept: application/json' \
     -d '{
   "content" : "update content"
@@ -721,7 +727,7 @@ Content-Length: 152
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PATCH /api/v1/patient/PATIENT001/question/1/content HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMyMjgyNTEsImV4cCI6MTY1MzIzMTg1MX0.U3Clmfq2C7xL1Q0mf94myAXFcJa0aei6YxJIpXovma4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNTk0MDAsImV4cCI6MTY1MzM2MzAwMH0._tAFzfWHZiVuaJNhFRXdWy3jpmV-FPGpMr5EAEarhwc
 Accept: application/json
 Content-Length: 34
 Host: docswant.zooneon.dev
@@ -818,15 +824,16 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 159
+Content-Length: 200
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-22 23:04:11",
+  "timestamp" : "2022-05-24 11:30:01",
   "data" : {
     "id" : 1,
     "content" : "update content",
-    "answerStatus" : "TODO"
+    "answerStatus" : "TODO",
+    "createdAt" : "2022-05-15 12:00:00"
   }
 }</code></pre>
 </div>
@@ -878,6 +885,11 @@ Content-Length: 159
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">질문 응답 상태</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">질문 생성 시간</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -892,7 +904,7 @@ Content-Length: 159
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/patient/PATIENT001/question/1/answer' -i -X PATCH \
     -H 'Content-Type: application/json;charset=UTF-8' \
-    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoiUEFUSUVOVDAwMSIsImlhdCI6MTY1MzIyODI1MSwiZXhwIjoxNjUzMjMxODUxfQ.90F51cSjQxUCsgB7NVa9TUYOHZ2ajmD6k_at4eFGbmw' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoiUEFUSUVOVDAwMSIsImlhdCI6MTY1MzM1OTQwMSwiZXhwIjoxNjUzMzYzMDAxfQ.a3-coUaCD_gM4lyaT1oF_2bNm8v-UwLDDSckco1NtZ0' \
     -H 'Accept: application/json' \
     -d '{
   "answer" : "answer"
@@ -906,7 +918,7 @@ Content-Length: 159
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PATCH /api/v1/patient/PATIENT001/question/1/answer HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoiUEFUSUVOVDAwMSIsImlhdCI6MTY1MzIyODI1MSwiZXhwIjoxNjUzMjMxODUxfQ.90F51cSjQxUCsgB7NVa9TUYOHZ2ajmD6k_at4eFGbmw
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoiUEFUSUVOVDAwMSIsImlhdCI6MTY1MzM1OTQwMSwiZXhwIjoxNjUzMzYzMDAxfQ.a3-coUaCD_gM4lyaT1oF_2bNm8v-UwLDDSckco1NtZ0
 Accept: application/json
 Content-Length: 25
 Host: docswant.zooneon.dev
@@ -1003,16 +1015,17 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 177
+Content-Length: 218
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-22 23:04:11",
+  "timestamp" : "2022-05-24 11:30:01",
   "data" : {
     "id" : 1,
     "content" : "content",
     "answer" : "answer",
-    "answerStatus" : "DONE"
+    "answerStatus" : "DONE",
+    "createdAt" : "2022-05-15 12:00:00"
   }
 }</code></pre>
 </div>
@@ -1069,6 +1082,11 @@ Content-Length: 177
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">질문 응답 상태</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">질문 생성 시간</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1082,7 +1100,7 @@ Content-Length: 177
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/patient/PATIENT001/question/1' -i -X DELETE \
-    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMyMjgyNTEsImV4cCI6MTY1MzIzMTg1MX0.U3Clmfq2C7xL1Q0mf94myAXFcJa0aei6YxJIpXovma4'</code></pre>
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNTk0MDEsImV4cCI6MTY1MzM2MzAwMX0.4ganRdtpzkpinu1JdTR5pSHNr-R3LH8V8juCJyicDlM'</code></pre>
 </div>
 </div>
 </div>
@@ -1091,7 +1109,7 @@ Content-Length: 177
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/v1/patient/PATIENT001/question/1 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMyMjgyNTEsImV4cCI6MTY1MzIzMTg1MX0.U3Clmfq2C7xL1Q0mf94myAXFcJa0aei6YxJIpXovma4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNTk0MDEsImV4cCI6MTY1MzM2MzAwMX0.4ganRdtpzkpinu1JdTR5pSHNr-R3LH8V8juCJyicDlM
 Host: docswant.zooneon.dev</code></pre>
 </div>
 </div>
@@ -1162,7 +1180,7 @@ Content-Length: 65
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-22 23:04:11"
+  "timestamp" : "2022-05-24 11:30:01"
 }</code></pre>
 </div>
 </div>
@@ -1206,7 +1224,7 @@ Content-Length: 65
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/patient/PATIENT001/question/2' -i -X GET \
-    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMyMjgyNTEsImV4cCI6MTY1MzIzMTg1MX0.U3Clmfq2C7xL1Q0mf94myAXFcJa0aei6YxJIpXovma4'</code></pre>
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNTk0MDEsImV4cCI6MTY1MzM2MzAwMX0.4ganRdtpzkpinu1JdTR5pSHNr-R3LH8V8juCJyicDlM'</code></pre>
 </div>
 </div>
 </div>
@@ -1215,7 +1233,7 @@ Content-Length: 65
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/patient/PATIENT001/question/2 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMyMjgyNTEsImV4cCI6MTY1MzIzMTg1MX0.U3Clmfq2C7xL1Q0mf94myAXFcJa0aei6YxJIpXovma4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNTk0MDEsImV4cCI6MTY1MzM2MzAwMX0.4ganRdtpzkpinu1JdTR5pSHNr-R3LH8V8juCJyicDlM
 Host: docswant.zooneon.dev</code></pre>
 </div>
 </div>
@@ -1282,16 +1300,17 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 179
+Content-Length: 220
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-22 23:04:11",
+  "timestamp" : "2022-05-24 11:30:01",
   "data" : {
     "id" : 2,
     "content" : "content2",
     "answer" : "answer2",
-    "answerStatus" : "TODO"
+    "answerStatus" : "TODO",
+    "createdAt" : "2022-05-15 12:00:00"
   }
 }</code></pre>
 </div>
@@ -1348,6 +1367,11 @@ Content-Length: 179
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">질문 응답 상태</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">질문 생성 시간</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1361,7 +1385,7 @@ Content-Length: 179
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/patient/PATIENT001/question?page=1&amp;size=3' -i -X GET \
-    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMyMjgyNTEsImV4cCI6MTY1MzIzMTg1MX0.U3Clmfq2C7xL1Q0mf94myAXFcJa0aei6YxJIpXovma4'</code></pre>
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNTk0MDEsImV4cCI6MTY1MzM2MzAwMX0.4ganRdtpzkpinu1JdTR5pSHNr-R3LH8V8juCJyicDlM'</code></pre>
 </div>
 </div>
 </div>
@@ -1370,7 +1394,7 @@ Content-Length: 179
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/patient/PATIENT001/question?page=1&amp;size=3 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMyMjgyNTEsImV4cCI6MTY1MzIzMTg1MX0.U3Clmfq2C7xL1Q0mf94myAXFcJa0aei6YxJIpXovma4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNTk0MDEsImV4cCI6MTY1MzM2MzAwMX0.4ganRdtpzkpinu1JdTR5pSHNr-R3LH8V8juCJyicDlM
 Host: docswant.zooneon.dev</code></pre>
 </div>
 </div>
@@ -1458,28 +1482,31 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 451
+Content-Length: 580
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-22 23:04:11",
+  "timestamp" : "2022-05-24 11:30:01",
   "data" : {
     "page" : 1,
     "hasNext" : false,
     "content" : [ {
       "id" : 1,
       "content" : "content",
-      "answerStatus" : "TODO"
+      "answerStatus" : "TODO",
+      "createdAt" : "2022-05-15 12:00:00"
     }, {
       "id" : 2,
       "content" : "content2",
       "answer" : "answer2",
-      "answerStatus" : "TODO"
+      "answerStatus" : "TODO",
+      "createdAt" : "2022-05-15 12:00:00"
     }, {
       "id" : 3,
       "content" : "content3",
       "answer" : "answer3",
-      "answerStatus" : "TODO"
+      "answerStatus" : "TODO",
+      "createdAt" : "2022-05-15 12:00:00"
     } ]
   }
 }</code></pre>
@@ -1551,6 +1578,11 @@ Content-Length: 451
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.content[*].answerStatus</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">질문 응답 상태</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.content[*].createdAt</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">질문 생성 시간</p></td>
 </tr>
 </tbody>
 </table>
