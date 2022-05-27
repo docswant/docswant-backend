@@ -1,0 +1,129 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+
+= Requirement API Docs
+김민
+1.0.0, 27/05/2022
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+:operation-http-request-title: Example Request
+:operation-http-response-title: Example Response
+
+[[requirement-register]]
+== 문의사항 등록
+
+=== curl Request
+include::{snippets}/requirement/register/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/requirement/register/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/requirement/register/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/requirement/register/path-parameters.adoc[]
+
+=== Request Fields
+include::{snippets}/requirement/register/request-fields.adoc[]
+
+=== HTTP Response
+include::{snippets}/requirement/register/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/requirement/register/response-fields.adoc[]
+
+[[requirement-update]]
+== 문의사항 수정
+
+=== curl Request
+include::{snippets}/requirement/update/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/requirement/update/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/requirement/update/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/requirement/update/path-parameters.adoc[]
+
+=== Request Fields
+include::{snippets}/requirement/update/request-fields.adoc[]
+
+=== HTTP Response
+include::{snippets}/requirement/update/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/requirement/update/response-fields.adoc[]
+
+[[requirement-delete]]
+== 문의사항 삭제
+
+=== curl Request
+include::{snippets}/requirement/delete/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/requirement/delete/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/requirement/delete/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/requirement/delete/path-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/requirement/delete/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/requirement/delete/response-fields.adoc[]
+
+[[requirement-find]]
+== 문의사항 조회
+
+=== curl Request
+include::{snippets}/requirement/find/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/requirement/find/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/requirement/find/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/requirement/find/path-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/requirement/find/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/requirement/find/response-fields.adoc[]
+
+[[requirement-find-all]]
+== 문의사항 리스트 조회
+
+=== curl Request
+include::{snippets}/requirement/findAll/curl-request.adoc[]
+
+=== HTTP Request
+include::{snippets}/requirement/findAll/http-request.adoc[]
+
+=== Request Headers
+include::{snippets}/requirement/findAll/request-headers.adoc[]
+
+=== Path Parameters
+include::{snippets}/requirement/findAll/path-parameters.adoc[]
+
+=== Request Parameters
+include::{snippets}/requirement/findAll/request-parameters.adoc[]
+
+=== HTTP Response
+include::{snippets}/requirement/findAll/http-response.adoc[]
+
+=== Response Fields
+include::{snippets}/requirement/findAll/response-fields.adoc[]
