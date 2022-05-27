@@ -43,7 +43,7 @@ class RequirementTest {
         Requirement requirement = Requirement.builder().content("문의사항입니다.").build();
 
         //when
-        requirement.updateStatus(requirement);
+        requirement.changeStatusToRead();
 
         //then
         assertThat(requirement.getStatus()).isEqualTo(RequirementStatus.READ);

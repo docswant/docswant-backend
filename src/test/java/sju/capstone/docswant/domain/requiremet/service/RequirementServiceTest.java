@@ -8,7 +8,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import sju.capstone.docswant.common.factory.EntityFactory;
 import sju.capstone.docswant.common.format.PageFormat;
+import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
 import sju.capstone.docswant.domain.member.repository.patient.PatientRepository;
 import sju.capstone.docswant.domain.requirement.model.dto.RequirementDto;
@@ -26,7 +28,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
-class RequirementService {
+class RequirementServiceTest {
 
     @Mock
     private RequirementRepository requirementRepository;
@@ -71,7 +73,21 @@ class RequirementService {
     }
 
     @Test
-    void 환자_문의사항_조회_테스트(){
+    void 문의사항_조회_테스트(){
+        //given
+        Requirement requirement = Requirement.builder().content("문의사항입니다.").build();
+        Doctor doctor = EntityFactory.getDoctorEntity();
+        given(requirementRepository.findById(any(Long.class))).willReturn(Optional.of(requirement));
+
+        //when
+        RequirementDto.Response responseDto = requirementService.find(doctor, 1L);
+
+        //then
+        assertThat(responseDto.getContent()).isEqualTo(requirement.getContent());
+    }
+
+    @Test
+    void 환자_문의사항_전체_조회_테스트(){
         //given
         String code="code";
 
@@ -87,7 +103,7 @@ class RequirementService {
         given(requirementRepository.findAllByPatientCode(any(String.class), any(Pageable.class))).willReturn(requirementPage);
 
         //when
-        PageFormat.Response<List<RequirementDto.Response>> pageResponse = requirementService.find(code, pageRequest);
+        PageFormat.Response<List<RequirementDto.Response>> pageResponse = requirementService.findAll(code, pageRequest);
 
         //then
         assertThat(pageResponse.getPage()).isEqualTo(1);

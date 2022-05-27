@@ -5,7 +5,6 @@ import sju.capstone.docswant.domain.requirement.model.dto.RequirementDto;
 import sju.capstone.docswant.domain.requirement.model.entity.Requirement;
 import sju.capstone.docswant.domain.requirement.model.mapper.RequirementMapper;
 
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RequirementMapperTest {
