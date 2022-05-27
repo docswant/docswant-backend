@@ -59,9 +59,19 @@ public class RequirementServiceImpl implements RequirementService {
         return;
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public RequirementDto.Response find(Account account, Long id) {
+        Requirement requirement = requirementRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
+        if ("ACCOUNT_DOCTOR".equals(account.getAccountType())) {
+            requirement.changeStatusToRead();
+        }
+        return mapper.toDto(requirement);
+    }
+
     @Transactional
     @Override
-    public PageFormat.Response<List<RequirementDto.Response>>find(String code, PageFormat.Request pageRequest) {
+    public PageFormat.Response<List<RequirementDto.Response>>findAll(String code, PageFormat.Request pageRequest) {
         Page<Requirement> requirementPage = requirementRepository.findAllByPatientCode(code, pageRequest.of());
         List<RequirementDto.Response> responseDtos = requirementPage.getContent().stream().map(mapper::toDto).collect(Collectors.toList());
         log.info("find all success. page = {}, size = {}", requirementPage.getNumber(), requirementPage.getNumberOfElements());
