@@ -22,6 +22,9 @@ public enum ErrorCode {
     HANDLE_AUTHENTICATION_FAILED("A001", HttpStatus.UNAUTHORIZED, "Authentication Failed"),
     HANDLE_ACCESS_DENIED("A002", HttpStatus.FORBIDDEN, "Access Denied"),
     INVALID_TOKEN("A003", HttpStatus.BAD_REQUEST, "Invalid Token"),
+
+    //question
+    ALREADY_ANSWERED_QUESTION("Q001", HttpStatus.BAD_REQUEST, "Already Answered Question")
     ;
 
     private final String code;

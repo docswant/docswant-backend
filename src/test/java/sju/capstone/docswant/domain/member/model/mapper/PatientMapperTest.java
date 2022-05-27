@@ -4,8 +4,10 @@ import org.junit.jupiter.api.Test;
 import sju.capstone.docswant.common.factory.DtoFactory;
 import sju.capstone.docswant.common.factory.EntityFactory;
 import sju.capstone.docswant.domain.member.model.dto.PatientDto;
+import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
 import sju.capstone.docswant.domain.member.model.entity.patient.PatientSchedule;
+import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
 
 import java.time.LocalDate;
 
@@ -39,5 +41,22 @@ class PatientMapperTest {
         //then
         assertThat(resultEntity.getCode()).isEqualTo(requestDto.getCode());
         assertThat(resultEntity.getPatientSchedule().getHospitalizationDate()).isEqualTo(requestDto.getHospitalizationDate());
+    }
+
+    @Test
+    void 환자_회진_엔티티에서_DTO_테스트() {
+        //given
+        Patient patient = EntityFactory.getPatientEntity();
+        Doctor doctor = EntityFactory.getDoctorEntity();
+        Rounding rounding = EntityFactory.getRoundingEntity();
+        patient.setDoctor(doctor);
+
+        //when
+        PatientDto.PatientRoundingResponse resultDto = mapper.toPatientRoundingDto(patient, rounding);
+
+        //then
+        assertThat(resultDto.getPatientName()).isEqualTo(patient.getName());
+        assertThat(resultDto.getDoctorName()).isEqualTo(doctor.getName());
+        assertThat(resultDto.getRoundingTime()).isEqualTo(rounding.getRoundingSchedule().getRoundingTime());
     }
 }

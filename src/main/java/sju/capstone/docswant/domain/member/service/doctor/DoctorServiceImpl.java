@@ -9,13 +9,10 @@ import sju.capstone.docswant.common.annotation.DoctorOnly;
 import sju.capstone.docswant.core.error.ErrorCode;
 import sju.capstone.docswant.core.error.exception.EntityNotFoundException;
 import sju.capstone.docswant.domain.member.model.dto.DoctorDto;
-import sju.capstone.docswant.domain.member.model.entity.Account;
 import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 import sju.capstone.docswant.domain.member.model.mapper.DoctorMapper;
 import sju.capstone.docswant.domain.member.repository.doctor.DoctorCodeRepository;
 import sju.capstone.docswant.domain.member.repository.doctor.DoctorRepository;
-
-import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -41,7 +38,7 @@ public class DoctorServiceImpl implements DoctorService{
         String encodedPassword = passwordEncoder.encode(doctor.getPassword());
         doctor.updateAccount(requestDto.getUsername(), encodedPassword);
         doctorRepository.save(doctor);
-        log.info("register success. code = {}", doctor.getCode());
+        log.info("doctor register success. code = {}", doctor.getCode());
         return mapper.toDto(doctor);
     }
 
@@ -56,7 +53,7 @@ public class DoctorServiceImpl implements DoctorService{
         } else {
             doctor.update(requestDto.getUsername(), requestDto.getPassword());
         }
-        log.info("update success. code = {}", doctor.getCode());
+        log.info("doctor update success. code = {}", doctor.getCode());
         return mapper.toDto(doctor);
     }
 

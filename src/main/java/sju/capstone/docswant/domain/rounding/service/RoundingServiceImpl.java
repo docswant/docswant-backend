@@ -37,9 +37,7 @@ public class RoundingServiceImpl implements RoundingService {
         Patient patient = patientRepository.findByCode(requestDto.getCode()).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
         Rounding rounding = mapper.toEntity(requestDto);
         doctor.addRounding(rounding);
-        rounding.setDoctor(doctor);
         patient.addRounding(rounding);
-        rounding.setPatient(patient);
         roundingRepository.save(rounding);
         log.info("rounding save success. id = {}", rounding.getId());
         return mapper.toDto(rounding);
@@ -94,9 +92,10 @@ public class RoundingServiceImpl implements RoundingService {
     @DoctorOnly
     @Transactional(readOnly = true)
     @Override
-    public List<RoundingDto.ListResponse> findAllByDate(String code, LocalDate roundingDate) {
-        List<Rounding> roundings = roundingRepository.findAllByDoctorCodeAndRoundingDateOrderByRoundingTimeAsc(code, roundingDate);
-        log.info("rounding find all success. doctor code = {}, rounding date = {}", code, roundingDate);
+    public List<RoundingDto.ListResponse> findAllByDate(String code, LocalDate date) {
+        Doctor doctor = doctorRepository.findByCode(code).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
+        List<Rounding> roundings = roundingRepository.findAllByDoctorAndRoundingDateOrderByRoundingTimeAsc(doctor, date);
+        log.info("rounding find all success. doctor code = {}, rounding date = {}", code, date);
         return mapper.toListDto(roundings);
     }
 }

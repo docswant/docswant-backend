@@ -20,6 +20,7 @@ class DoctorTest {
 
         //then
         assertThat(doctor.getPatients().contains(patient)).isTrue();
+        assertThat(patient.getDoctor()).isEqualTo(doctor);
     }
 
     @Test
@@ -48,5 +49,6 @@ class DoctorTest {
 
         //then
         assertThat(doctor.getRoundings().contains(rounding)).isTrue();
+        assertThat(rounding.getDoctor()).isEqualTo(doctor);
     }
 }

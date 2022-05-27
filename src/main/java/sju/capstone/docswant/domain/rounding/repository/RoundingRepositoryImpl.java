@@ -2,6 +2,7 @@ package sju.capstone.docswant.domain.rounding.repository;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
 
 import java.time.LocalDate;
@@ -15,12 +16,12 @@ public class RoundingRepositoryImpl implements RoundingRepositoryCustom {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<Rounding> findAllByDoctorCodeAndRoundingDateOrderByRoundingTimeAsc(String code, LocalDate roundingDate) {
+    public List<Rounding> findAllByDoctorAndRoundingDateOrderByRoundingTimeAsc(Doctor doctor, LocalDate roundingDate) {
         return queryFactory
                 .selectFrom(rounding)
                 .join(rounding.patient)
                 .fetchJoin()
-                .where(rounding.doctor.code.eq(code).and(rounding.roundingSchedule.roundingDate.eq(roundingDate)))
+                .where(rounding.doctor.eq(doctor).and(rounding.roundingSchedule.roundingDate.eq(roundingDate)))
                 .orderBy(rounding.roundingSchedule.roundingTime.asc())
                 .fetch();
     }
