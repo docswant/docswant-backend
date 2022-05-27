@@ -48,7 +48,7 @@ public class Requirement extends BaseTimeEntity {
             requirement.content=updateContent;
             requirement.status=RequirementStatus.UNREAD;
         }
-        public void updateStatus(Requirement requirement){
-            requirement.status=RequirementStatus.READ;
+        public void changeStatusToRead(){
+            this.status=RequirementStatus.READ;
         }
 }
