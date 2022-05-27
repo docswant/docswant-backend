@@ -51,6 +51,7 @@ public class RequirementDto {
 
             @Builder
             public UpdateRequest(String content) {
-                this.content = content;        }
+                this.content = content;
+            }
         }
 }
