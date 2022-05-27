@@ -34,18 +34,25 @@ public class RequirementContorller {
             RequirementDto.Response responseDto = requirementService.updateContent(requirementId, requestDto);
             return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(responseDto));
         }
-/*
+
         @DeleteMapping("/patient/{code}/requirement/{id}")
         public ResponseEntity<ResponseFormat> deleteApi(
-                @CurrentUser Account account, @PathVariable(name = "code") String code, @PathVariable(name = "id") Long requirementId) {
-            requirementService.delete(code,requirementId);
+                @PathVariable(name = "code") String code, @PathVariable(name = "id") Long requirementId) {
+            requirementService.delete(requirementId);
             return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of());
         }
-*/
+
+        @GetMapping("/patient/{code}/requirement/{id}")
+        public ResponseEntity<ResponseFormat<RequirementDto.Response>> findApi(
+                @PathVariable(name = "code") String code, @PathVariable(name = "id") Long id, @CurrentUser Account account) {
+            RequirementDto.Response responseDto = requirementService.find(account, id);
+            return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(responseDto));
+        }
+
         @GetMapping("/patient/{code}/requirement")
-        public ResponseEntity<ResponseFormat<PageFormat.Response>> findApi(
+        public ResponseEntity<ResponseFormat<PageFormat.Response>> findAllApi(
                 @PathVariable(name = "code") String code, PageFormat.Request pageRequest) {
-            PageFormat.Response<List<RequirementDto.Response>> pageResponse = requirementService.find(code, pageRequest);
+            PageFormat.Response<List<RequirementDto.Response>> pageResponse = requirementService.findAll(code, pageRequest);
             return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(pageResponse));
         }
 }
