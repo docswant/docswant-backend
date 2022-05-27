@@ -19,3 +19,7 @@ INSERT INTO question(question_id, question_content, question_answer, patient_cod
 INSERT INTO rounding(rounding_id, rounding_date, rounding_time, rounding_status, doctor_code, patient_code, created_at, updated_at) values(1, "2022-05-17", "12:00", "TODO", "DOCTOR001", "PATIENT001", "2022-05-20 12:00:00.000000", "2022-05-20 12:00:00.000000");
 INSERT INTO rounding(rounding_id, rounding_date, rounding_time, rounding_status, doctor_code, patient_code, created_at, updated_at) values(2, "2022-05-17", "12:05", "TODO", "DOCTOR001", "PATIENT002", "2022-05-20 12:00:00.000000", "2022-05-20 12:00:00.000000");
 INSERT INTO rounding(rounding_id, rounding_date, rounding_time, rounding_status, doctor_code, patient_code, created_at, updated_at) values(3, "2022-05-17", "12:10", "TODO", "DOCTOR001", "PATIENT003", "2022-05-20 12:00:00.000000", "2022-05-20 12:00:00.000000");
+
+INSERT INTO requirement(requirement_id, requirement_content, requirement_status, created_at, updated_at, patient_code) values(1, "content1", "UNREAD", "2022-05-27 12:00:00.000000", "2022-05-27 12:00:00.000000", "PATIENT001");
+INSERT INTO requirement(requirement_id, requirement_content, requirement_status, created_at, updated_at, patient_code) values(2, "content2", "UNREAD", "2022-05-27 12:00:00.000000", "2022-05-27 12:00:00.000000", "PATIENT001");
+INSERT INTO requirement(requirement_id, requirement_content, requirement_status, created_at, updated_at, patient_code) values(3, "content3", "UNREAD", "2022-05-27 12:00:00.000000", "2022-05-27 12:00:00.000000", "PATIENT001");
