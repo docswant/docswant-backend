@@ -45,7 +45,7 @@ public class RequirementServiceImpl implements RequirementService {
     @Override
     public RequirementDto.Response updateContent(Long id, RequirementDto.UpdateRequest requestDto){
         Requirement requirement = requirementRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
-        requirement.updateContent(requirement, requestDto.getContent());
+        requirement.updateContent(requirement, requestDto.getTitle(), requestDto.getContent());
         log.info("update success. id = {}", requirement.getId());
         return mapper.toDto(requirement);
     }
@@ -59,7 +59,7 @@ public class RequirementServiceImpl implements RequirementService {
         return;
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     @Override
     public RequirementDto.Response find(Account account, Long id) {
         Requirement requirement = requirementRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));

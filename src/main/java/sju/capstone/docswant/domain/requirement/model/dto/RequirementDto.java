@@ -17,13 +17,18 @@ public class RequirementDto {
         @Getter
         @NoArgsConstructor(access = AccessLevel.PROTECTED)
         public static class Request {
+            @Size(max = 50)
+            @NotBlank(message = "필수 값입니다.")
+            private String title;
+
             @Size(max = 500)
             @NotBlank(message = "필수 값입니다.")
             private String content;
 
             @Builder
-            public Request(String content) {
-               this.content = content;
+            public Request(String content, String title) {
+                this.title = title;
+                this.content = content;
             }
         }
 
@@ -31,12 +36,14 @@ public class RequirementDto {
         @JsonInclude(JsonInclude.Include.NON_NULL)
         public static class Response {
             private Long id;
+            private String title;
             private String content;
             private RequirementStatus status;
 
             @Builder
-            public Response(Long id, String content, RequirementStatus status) {
+            public Response(Long id, String title, String content, RequirementStatus status) {
                 this.id = id;
+                this.title = title;
                 this.content = content;
                 this.status = status;
             }
@@ -45,12 +52,17 @@ public class RequirementDto {
         @Getter
         @NoArgsConstructor(access = AccessLevel.PROTECTED)
         public static class UpdateRequest {
-            @Size(max = 255)
+            @Size(max = 50)
+            @NotBlank(message = "필수 값입니다.")
+            private String title;
+
+            @Size(max = 500)
             @NotBlank(message = "필수 값입니다.")
             private String content;
 
             @Builder
-            public UpdateRequest(String content) {
+            public UpdateRequest(String title, String content) {
+                this.title = title;
                 this.content = content;
             }
         }

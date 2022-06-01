@@ -45,7 +45,7 @@ class RequirementServiceTest {
         //given
         String code="code";
         Patient patient = Patient.builder().code("PATIENT001").build();
-        RequirementDto.Request requestDto = RequirementDto.Request.builder().content("문의사항입니다.").build();
+        RequirementDto.Request requestDto = RequirementDto.Request.builder().title("requirement title").content("requirement content").build();
 
         given(patientRepository.findByCode(any())).willReturn(Optional.of(patient));
 
@@ -54,6 +54,7 @@ class RequirementServiceTest {
 
         //then
         assertThat(result.getContent()).isEqualTo(requestDto.getContent());
+        assertThat(result.getTitle()).isEqualTo(requestDto.getTitle());
         assertThat(result.getStatus()).isEqualTo(RequirementStatus.UNREAD);
     }
 
@@ -61,21 +62,22 @@ class RequirementServiceTest {
     void 문의사항_내용수정_테스트(){//id = NULL 부여가 안됨
         //given
         Long id = 1L;
-        RequirementDto.UpdateRequest requestDto = RequirementDto.UpdateRequest.builder().content("수정된 문의사항입니다.").build();
-        Requirement requirement = Requirement.builder().content("문의사항입니다.").build();
+        RequirementDto.UpdateRequest requestDto = RequirementDto.UpdateRequest.builder().title("update title").content("update content.").build();
+        Requirement requirement = Requirement.builder().title("requirement title").content("requirement content").build();
         given(requirementRepository.findById(any(Long.class))).willReturn(Optional.of(requirement));
 
         //when
         RequirementDto.Response result = requirementService.updateContent(id, requestDto);
 
         //then
+        assertThat(result.getTitle()).isEqualTo(requestDto.getTitle());
         assertThat(result.getContent()).isEqualTo(requestDto.getContent());
     }
 
     @Test
     void 문의사항_조회_테스트(){
         //given
-        Requirement requirement = Requirement.builder().content("문의사항입니다.").build();
+        Requirement requirement = Requirement.builder().title("requirement title").content("requirement content").build();
         Doctor doctor = EntityFactory.getDoctorEntity();
         given(requirementRepository.findById(any(Long.class))).willReturn(Optional.of(requirement));
 
@@ -83,6 +85,7 @@ class RequirementServiceTest {
         RequirementDto.Response responseDto = requirementService.find(doctor, 1L);
 
         //then
+        assertThat(responseDto.getTitle()).isEqualTo(requirement.getTitle());
         assertThat(responseDto.getContent()).isEqualTo(requirement.getContent());
     }
 
@@ -93,9 +96,9 @@ class RequirementServiceTest {
 
         PageFormat.Request pageRequest = new PageFormat.Request(1, 3);
 
-        Requirement requirement1 = Requirement.builder().content("문의사항1").build();
-        Requirement requirement2 = Requirement.builder().content("문의사항2").build();
-        Requirement requirement3 = Requirement.builder().content("문의사항3").build();
+        Requirement requirement1 = Requirement.builder().title("title1").content("content1").build();
+        Requirement requirement2 = Requirement.builder().title("title2").content("content2").build();
+        Requirement requirement3 = Requirement.builder().title("title3").content("content3").build();
 
         List<Requirement> requirements = Arrays.asList(requirement1, requirement2, requirement3);
 
