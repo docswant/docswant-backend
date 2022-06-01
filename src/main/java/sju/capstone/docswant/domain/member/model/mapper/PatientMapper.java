@@ -32,6 +32,6 @@ public interface PatientMapper {
             @Mapping(target = "doctorMajor", source = "patient.doctor.major"),
             @Mapping(target = "roundingTime", source = "rounding.roundingSchedule.roundingTime")
     })
-    PatientDto.PatientRoundingResponse toPatientRoundingDto(Patient patient, Rounding rounding);
+    PatientDto.PatientRoundingResponse toPatientRoundingDto(Patient patient, Rounding rounding, Integer roundsWaitingOrder);
 
 }

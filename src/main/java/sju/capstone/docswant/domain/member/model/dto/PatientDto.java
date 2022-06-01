@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import sju.capstone.docswant.domain.rounding.model.entity.RoundingStatus;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -160,10 +161,12 @@ public class PatientDto {
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
         private LocalTime roundingTime;
 
+        private Integer roundsWaitingOrder;
+
         @Builder
         public PatientRoundingResponse(String code, String patientName, LocalDate birthDate, LocalDate hospitalizationDate,
                             LocalDate surgeryDate, LocalDate dischargeDate, String diseaseName, Integer hospitalRoom,
-                            String doctorName, String doctorMajor, LocalTime roundingTime) {
+                            String doctorName, String doctorMajor, LocalTime roundingTime, Integer roundsWaitingOrder) {
             this.code = code;
             this.patientName = patientName;
             this.birthDate = birthDate;
@@ -175,6 +178,7 @@ public class PatientDto {
             this.doctorName = doctorName;
             this.doctorMajor = doctorMajor;
             this.roundingTime = roundingTime;
+            this.roundsWaitingOrder = roundsWaitingOrder;
         }
     }
 }
