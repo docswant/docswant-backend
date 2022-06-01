@@ -19,7 +19,9 @@ import sju.capstone.docswant.domain.member.repository.doctor.DoctorRepository;
 import sju.capstone.docswant.domain.member.repository.patient.PatientRepository;
 import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
 import sju.capstone.docswant.domain.rounding.repository.RoundingRepository;
+import sju.capstone.docswant.infra.esl.EslClient;
 
+import javax.print.Doc;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +39,8 @@ class PatientServiceTest {
     private DoctorRepository doctorRepository;
     @Mock
     private RoundingRepository roundingRepository;
+    @Mock
+    private EslClient eslClient;
     @Mock
     private PasswordEncoder passwordEncoder;
 
@@ -90,13 +94,13 @@ class PatientServiceTest {
     void 환자_회진_조회_테스트() {
         //given
         String code = "code";
-        LocalDate today = LocalDate.now();
-        Patient patient = EntityFactory.getPatientEntity();
-        Doctor doctor = EntityFactory.getDoctorEntity();
-        Rounding rounding = EntityFactory.getRoundingEntity();
-        patient.setDoctor(doctor);
+        LocalDate today = LocalDate.of(2022, 5, 7);
+        List<Rounding> roundings = EntityFactory.getRoundingEntities();
+        Rounding roundingForPatient = roundings.get(0);
+        Patient patient = roundings.get(0).getPatient();
+        Doctor doctor = roundings.get(0).getDoctor();
         given(patientRepository.findByCode(any(String.class))).willReturn(Optional.of(patient));
-        given(roundingRepository.findByPatientAndRoundingScheduleRoundingDate(any(Patient.class), any(LocalDate.class))).willReturn(rounding);
+        given(roundingRepository.findAllByDoctorAndRoundingDateOrderByRoundingTimeAsc(any(Doctor.class), any(LocalDate.class))).willReturn(roundings);
 
         //when
         PatientDto.PatientRoundingResponse responseDto = patientService.findWithRounding(code, today);
@@ -104,7 +108,8 @@ class PatientServiceTest {
         //then
         assertThat(responseDto.getPatientName()).isEqualTo(patient.getName());
         assertThat(responseDto.getDoctorName()).isEqualTo(doctor.getName());
-        assertThat(responseDto.getRoundingTime()).isEqualTo(rounding.getRoundingSchedule().getRoundingTime());
+        assertThat(responseDto.getRoundingTime()).isEqualTo(roundingForPatient.getRoundingSchedule().getRoundingTime());
+        assertThat(responseDto.getRoundsWaitingOrder()).isEqualTo(roundings.indexOf(roundingForPatient));
     }
 
     @Test

@@ -244,7 +244,8 @@ class PatientControllerTest extends IntegrationTest {
                                 fieldWithPath("data.hospitalRoom").description("환자 병실 호수"),
                                 fieldWithPath("data.doctorName").description("담당 의사 이름"),
                                 fieldWithPath("data.doctorMajor").description("담당 의사 전공"),
-                                fieldWithPath("data.roundingTime").description("환자 회진 시간").optional()
+                                fieldWithPath("data.roundingTime").description("환자 회진 시간").optional(),
+                                fieldWithPath("data.roundsWaitingOrder").description("회진 대기 순서").optional()
                         )
                 ))
         ;
