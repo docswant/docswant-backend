@@ -15,6 +15,7 @@ import sju.capstone.docswant.domain.rounding.model.dto.RoundingDto;
 import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
 import sju.capstone.docswant.domain.rounding.model.entity.RoundingStatus;
 import sju.capstone.docswant.domain.rounding.repository.RoundingRepository;
+import sju.capstone.docswant.infra.esl.EslClient;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -34,6 +35,8 @@ class RoundingServiceTest {
     private DoctorRepository doctorRepository;
     @Mock
     private PatientRepository patientRepository;
+    @Mock
+    private EslClient eslClient;
 
     @InjectMocks
     private RoundingServiceImpl roundingService;

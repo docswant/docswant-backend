@@ -50,13 +50,15 @@ class PatientMapperTest {
         Doctor doctor = EntityFactory.getDoctorEntity();
         Rounding rounding = EntityFactory.getRoundingEntity();
         patient.setDoctor(doctor);
+        Integer roundsWaitingOrder = 1;
 
         //when
-        PatientDto.PatientRoundingResponse resultDto = mapper.toPatientRoundingDto(patient, rounding);
+        PatientDto.PatientRoundingResponse resultDto = mapper.toPatientRoundingDto(patient, rounding, roundsWaitingOrder);
 
         //then
         assertThat(resultDto.getPatientName()).isEqualTo(patient.getName());
         assertThat(resultDto.getDoctorName()).isEqualTo(doctor.getName());
         assertThat(resultDto.getRoundingTime()).isEqualTo(rounding.getRoundingSchedule().getRoundingTime());
+        assertThat(resultDto.getRoundsWaitingOrder()).isEqualTo(roundsWaitingOrder);
     }
 }

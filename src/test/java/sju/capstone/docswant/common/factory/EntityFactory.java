@@ -29,7 +29,7 @@ public class EntityFactory {
                 .surgeryDate(LocalDate.of(2022, 5, 8))
                 .dischargeDate(LocalDate.of(2022, 5, 12))
                 .build();
-        return Patient.builder()
+        Patient patient = Patient.builder()
                 .code("PATIENT001")
                 .username("PATIENT001")
                 .password("password")
@@ -39,6 +39,8 @@ public class EntityFactory {
                 .diseaseName("COVID-19")
                 .hospitalRoom(302)
                 .build();
+        patient.setDoctor(getDoctorEntity());
+        return patient;
     }
 
     public static List<Patient> getPatientEntities() {
