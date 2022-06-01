@@ -22,6 +22,9 @@ public class Requirement extends BaseTimeEntity {
         @Column(name = "requirement_id")
         private Long id;
 
+        @Column(name = "requirement_title", nullable = false, length = 50)
+        private String title;
+
         @Column(name = "requirement_content", nullable = false, length = 500)
         private String content;
 
@@ -35,8 +38,9 @@ public class Requirement extends BaseTimeEntity {
         private Patient patient;
 
         @Builder
-        public Requirement(Long id, String content, RequirementStatus status){
+        public Requirement(Long id, String title, String content, RequirementStatus status){
             this.id = id;
+            this.title = title;
             this.content = content;
             this.status = RequirementStatus.UNREAD;
         }
@@ -44,8 +48,10 @@ public class Requirement extends BaseTimeEntity {
         public void setPatient(Patient patient){
             this.patient = patient;
         }
-        public void updateContent(Requirement requirement, String updateContent){
+
+        public void updateContent(Requirement requirement, String updateTitle, String updateContent){
             requirement.content=updateContent;
+            requirement.title=updateTitle;
             requirement.status=RequirementStatus.UNREAD;
         }
         public void changeStatusToRead(){
