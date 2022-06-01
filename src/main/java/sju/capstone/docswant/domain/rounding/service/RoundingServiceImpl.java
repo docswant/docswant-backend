@@ -13,11 +13,15 @@ import sju.capstone.docswant.domain.member.repository.doctor.DoctorRepository;
 import sju.capstone.docswant.domain.member.repository.patient.PatientRepository;
 import sju.capstone.docswant.domain.rounding.model.dto.RoundingDto;
 import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
+import sju.capstone.docswant.domain.rounding.model.entity.RoundingStatus;
 import sju.capstone.docswant.domain.rounding.model.mapper.RoundingMapper;
 import sju.capstone.docswant.domain.rounding.repository.RoundingRepository;
+import sju.capstone.docswant.infra.esl.EslClient;
+import sju.capstone.docswant.infra.esl.EslDto;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -27,6 +31,7 @@ public class RoundingServiceImpl implements RoundingService {
     private final RoundingRepository roundingRepository;
     private final DoctorRepository doctorRepository;
     private final PatientRepository patientRepository;
+    private final EslClient eslClient;
     private final RoundingMapper mapper = RoundingMapper.INSTANCE;
 
     @DoctorOnly
@@ -96,6 +101,14 @@ public class RoundingServiceImpl implements RoundingService {
         Doctor doctor = doctorRepository.findByCode(code).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
         List<Rounding> roundings = roundingRepository.findAllByDoctorAndRoundingDateOrderByRoundingTimeAsc(doctor, date);
         log.info("rounding find all success. doctor code = {}, rounding date = {}", code, date);
+        if (LocalDate.now().isEqual(date)) {
+            List<Rounding> todoTodayRoundings = roundings.stream().filter(rounding -> rounding.getRoundingStatus().equals(RoundingStatus.TODO)).collect(Collectors.toList());
+            todoTodayRoundings.forEach(rounding -> {
+                Integer roundsWaitingOrder = todoTodayRoundings.indexOf(rounding);
+                EslDto.ChangeRequest changeRequestDto = EslDto.ChangeRequest.toDto(rounding.getPatient(), rounding, roundsWaitingOrder);
+                eslClient.sendChangeRequest(changeRequestDto);
+            });
+        }
         return mapper.toListDto(roundings);
     }
 }

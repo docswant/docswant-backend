@@ -19,11 +19,16 @@ import sju.capstone.docswant.domain.member.model.mapper.PatientMapper;
 import sju.capstone.docswant.domain.member.repository.doctor.DoctorRepository;
 import sju.capstone.docswant.domain.member.repository.patient.PatientRepository;
 import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
+import sju.capstone.docswant.domain.rounding.model.entity.RoundingStatus;
 import sju.capstone.docswant.domain.rounding.repository.RoundingRepository;
+import sju.capstone.docswant.infra.esl.EslClient;
+import sju.capstone.docswant.infra.esl.EslDto;
 
+import javax.swing.text.html.Option;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -35,6 +40,7 @@ public class PatientServiceImpl implements PatientService {
     private final DoctorRepository doctorRepository;
     private final RoundingRepository roundingRepository;
     private final PasswordEncoder passwordEncoder;
+    private final EslClient eslClient;
     private final PatientMapper mapper = PatientMapper.INSTANCE;
 
     @DoctorOnly
@@ -88,9 +94,23 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public PatientDto.PatientRoundingResponse findWithRounding(String code, LocalDate today) {
         Patient patient = patientRepository.findByCode(code).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
-        Rounding rounding = roundingRepository.findByPatientAndRoundingScheduleRoundingDate(patient, today);
-        log.info("patient find with rounding success. code = {}, date = [}", patient.getCode(), today);
-        return mapper.toPatientRoundingDto(patient, rounding);
+        List<Rounding> todayRoundings = roundingRepository.findAllByDoctorAndRoundingDateOrderByRoundingTimeAsc(patient.getDoctor(), today);
+        Rounding roundingForPatient = todayRoundings.stream().filter(todayRounding -> todayRounding.getPatient().equals(patient)).findFirst().orElse(null);
+        Integer roundsWaitingOrder;
+        if (roundingForPatient != null) {
+            if (roundingForPatient.getRoundingStatus().equals(RoundingStatus.TODO)) {
+                List<Rounding> todoTodayRoundings = todayRoundings.stream().filter(todayRounding -> todayRounding.getRoundingStatus().equals(RoundingStatus.TODO)).collect(Collectors.toList());
+                roundsWaitingOrder = todoTodayRoundings.indexOf(roundingForPatient);
+            } else {
+                roundsWaitingOrder = 0;
+            }
+        } else {
+            roundsWaitingOrder = null;
+        }
+        log.info("patient find with rounding success. code = {}, date = {}", patient.getCode(), today);
+        EslDto.ChangeRequest changeRequestDto = EslDto.ChangeRequest.toDto(patient, roundingForPatient, roundsWaitingOrder);
+        eslClient.sendChangeRequest(changeRequestDto);
+        return mapper.toPatientRoundingDto(patient, roundingForPatient, roundsWaitingOrder);
     }
 
     @DoctorOnly
@@ -113,5 +133,4 @@ public class PatientServiceImpl implements PatientService {
     private String removeHyphenFromDate(LocalDate date) {
         return Arrays.stream(date.toString().split("-")).collect(Collectors.joining());
     }
-
 }
