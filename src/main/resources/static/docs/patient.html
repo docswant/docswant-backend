@@ -524,7 +524,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/patient' -i -X POST \
     -H 'Content-Type: application/json;charset=UTF-8' \
-    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNzYwNjgsImV4cCI6MTY1MzM3OTY2OH0.mfQ5YmAPKANFOJ__WYGgJWc_dXn0X74E-3BL8YAu4O4' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTQwODExMjAsImV4cCI6MTY1NDA4NDcyMH0.oKAlwkqNtzE0zGWwyyZZcSY07MGcOJ-BoQVnmzpdYtc' \
     -H 'Accept: application/json' \
     -d '{
   "code" : "PATIENT001",
@@ -543,7 +543,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">POST /api/v1/patient HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNzYwNjgsImV4cCI6MTY1MzM3OTY2OH0.mfQ5YmAPKANFOJ__WYGgJWc_dXn0X74E-3BL8YAu4O4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTQwODExMjAsImV4cCI6MTY1NDA4NDcyMH0.oKAlwkqNtzE0zGWwyyZZcSY07MGcOJ-BoQVnmzpdYtc
 Accept: application/json
 Content-Length: 173
 Host: docswant.zooneon.dev
@@ -648,7 +648,7 @@ Content-Length: 265
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-24 16:07:48",
+  "timestamp" : "2022-06-01 19:58:40",
   "data" : {
     "code" : "PATIENT001",
     "name" : "zooneon",
@@ -736,7 +736,7 @@ Content-Length: 265
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/patient/PATIENT001' -i -X PATCH \
     -H 'Content-Type: application/json;charset=UTF-8' \
-    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNzYwNjgsImV4cCI6MTY1MzM3OTY2OH0.mfQ5YmAPKANFOJ__WYGgJWc_dXn0X74E-3BL8YAu4O4' \
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTQwODExMjAsImV4cCI6MTY1NDA4NDcyMH0.oKAlwkqNtzE0zGWwyyZZcSY07MGcOJ-BoQVnmzpdYtc' \
     -H 'Accept: application/json' \
     -d '{
   "username" : "zooneon",
@@ -758,7 +758,7 @@ Content-Length: 265
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">PATCH /api/v1/patient/PATIENT001 HTTP/1.1
 Content-Type: application/json;charset=UTF-8
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNzYwNjgsImV4cCI6MTY1MzM3OTY2OH0.mfQ5YmAPKANFOJ__WYGgJWc_dXn0X74E-3BL8YAu4O4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTQwODExMjAsImV4cCI6MTY1NDA4NDcyMH0.oKAlwkqNtzE0zGWwyyZZcSY07MGcOJ-BoQVnmzpdYtc
 Accept: application/json
 Content-Length: 267
 Host: docswant.zooneon.dev
@@ -903,7 +903,7 @@ Content-Length: 335
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-24 16:07:48",
+  "timestamp" : "2022-06-01 19:58:40",
   "data" : {
     "code" : "PATIENT001",
     "name" : "zooneon",
@@ -1002,7 +1002,7 @@ Content-Length: 335
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/patient/PATIENT001' -i -X DELETE \
-    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNzYwNjgsImV4cCI6MTY1MzM3OTY2OH0.mfQ5YmAPKANFOJ__WYGgJWc_dXn0X74E-3BL8YAu4O4'</code></pre>
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTQwODExMTksImV4cCI6MTY1NDA4NDcxOX0.-DQb04ypLGi31Xi6vk-zUn60sAHSb_qiLimtwy_OcjQ'</code></pre>
 </div>
 </div>
 </div>
@@ -1011,7 +1011,7 @@ Content-Length: 335
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">DELETE /api/v1/patient/PATIENT001 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNzYwNjgsImV4cCI6MTY1MzM3OTY2OH0.mfQ5YmAPKANFOJ__WYGgJWc_dXn0X74E-3BL8YAu4O4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTQwODExMTksImV4cCI6MTY1NDA4NDcxOX0.-DQb04ypLGi31Xi6vk-zUn60sAHSb_qiLimtwy_OcjQ
 Host: docswant.zooneon.dev</code></pre>
 </div>
 </div>
@@ -1078,7 +1078,7 @@ Content-Length: 65
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-24 16:07:48"
+  "timestamp" : "2022-06-01 19:58:39"
 }</code></pre>
 </div>
 </div>
@@ -1122,7 +1122,7 @@ Content-Length: 65
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/patient/PATIENT001' -i -X GET \
-    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNzYwNjgsImV4cCI6MTY1MzM3OTY2OH0.mfQ5YmAPKANFOJ__WYGgJWc_dXn0X74E-3BL8YAu4O4'</code></pre>
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTQwODExMTksImV4cCI6MTY1NDA4NDcxOX0.-DQb04ypLGi31Xi6vk-zUn60sAHSb_qiLimtwy_OcjQ'</code></pre>
 </div>
 </div>
 </div>
@@ -1131,7 +1131,7 @@ Content-Length: 65
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/patient/PATIENT001 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNzYwNjgsImV4cCI6MTY1MzM3OTY2OH0.mfQ5YmAPKANFOJ__WYGgJWc_dXn0X74E-3BL8YAu4O4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTQwODExMTksImV4cCI6MTY1NDA4NDcxOX0.-DQb04ypLGi31Xi6vk-zUn60sAHSb_qiLimtwy_OcjQ
 Host: docswant.zooneon.dev</code></pre>
 </div>
 </div>
@@ -1198,7 +1198,7 @@ Content-Length: 335
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-24 16:07:48",
+  "timestamp" : "2022-06-01 19:58:39",
   "data" : {
     "code" : "PATIENT001",
     "name" : "zooneon",
@@ -1297,7 +1297,7 @@ Content-Length: 335
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/patient/PATIENT001/rounding?date=2022-05-17' -i -X GET \
-    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoiUEFUSUVOVDAwMSIsImlhdCI6MTY1MzM3NjA2OCwiZXhwIjoxNjUzMzc5NjY4fQ.zDbK0Zte1z8JSX4G04p2lNTfbVomA1QasRLUC2tAR7g'</code></pre>
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoiUEFUSUVOVDAwMSIsImlhdCI6MTY1NDA4MTEyMCwiZXhwIjoxNjU0MDg0NzIwfQ.pQIuDMAR9W72-npTmdIjba1tj2-Xrd1CZdzTKUitsVA'</code></pre>
 </div>
 </div>
 </div>
@@ -1306,7 +1306,7 @@ Content-Length: 335
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/patient/PATIENT001/rounding?date=2022-05-17 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoiUEFUSUVOVDAwMSIsImlhdCI6MTY1MzM3NjA2OCwiZXhwIjoxNjUzMzc5NjY4fQ.zDbK0Zte1z8JSX4G04p2lNTfbVomA1QasRLUC2tAR7g
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoiUEFUSUVOVDAwMSIsImlhdCI6MTY1NDA4MTEyMCwiZXhwIjoxNjU0MDg0NzIwfQ.pQIuDMAR9W72-npTmdIjba1tj2-Xrd1CZdzTKUitsVA
 Host: docswant.zooneon.dev</code></pre>
 </div>
 </div>
@@ -1390,11 +1390,11 @@ Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 437
+Content-Length: 467
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-24 16:07:48",
+  "timestamp" : "2022-06-01 19:58:40",
   "data" : {
     "code" : "PATIENT001",
     "patientName" : "zooneon",
@@ -1406,7 +1406,8 @@ Content-Length: 437
     "hospitalRoom" : 300,
     "doctorName" : "zooneon",
     "doctorMajor" : "orthopedics",
-    "roundingTime" : "12:00"
+    "roundingTime" : "12:00",
+    "roundsWaitingOrder" : 0
   }
 }</code></pre>
 </div>
@@ -1498,6 +1499,11 @@ Content-Length: 437
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">환자 회진 시간</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>data.roundsWaitingOrder</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">회진 대기 순서</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -1511,7 +1517,7 @@ Content-Length: 437
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">$ curl 'https://docswant.zooneon.dev/api/v1/patient?page=1&amp;size=3' -i -X GET \
-    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNzYwNjgsImV4cCI6MTY1MzM3OTY2OH0.mfQ5YmAPKANFOJ__WYGgJWc_dXn0X74E-3BL8YAu4O4'</code></pre>
+    -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTQwODExMTksImV4cCI6MTY1NDA4NDcxOX0.-DQb04ypLGi31Xi6vk-zUn60sAHSb_qiLimtwy_OcjQ'</code></pre>
 </div>
 </div>
 </div>
@@ -1520,7 +1526,7 @@ Content-Length: 437
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight nowrap"><code data-lang="http" class="language-http hljs">GET /api/v1/patient?page=1&amp;size=3 HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTMzNzYwNjgsImV4cCI6MTY1MzM3OTY2OH0.mfQ5YmAPKANFOJ__WYGgJWc_dXn0X74E-3BL8YAu4O4
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiB0eXBlIjoiYWNjZXNzIHRva2VuIiwic3ViIjoidXNlcm5hbWUiLCJpYXQiOjE2NTQwODExMTksImV4cCI6MTY1NDA4NDcxOX0.-DQb04ypLGi31Xi6vk-zUn60sAHSb_qiLimtwy_OcjQ
 Host: docswant.zooneon.dev</code></pre>
 </div>
 </div>
@@ -1590,7 +1596,7 @@ Content-Length: 972
 
 {
   "status" : "success",
-  "timestamp" : "2022-05-24 16:07:48",
+  "timestamp" : "2022-06-01 19:58:39",
   "data" : {
     "page" : 1,
     "hasNext" : false,
