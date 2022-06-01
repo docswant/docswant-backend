@@ -1,5 +1,6 @@
 package sju.capstone.docswant.domain.question.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -9,6 +10,7 @@ import sju.capstone.docswant.domain.question.model.entity.AnswerStatus;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -35,12 +37,16 @@ public class QuestionDto {
         private String answer;
         private AnswerStatus answerStatus;
 
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+        private LocalDateTime createdAt;
+
         @Builder
-        public Response(Long id, String content, String answer, AnswerStatus answerStatus) {
+        public Response(Long id, String content, String answer, AnswerStatus answerStatus, LocalDateTime createdAt) {
             this.id = id;
             this.content = content;
             this.answer = answer;
             this.answerStatus = answerStatus;
+            this.createdAt = createdAt;
         }
     }
 

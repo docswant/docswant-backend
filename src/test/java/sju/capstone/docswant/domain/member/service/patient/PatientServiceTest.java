@@ -17,7 +17,10 @@ import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
 import sju.capstone.docswant.domain.member.repository.doctor.DoctorRepository;
 import sju.capstone.docswant.domain.member.repository.patient.PatientRepository;
+import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
+import sju.capstone.docswant.domain.rounding.repository.RoundingRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +35,8 @@ class PatientServiceTest {
     private PatientRepository patientRepository;
     @Mock
     private DoctorRepository doctorRepository;
+    @Mock
+    private RoundingRepository roundingRepository;
     @Mock
     private PasswordEncoder passwordEncoder;
 
@@ -50,14 +55,13 @@ class PatientServiceTest {
 
         //then
         assertThat(result.getCode()).isEqualTo(requestDto.getCode());
-        assertThat(result.getUsername()).isEqualTo(requestDto.getCode());
     }
 
     @Test
     void 환자_정보수정_테스트() {
         //given
         Patient patient = EntityFactory.getPatientEntity();
-        PatientDto.Request requestDto = DtoFactory.getPatientUpdateRequestDto();
+        PatientDto.UpdateRequest requestDto = DtoFactory.getPatientUpdateRequestDto();
         given(patientRepository.findByCode(any(String.class))).willReturn(Optional.of(patient));
 
         //when
@@ -79,8 +83,28 @@ class PatientServiceTest {
 
         //then
         assertThat(responseDto.getCode()).isEqualTo(patient.getCode());
-        assertThat(responseDto.getUsername()).isEqualTo(patient.getUsername());
         assertThat(responseDto.getName()).isEqualTo(patient.getName());
+    }
+
+    @Test
+    void 환자_회진_조회_테스트() {
+        //given
+        String code = "code";
+        LocalDate today = LocalDate.now();
+        Patient patient = EntityFactory.getPatientEntity();
+        Doctor doctor = EntityFactory.getDoctorEntity();
+        Rounding rounding = EntityFactory.getRoundingEntity();
+        patient.setDoctor(doctor);
+        given(patientRepository.findByCode(any(String.class))).willReturn(Optional.of(patient));
+        given(roundingRepository.findByPatientAndRoundingScheduleRoundingDate(any(Patient.class), any(LocalDate.class))).willReturn(rounding);
+
+        //when
+        PatientDto.PatientRoundingResponse responseDto = patientService.findWithRounding(code, today);
+
+        //then
+        assertThat(responseDto.getPatientName()).isEqualTo(patient.getName());
+        assertThat(responseDto.getDoctorName()).isEqualTo(doctor.getName());
+        assertThat(responseDto.getRoundingTime()).isEqualTo(rounding.getRoundingSchedule().getRoundingTime());
     }
 
     @Test
@@ -90,7 +114,8 @@ class PatientServiceTest {
         PageFormat.Request pageRequest = new PageFormat.Request(1, 3);
         List<Patient> patients = EntityFactory.getPatientEntities();
         Page<Patient> patientPage = new PageImpl<>(patients);
-        given(patientRepository.findAllByDoctorCode(any(String.class), any(Pageable.class))).willReturn(patientPage);
+        given(doctorRepository.findByCode(any(String.class))).willReturn(Optional.of(EntityFactory.getDoctorEntity()));
+        given(patientRepository.findAllByDoctor(any(Doctor.class), any(Pageable.class))).willReturn(patientPage);
 
         //when
         PageFormat.Response<List<PatientDto.Response>> pageResponse = patientService.findAll(doctor, pageRequest);

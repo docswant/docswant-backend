@@ -36,7 +36,7 @@ public class Patient extends Account {
     private String diseaseName;
 
     @Column(name = "patient_hospital_room", nullable = false)
-    private int hospitalRoom;
+    private Integer hospitalRoom;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "doctor_code")
@@ -53,7 +53,7 @@ public class Patient extends Account {
 
     @Builder
     public Patient(String code, String username, String password, String name, LocalDate birthDate,
-                   PatientSchedule patientSchedule, String diseaseName, int hospitalRoom) {
+                   PatientSchedule patientSchedule, String diseaseName, Integer hospitalRoom) {
         super(code, username, password);
         this.name = name;
         this.birthDate = birthDate;
@@ -68,21 +68,31 @@ public class Patient extends Account {
 
     public void update(String username, String password, String name, LocalDate birthDate,
                        LocalDate hospitalizationDate, LocalDate surgeryDate, LocalDate dischargeDate,
-                       String diseaseName, int hospitalRoom) {
+                       String diseaseName, Integer hospitalRoom) {
         updateAccount(username, password);
         patientSchedule.updateSchedule(hospitalizationDate, surgeryDate, dischargeDate);
-        this.name = name;
-        this.birthDate = birthDate;
-        this.diseaseName = diseaseName;
-        this.hospitalRoom = hospitalRoom;
+        if (name != null) {
+            this.name = name;
+        }
+        if (birthDate != null) {
+            this.birthDate = birthDate;
+        }
+        if (diseaseName != null) {
+            this.diseaseName = diseaseName;
+        }
+        if (hospitalRoom != null) {
+            this.hospitalRoom = hospitalRoom;
+        }
     }
 
     public void addQuestion(Question question) {
         this.questions.add(question);
+        question.setPatient(this);
     }
 
     public void addRounding(Rounding rounding) {
         this.roundings.add(rounding);
+        rounding.setPatient(this);
     }
 
     public void addRequirement(Requirement requirement){

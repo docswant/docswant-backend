@@ -83,7 +83,6 @@ public class DtoFactory {
     public static PatientDto.Response getPatientResponseDto() {
         return PatientDto.Response.builder()
                 .code("PATIENT001")
-                .username("PATIENT001")
                 .name("zooneon")
                 .birthDate(LocalDate.of(1997, 8, 26))
                 .hospitalizationDate(LocalDate.of(2022, 5, 5))
@@ -92,10 +91,10 @@ public class DtoFactory {
                 .build();
     }
 
-    public static PatientDto.Request getPatientUpdateRequestDto() {
-        return PatientDto.Request.builder()
-                .code("PATIENT001")
+    public static PatientDto.UpdateRequest getPatientUpdateRequestDto() {
+        return PatientDto.UpdateRequest.builder()
                 .username("zooneon")
+                .password("password")
                 .name("zooneon")
                 .birthDate(LocalDate.of(1997, 8, 26))
                 .hospitalizationDate(LocalDate.of(2022, 5, 5))
@@ -109,7 +108,6 @@ public class DtoFactory {
     public static PatientDto.Response getPatientUpdateResponseDto() {
         return PatientDto.Response.builder()
                 .code("PATIENT001")
-                .username("PATIENT001")
                 .name("zooneon")
                 .birthDate(LocalDate.of(1997, 8, 26))
                 .hospitalizationDate(LocalDate.of(2022, 5, 5))
@@ -124,7 +122,6 @@ public class DtoFactory {
         return Arrays.asList(
                 PatientDto.Response.builder()
                         .code("PATIENT001")
-                        .username("PATIENT001")
                         .name("zooneon")
                         .birthDate(LocalDate.of(1997, 8, 26))
                         .hospitalizationDate(LocalDate.of(2022, 5, 5))
@@ -133,7 +130,6 @@ public class DtoFactory {
                         .build(),
                 PatientDto.Response.builder()
                         .code("PATIENT002")
-                        .username("PATIENT002")
                         .name("zooneon")
                         .birthDate(LocalDate.of(1997, 8, 26))
                         .hospitalizationDate(LocalDate.of(2022, 5, 5))
@@ -142,7 +138,6 @@ public class DtoFactory {
                         .build(),
                 PatientDto.Response.builder()
                         .code("PATIENT003")
-                        .username("PATIENT003")
                         .name("zooneon")
                         .birthDate(LocalDate.of(1997, 8, 26))
                         .hospitalizationDate(LocalDate.of(2022, 5, 5))

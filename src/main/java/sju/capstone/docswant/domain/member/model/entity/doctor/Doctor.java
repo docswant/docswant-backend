@@ -41,6 +41,7 @@ public class Doctor extends Account {
 
     public void addPatient(Patient patient) {
         this.patients.add(patient);
+        patient.setDoctor(this);
     }
 
     public void update(String username, String password) {
@@ -49,5 +50,6 @@ public class Doctor extends Account {
 
     public void addRounding(Rounding rounding) {
         this.roundings.add(rounding);
+        rounding.setDoctor(this);
     }
 }

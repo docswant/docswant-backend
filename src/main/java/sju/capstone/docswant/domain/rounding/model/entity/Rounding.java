@@ -14,7 +14,7 @@ import java.time.LocalTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "rounding")
+@Table(name = "rounding", indexes = @Index(name = "rounding_ix_rounding_date", columnList = "rounding_date"))
 @Entity
 public class Rounding extends BaseTimeEntity {
 

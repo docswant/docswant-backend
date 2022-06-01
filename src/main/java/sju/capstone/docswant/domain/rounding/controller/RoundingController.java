@@ -60,8 +60,8 @@ public class RoundingController {
 
     @GetMapping("/doctor/{code}/rounding")
     public ResponseEntity<ResponseFormat<List<RoundingDto.ListResponse>>> findAllByDateApi(
-            @PathVariable(name = "code") String code, @RequestParam(name = "date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate roundingDate) {
-        List<RoundingDto.ListResponse> listResponseDto = roundingService.findAllByDate(code, roundingDate);
+            @PathVariable(name = "code") String code, @RequestParam(name = "date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
+        List<RoundingDto.ListResponse> listResponseDto = roundingService.findAllByDate(code, date);
         return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(listResponseDto));
     }
 }

@@ -31,7 +31,9 @@ public class PatientSchedule {
     }
 
     public void updateSchedule(LocalDate hospitalizationDate, LocalDate surgeryDate, LocalDate dischargeDate) {
-        this.hospitalizationDate = hospitalizationDate;
+        if (hospitalizationDate != null) {
+            this.hospitalizationDate = hospitalizationDate;
+        }
         if (surgeryDate != null) {
             this.surgeryDate = surgeryDate;
         }

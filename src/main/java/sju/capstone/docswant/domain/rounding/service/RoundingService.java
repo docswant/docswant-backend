@@ -19,6 +19,6 @@ public interface RoundingService {
 
     RoundingDto.Response find(Long id);
 
-    List<RoundingDto.ListResponse> findAllByDate(String code, LocalDate roundingDate);
+    List<RoundingDto.ListResponse> findAllByDate(String code, LocalDate date);
 
 }
