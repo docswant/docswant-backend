@@ -11,7 +11,7 @@ class RequirementTest {
     @Test
     void 환자_문의사항_추가_테스트() {
         //given
-        Requirement requirement = Requirement.builder().content("문의사항입니다.").build();
+        Requirement requirement = Requirement.builder().title("requirement title").content("requirement content").build();
         Patient patient = Patient.builder().code("PATIENT001").build();
 
         //when
@@ -26,21 +26,23 @@ class RequirementTest {
     @Test
     void 문의사항_내용수정_테스트(){
         //given
-        Requirement requirement = Requirement.builder().content("문의사항입니다.").build();
-        String updateContent = "문의사항입니다.123123";
+        Requirement requirement = Requirement.builder().title("requirement title").content("requirement content").build();
+        String updateContent = "update content";
+        String updateTitle = "update title";
 
         //when
-        requirement.updateContent(requirement,updateContent);
+        requirement.updateContent(requirement, updateTitle, updateContent);
 
         //then
         assertThat(requirement.getContent()).isEqualTo(updateContent);
+        assertThat(requirement.getTitle()).isEqualTo(updateTitle);
         assertThat(requirement.getStatus()).isEqualTo(RequirementStatus.UNREAD);
     }
 
     @Test
     void 문의사항_상태수정_테스트(){
         //given
-        Requirement requirement = Requirement.builder().content("문의사항입니다.").build();
+        Requirement requirement = Requirement.builder().title("requirement title").content("requirement content").build();
 
         //when
         requirement.changeStatusToRead();

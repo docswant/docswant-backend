@@ -29,7 +29,7 @@ class RequirementControllerTest extends IntegrationTest {
         //given
         String registerUrl = "/api/v1/patient/{code}/requirement";
         Patient patient = EntityFactory.getPatientEntity();
-        RequirementDto.Request requestDto = RequirementDto.Request.builder().content("content").build();
+        RequirementDto.Request requestDto = RequirementDto.Request.builder().title("title").content("content").build();
 
         //when
         ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.post(registerUrl, patient.getCode())
@@ -54,6 +54,7 @@ class RequirementControllerTest extends IntegrationTest {
                                 parameterWithName("code").description("환자 코드")
                         ),
                         requestFields(
+                                fieldWithPath("title").description("문의 사항 제목"),
                                 fieldWithPath("content").description("문의 사항 내용")
                         ),
                         responseFields(
@@ -61,18 +62,20 @@ class RequirementControllerTest extends IntegrationTest {
                                 fieldWithPath("timestamp").description("응답 시간"),
                                 fieldWithPath("data").description("응답 데이터"),
                                 fieldWithPath("data.id").description("문의사항 ID"),
+                                fieldWithPath("data.title").description("문의사항 제목"),
                                 fieldWithPath("data.content").description("문의사항 내용"),
                                 fieldWithPath("data.status").description("문의사항 상태")
                         )
                 )
                 );
     }
+
     @Test
     void 문의사항_수정_API_테스트() throws Exception {
         //given
         String updateUrl = "/api/v1/patient/{code}/requirement/{id}/content";
         Patient patient = EntityFactory.getPatientEntity();
-        RequirementDto.UpdateRequest requestDto =  RequirementDto.UpdateRequest.builder().content("update content").build();
+        RequirementDto.UpdateRequest requestDto =  RequirementDto.UpdateRequest.builder().title("update title").content("update content").build();
 
         //when
         ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.patch(updateUrl, patient.getCode(), 1L)
@@ -99,6 +102,7 @@ class RequirementControllerTest extends IntegrationTest {
                                 parameterWithName("id").description("수정할 문의사항 id")
                         ),
                         requestFields(
+                                fieldWithPath("title").description("수정한 문의사항 제목"),
                                 fieldWithPath("content").description("수정한 문의사항 내용")
                         ),
                         responseFields(
@@ -106,6 +110,7 @@ class RequirementControllerTest extends IntegrationTest {
                                 fieldWithPath("timestamp").description("응답 시간"),
                                 fieldWithPath("data").description("응답 데이터"),
                                 fieldWithPath("data.id").description("문의사항 id"),
+                                fieldWithPath("data.title").description("문의사항 제목"),
                                 fieldWithPath("data.content").description("문의사항 내용"),
                                 fieldWithPath("data.status").description("문의사항 확인 상태")
                         )
@@ -178,11 +183,12 @@ class RequirementControllerTest extends IntegrationTest {
                                 fieldWithPath("timestamp").description("응답 시간"),
                                 fieldWithPath("data").description("응답 데이터"),
                                 fieldWithPath("data.id").description("문의사항 id"),
+                                fieldWithPath("data.title").description("문의사항 제목"),
                                 fieldWithPath("data.content").description("문의사항 내용"),
                                 fieldWithPath("data.status").description("문의사항 읽음 상태")
                         )
-                ))
-        ;
+                )
+                );
     }
 
     @Test
@@ -222,7 +228,8 @@ class RequirementControllerTest extends IntegrationTest {
                                 fieldWithPath("data.page").description("현재 페이지"),
                                 fieldWithPath("data.hasNext").description("다음 페이지 존재 여부"),
                                 fieldWithPath("data.content").description("질문 리스트"),
-                                fieldWithPath("data.content[*].id").description("환자 코드"),
+                                fieldWithPath("data.content[*].id").description("문의사항 id"),
+                                fieldWithPath("data.content[*].title").description("문의사항 제목"),
                                 fieldWithPath("data.content[*].content").description("문의사항 내용"),
                                 fieldWithPath("data.content[*].status").description("문의사항 확인 상태")
                         )
