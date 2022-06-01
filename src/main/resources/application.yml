@@ -3,6 +3,8 @@ spring:
     name: docswant
   profiles:
     active: local
+  config:
+    import: optional:classpath:esl.yml
 
 server:
   port: 8080

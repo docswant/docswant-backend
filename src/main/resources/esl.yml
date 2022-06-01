@@ -1,0 +1,10 @@
+esl:
+  url: ${ESL_URL}
+  uri:
+    login: ${ESL_LOGIN_URI}
+    edit: ${ESL_EDIT_URI}
+  auth:
+    basic_username: ${ESL_BASIC_USERNAME}
+    basic_password: ${ESL_BASIC_PASSWORD}
+    user_id: ${ESL_USER_ID}
+    user_password: ${ESL_USER_PASSWORD}
