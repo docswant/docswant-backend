@@ -50,13 +50,11 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew clean build
       env: 
-        ESL_URL: ${{ secrets.ESL_URL }}
-        ESL_LOGIN_URI: ${{ secrets.ESL_LOGIN_URI }}
-        ESL_EDIT_URI: ${{ secrets.ESL_EDIT_URI }}
+        ESL_BASE_URL: ${{ secrets.ESL_BASE_URL }}
+        ESL_CHANGE_URL: ${{ secrets.ESL_CHANGE_URL }}
         ESL_BASIC_USERNAME: ${{ secrets.ESL_BASIC_USERNAME }}
         ESL_BASIC_PASSWORD: ${{ secrets.ESL_BASIC_PASSWORD }}
-        ESL_USER_ID: ${{ secrets.ESL_USER_ID }}
-        ESL_USER_PASSWORD: ${{ secrets.ESL_USER_PASSWORD }}
+        ESL_TOKEN: ${{ secrets.ESL_TOKEN }}
     
     - name: Make Directory for deliver
       run: mkdir deploy
