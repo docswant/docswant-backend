@@ -4,6 +4,7 @@ import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
 import sju.capstone.docswant.domain.member.model.entity.patient.PatientSchedule;
 import sju.capstone.docswant.domain.question.model.entity.Question;
+import sju.capstone.docswant.domain.requirement.model.entity.Requirement;
 import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
 
 import java.time.LocalDate;
@@ -143,4 +144,27 @@ public class EntityFactory {
         return Arrays.asList(rounding1, rounding2, rounding3);
     }
 
+    public static Requirement getRequirementEntity() {
+        return Requirement.builder()
+                .title("title")
+                .content("content")
+                .build();
+    }
+
+    public static List<Requirement> getRequirementEntities() {
+        return Arrays.asList(
+                Requirement.builder()
+                        .title("title1")
+                        .content("content1")
+                        .build(),
+                Requirement.builder()
+                        .title("title2")
+                        .content("content2")
+                        .build(),
+                Requirement.builder()
+                        .title("title3")
+                        .content("content3")
+                        .build()
+        );
+    }
 }
