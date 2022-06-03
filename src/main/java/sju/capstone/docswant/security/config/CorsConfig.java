@@ -19,7 +19,8 @@ public class CorsConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         //TODO: origin 변경
-        configuration.addAllowedOrigin(CorsConfiguration.ALL);
+//        configuration.addAllowedOrigin(CLIENT_URL);
+        configuration.setAllowedOrigins(Arrays.asList(CorsConfiguration.ALL));
         configuration.setAllowedHeaders(Arrays.asList(CorsConfiguration.ALL));
         configuration.setAllowedMethods(Arrays.asList(CORS_ALLOWED_METHODS));
         configuration.setAllowCredentials(true);
