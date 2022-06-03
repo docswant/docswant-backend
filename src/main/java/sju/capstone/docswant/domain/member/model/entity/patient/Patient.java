@@ -48,7 +48,7 @@ public class Patient extends Account {
     @OneToMany(mappedBy = "patient")
     private List<Rounding> roundings = new ArrayList<>();
 
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     private List<Requirement> requirements = new ArrayList<>();
 
     @Builder
