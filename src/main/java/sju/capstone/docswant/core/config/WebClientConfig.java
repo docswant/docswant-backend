@@ -15,12 +15,16 @@ import java.time.Duration;
 @Configuration
 public class WebClientConfig {
 
-    @Value("${esl.url}")
+    private static final String TOKEN_HEADER = "token";
+
+    @Value("${esl.url.base}")
     private String baseUrl;
     @Value("${esl.auth.basic_username}")
     private String username;
     @Value("${esl.auth.basic_password}")
     private String password;
+    @Value("${esl.auth.token}")
+    private String token;
 
     @Bean
     public WebClient webClient() {
@@ -33,6 +37,7 @@ public class WebClientConfig {
                 .defaultHeaders(header -> {
                     header.setContentType(MediaType.APPLICATION_JSON);
                     header.setBasicAuth(username, password, Charset.defaultCharset());
+                    header.set(TOKEN_HEADER, token);
                 })
                 .build();
     }
