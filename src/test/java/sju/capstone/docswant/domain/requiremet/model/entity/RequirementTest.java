@@ -28,14 +28,12 @@ class RequirementTest {
         //given
         Requirement requirement = Requirement.builder().title("requirement title").content("requirement content").build();
         String updateContent = "update content";
-        String updateTitle = "update title";
 
         //when
-        requirement.updateContent(requirement, updateTitle, updateContent);
+        requirement.updateContent(updateContent);
 
         //then
         assertThat(requirement.getContent()).isEqualTo(updateContent);
-        assertThat(requirement.getTitle()).isEqualTo(updateTitle);
         assertThat(requirement.getStatus()).isEqualTo(RequirementStatus.UNREAD);
     }
 

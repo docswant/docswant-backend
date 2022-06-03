@@ -75,7 +75,7 @@ class RequirementControllerTest extends IntegrationTest {
         //given
         String updateUrl = "/api/v1/patient/{code}/requirement/{id}/content";
         Patient patient = EntityFactory.getPatientEntity();
-        RequirementDto.UpdateRequest requestDto =  RequirementDto.UpdateRequest.builder().title("update title").content("update content").build();
+        RequirementDto.UpdateRequest requestDto =  RequirementDto.UpdateRequest.builder().content("update content").build();
 
         //when
         ResultActions actions = mvc.perform(RestDocumentationRequestBuilders.patch(updateUrl, patient.getCode(), 1L)
@@ -102,7 +102,6 @@ class RequirementControllerTest extends IntegrationTest {
                                 parameterWithName("id").description("수정할 문의사항 id")
                         ),
                         requestFields(
-                                fieldWithPath("title").description("수정한 문의사항 제목"),
                                 fieldWithPath("content").description("수정한 문의사항 내용")
                         ),
                         responseFields(

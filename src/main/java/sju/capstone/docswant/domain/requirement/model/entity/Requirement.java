@@ -49,10 +49,11 @@ public class Requirement extends BaseTimeEntity {
             this.patient = patient;
         }
 
-        public void updateContent(Requirement requirement, String updateTitle, String updateContent){
-            requirement.content=updateContent;
-            requirement.title=updateTitle;
-            requirement.status=RequirementStatus.UNREAD;
+        public void updateContent(String content){
+            if (content != null) {
+                this.content = content;
+            }
+            this.status = RequirementStatus.UNREAD;
         }
         public void changeStatusToRead(){
             this.status=RequirementStatus.READ;

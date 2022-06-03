@@ -45,7 +45,7 @@ public class RequirementServiceImpl implements RequirementService {
     @Override
     public RequirementDto.Response updateContent(Long id, RequirementDto.UpdateRequest requestDto){
         Requirement requirement = requirementRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
-        requirement.updateContent(requirement, requestDto.getTitle(), requestDto.getContent());
+        requirement.updateContent(requestDto.getContent());
         log.info("update success. id = {}", requirement.getId());
         return mapper.toDto(requirement);
     }

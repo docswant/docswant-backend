@@ -52,17 +52,12 @@ public class RequirementDto {
         @Getter
         @NoArgsConstructor(access = AccessLevel.PROTECTED)
         public static class UpdateRequest {
-            @Size(max = 50)
-            @NotBlank(message = "필수 값입니다.")
-            private String title;
 
             @Size(max = 500)
-            @NotBlank(message = "필수 값입니다.")
             private String content;
 
             @Builder
-            public UpdateRequest(String title, String content) {
-                this.title = title;
+            public UpdateRequest(String content) {
                 this.content = content;
             }
         }

@@ -62,7 +62,7 @@ class RequirementServiceTest {
     void 문의사항_내용수정_테스트(){//id = NULL 부여가 안됨
         //given
         Long id = 1L;
-        RequirementDto.UpdateRequest requestDto = RequirementDto.UpdateRequest.builder().title("update title").content("update content.").build();
+        RequirementDto.UpdateRequest requestDto = RequirementDto.UpdateRequest.builder().content("update content.").build();
         Requirement requirement = Requirement.builder().title("requirement title").content("requirement content").build();
         given(requirementRepository.findById(any(Long.class))).willReturn(Optional.of(requirement));
 
@@ -70,7 +70,6 @@ class RequirementServiceTest {
         RequirementDto.Response result = requirementService.updateContent(id, requestDto);
 
         //then
-        assertThat(result.getTitle()).isEqualTo(requestDto.getTitle());
         assertThat(result.getContent()).isEqualTo(requestDto.getContent());
     }
 
