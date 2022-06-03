@@ -1,11 +1,7 @@
 package sju.capstone.docswant.infra.esl;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
 import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
 
@@ -13,30 +9,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class EslDto {
-
-    @Getter
-    @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-    public static class AuthRequest {
-        private String userId;
-        private String userPw;
-
-        @Builder
-        public AuthRequest(String userId, String userPw) {
-            this.userId = userId;
-            this.userPw = userPw;
-        }
-    }
-
-    @Getter
-    @NoArgsConstructor(access = AccessLevel.PROTECTED)
-    public static class AuthResponse {
-        private String token;
-
-        @Builder
-        public AuthResponse(String token) {
-            this.token = token;
-        }
-    }
 
     @Getter
     public static class ChangeRequest {
@@ -96,26 +68,25 @@ public class EslDto {
     }
 
     @Getter
-    @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
     public static class ChangeContent {
-        private String tagId;
-        private String patientName;
-        private String doctorName;
-        private String surgeryDDay;
-        private String dischargeDDay;
-        private String roundingTime;
-        private String roundsWaitingOrder;
+        private String tag_id;
+        private String patient_name;
+        private String doctor_name;
+        private String surgery_d_day;
+        private String discharge_d_day;
+        private String rounding_time;
+        private String rounds_waiting_order;
 
         @Builder
         public ChangeContent(String tagId, String patientName, String doctorName, String surgeryDDay, String dischargeDDay,
                              String roundingTime, String roundsWaitingOrder) {
-            this.tagId = tagId;
-            this.patientName = patientName;
-            this.doctorName = doctorName;
-            this.surgeryDDay = surgeryDDay;
-            this.dischargeDDay = dischargeDDay;
-            this.roundingTime = roundingTime;
-            this.roundsWaitingOrder = roundsWaitingOrder;
+            this.tag_id = tagId;
+            this.patient_name = patientName;
+            this.doctor_name = doctorName;
+            this.surgery_d_day = surgeryDDay;
+            this.discharge_d_day = dischargeDDay;
+            this.rounding_time = roundingTime;
+            this.rounds_waiting_order = roundsWaitingOrder;
         }
     }
 }
