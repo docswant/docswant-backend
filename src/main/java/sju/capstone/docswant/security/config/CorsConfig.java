@@ -20,7 +20,7 @@ public class CorsConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         //TODO: origin 변경
-//        configuration.addAllowedOrigin(CLIENT_URL);
+        configuration.addAllowedOrigin(CLIENT_URL);
         configuration.addAllowedOrigin("http://192.168.0.8:3000");
         configuration.setAllowedHeaders(Arrays.asList(CorsConfiguration.ALL));
         configuration.setAllowedMethods(Arrays.asList(CORS_ALLOWED_METHODS));
