@@ -56,7 +56,7 @@ public class PatientController {
 
     @GetMapping
     public ResponseEntity<ResponseFormat<PageFormat.Response>> findAllApi(PageFormat.Request pageRequest, @CurrentUser Account account) {
-        PageFormat.Response<List<PatientDto.Response>> pageResponse = patientService.findAll(account, pageRequest);
+        PageFormat.Response<List<PatientDto.ListResponse>> pageResponse = patientService.findAll(account, pageRequest);
         return ResponseEntity.status(HttpStatus.OK).body(ResponseFormat.of(pageResponse));
     }
 }

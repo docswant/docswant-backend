@@ -61,4 +61,19 @@ class PatientMapperTest {
         assertThat(resultDto.getRoundingTime()).isEqualTo(rounding.getRoundingSchedule().getRoundingTime());
         assertThat(resultDto.getRoundsWaitingOrder()).isEqualTo(roundsWaitingOrder);
     }
+
+    @Test
+    void 엔티티에서_리스트_DTO_테스트() {
+        //given
+        Patient patient = EntityFactory.getPatientEntity();
+        Boolean hasUnreadRequirement = false;
+
+        //when
+        PatientDto.ListResponse resultDto = mapper.toListDto(patient, hasUnreadRequirement);
+
+        //then
+        assertThat(resultDto.getCode()).isEqualTo(patient.getCode());
+        assertThat(resultDto.getHospitalizationDate()).isEqualTo(patient.getPatientSchedule().getHospitalizationDate());
+        assertThat(resultDto.getHasUnreadRequirement()).isEqualTo(hasUnreadRequirement);
+    }
 }

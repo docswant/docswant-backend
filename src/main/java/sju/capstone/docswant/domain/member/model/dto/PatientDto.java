@@ -181,4 +181,40 @@ public class PatientDto {
             this.roundsWaitingOrder = roundsWaitingOrder;
         }
     }
+
+    @Getter
+    public static class ListResponse {
+        private String code;
+        private String name;
+
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+        private LocalDate birthDate;
+
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+        private LocalDate hospitalizationDate;
+
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+        private LocalDate surgeryDate;
+
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+        private LocalDate dischargeDate;
+
+        private String diseaseName;
+        private Integer hospitalRoom;
+        private Boolean hasUnreadRequirement;
+
+        @Builder
+        public ListResponse(String code, String name, LocalDate birthDate, LocalDate hospitalizationDate, LocalDate surgeryDate,
+                            LocalDate dischargeDate, String diseaseName, Integer hospitalRoom, Boolean hasUnreadRequirement) {
+            this.code = code;
+            this.name = name;
+            this.birthDate = birthDate;
+            this.hospitalizationDate = hospitalizationDate;
+            this.surgeryDate = surgeryDate;
+            this.dischargeDate = dischargeDate;
+            this.diseaseName = diseaseName;
+            this.hospitalRoom = hospitalRoom;
+            this.hasUnreadRequirement = hasUnreadRequirement;
+        }
+    }
 }

@@ -291,7 +291,8 @@ class PatientControllerTest extends IntegrationTest {
                                 fieldWithPath("data.content[*].surgeryDate").description("환자 수술날짜").optional(),
                                 fieldWithPath("data.content[*].dischargeDate").description("환자 퇴원날짜").optional(),
                                 fieldWithPath("data.content[*].diseaseName").description("환자 병명"),
-                                fieldWithPath("data.content[*].hospitalRoom").description("환자 병실 호수")
+                                fieldWithPath("data.content[*].hospitalRoom").description("환자 병실 호수"),
+                                fieldWithPath("data.content[*].hasUnreadRequirement").description("읽지 않은 문의사항 존재 여부")
                         )
                 ))
         ;

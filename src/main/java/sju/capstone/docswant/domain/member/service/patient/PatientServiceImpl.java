@@ -18,6 +18,9 @@ import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
 import sju.capstone.docswant.domain.member.model.mapper.PatientMapper;
 import sju.capstone.docswant.domain.member.repository.doctor.DoctorRepository;
 import sju.capstone.docswant.domain.member.repository.patient.PatientRepository;
+import sju.capstone.docswant.domain.requirement.model.entity.Requirement;
+import sju.capstone.docswant.domain.requirement.model.entity.RequirementStatus;
+import sju.capstone.docswant.domain.requirement.repository.RequirementRepository;
 import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
 import sju.capstone.docswant.domain.rounding.model.entity.RoundingStatus;
 import sju.capstone.docswant.domain.rounding.repository.RoundingRepository;
@@ -26,6 +29,7 @@ import sju.capstone.docswant.infra.esl.EslDto;
 
 import javax.swing.text.html.Option;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -39,6 +43,7 @@ public class PatientServiceImpl implements PatientService {
     private final PatientRepository patientRepository;
     private final DoctorRepository doctorRepository;
     private final RoundingRepository roundingRepository;
+    private final RequirementRepository requirementRepository;
     private final PasswordEncoder passwordEncoder;
     private final EslClient eslClient;
     private final PatientMapper mapper = PatientMapper.INSTANCE;
@@ -116,10 +121,17 @@ public class PatientServiceImpl implements PatientService {
     @DoctorOnly
     @Transactional(readOnly = true)
     @Override
-    public PageFormat.Response<List<PatientDto.Response>> findAll(Account account, PageFormat.Request pageRequest) {
+    public PageFormat.Response<List<PatientDto.ListResponse>> findAll(Account account, PageFormat.Request pageRequest) {
         Doctor doctor = doctorRepository.findByCode(account.getCode()).orElseThrow(() -> new EntityNotFoundException(ErrorCode.ENTITY_NOT_FOUND));
         Page<Patient> patientPage = patientRepository.findAllByDoctor(doctor, pageRequest.of());
-        List<PatientDto.Response> responseDtos = patientPage.getContent().stream().map(mapper::toDto).collect(Collectors.toList());
+        List<PatientDto.ListResponse> responseDtos = new ArrayList<>();
+        patientPage.getContent().forEach(patient -> {
+            List<Requirement> requirements = requirementRepository.findAllByPatient(patient);
+            Optional<Requirement> unreadRequirement = requirements.stream().filter(requirement -> requirement.getStatus().equals(RequirementStatus.UNREAD)).findFirst();
+            Boolean hasUnreadRequirement = unreadRequirement.isPresent() ? true : false;
+            PatientDto.ListResponse listDto = mapper.toListDto(patient, hasUnreadRequirement);
+            responseDtos.add(listDto);
+        });
         log.info("patient find all success. page = {}, size = {}", patientPage.getNumber(), patientPage.getNumberOfElements());
         return PageFormat.Response.of(patientPage.getNumber(), patientPage.hasNext(), responseDtos);
     }

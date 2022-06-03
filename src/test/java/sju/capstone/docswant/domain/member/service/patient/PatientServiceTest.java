@@ -17,12 +17,16 @@ import sju.capstone.docswant.domain.member.model.entity.doctor.Doctor;
 import sju.capstone.docswant.domain.member.model.entity.patient.Patient;
 import sju.capstone.docswant.domain.member.repository.doctor.DoctorRepository;
 import sju.capstone.docswant.domain.member.repository.patient.PatientRepository;
+import sju.capstone.docswant.domain.requirement.model.entity.Requirement;
+import sju.capstone.docswant.domain.requirement.model.entity.RequirementStatus;
+import sju.capstone.docswant.domain.requirement.repository.RequirementRepository;
 import sju.capstone.docswant.domain.rounding.model.entity.Rounding;
 import sju.capstone.docswant.domain.rounding.repository.RoundingRepository;
 import sju.capstone.docswant.infra.esl.EslClient;
 
 import javax.print.Doc;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +43,8 @@ class PatientServiceTest {
     private DoctorRepository doctorRepository;
     @Mock
     private RoundingRepository roundingRepository;
+    @Mock
+    private RequirementRepository requirementRepository;
     @Mock
     private EslClient eslClient;
     @Mock
@@ -119,16 +125,19 @@ class PatientServiceTest {
         PageFormat.Request pageRequest = new PageFormat.Request(1, 3);
         List<Patient> patients = EntityFactory.getPatientEntities();
         Page<Patient> patientPage = new PageImpl<>(patients);
+        Requirement requirement = EntityFactory.getRequirementEntity();
         given(doctorRepository.findByCode(any(String.class))).willReturn(Optional.of(EntityFactory.getDoctorEntity()));
         given(patientRepository.findAllByDoctor(any(Doctor.class), any(Pageable.class))).willReturn(patientPage);
+        given(requirementRepository.findAllByPatient(any(Patient.class))).willReturn(Arrays.asList(requirement));
 
         //when
-        PageFormat.Response<List<PatientDto.Response>> pageResponse = patientService.findAll(doctor, pageRequest);
+        PageFormat.Response<List<PatientDto.ListResponse>> pageResponse = patientService.findAll(doctor, pageRequest);
 
         //then
         assertThat(pageResponse.getPage()).isEqualTo(1);
         assertThat(pageResponse.getContent().size()).isEqualTo(patients.size());
         assertThat(pageResponse.getContent().get(0).getCode()).isEqualTo(patients.get(0).getCode());
+        assertThat(pageResponse.getContent().get(0).getHasUnreadRequirement()).isEqualTo(requirement.getStatus().equals(RequirementStatus.UNREAD));
     }
 
 }

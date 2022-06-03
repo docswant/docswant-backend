@@ -19,6 +19,6 @@ public interface PatientService {
 
     PatientDto.PatientRoundingResponse findWithRounding(String code, LocalDate today);
 
-    PageFormat.Response<List<PatientDto.Response>> findAll(Account account, PageFormat.Request pageRequest);
+    PageFormat.Response<List<PatientDto.ListResponse>> findAll(Account account, PageFormat.Request pageRequest);
 
 }

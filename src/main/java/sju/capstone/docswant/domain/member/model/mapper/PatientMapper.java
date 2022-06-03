@@ -34,4 +34,11 @@ public interface PatientMapper {
     })
     PatientDto.PatientRoundingResponse toPatientRoundingDto(Patient patient, Rounding rounding, Integer roundsWaitingOrder);
 
+    @Mappings({
+            @Mapping(target = "hospitalizationDate", source = "patient.patientSchedule.hospitalizationDate"),
+            @Mapping(target = "surgeryDate", source = "patient.patientSchedule.surgeryDate"),
+            @Mapping(target = "dischargeDate", source = "patient.patientSchedule.dischargeDate")
+    })
+    PatientDto.ListResponse toListDto(Patient patient, Boolean hasUnreadRequirement);
+
 }
