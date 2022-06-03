@@ -26,7 +26,7 @@ public class Doctor extends Account {
     @Column(name = "doctor_major", nullable = false, length = 50)
     private String major;
 
-    @OneToMany(mappedBy = "doctor")
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
     private List<Patient> patients = new ArrayList<>();
 
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
