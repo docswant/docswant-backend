@@ -21,7 +21,6 @@ public class CorsConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         //TODO: origin 변경
         configuration.addAllowedOrigin(CLIENT_URL);
-        configuration.addAllowedOrigin("http://172.30.1.51:3000");
         configuration.setAllowedHeaders(Arrays.asList(CorsConfiguration.ALL));
         configuration.setAllowedMethods(Arrays.asList(CORS_ALLOWED_METHODS));
         configuration.setAllowCredentials(true);
